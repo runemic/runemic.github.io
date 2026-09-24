@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing and business model · Runemic</title>
+<meta name="description" content="How Runemic works: free open-weight models, a pay-per-page API, enterprise licences, the Runemic Scan app and digitization services.">
+<link rel="canonical" href="https://runemic.com/pricing">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#f4f8f8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/pricing">
+<meta property="og:title" content="Pricing and business model · Runemic">
+<meta property="og:description" content="How Runemic works: free open-weight models, a pay-per-page API, enterprise licences, the Runemic Scan app and digitization services.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Runemic logo with the line: Document intelligence for every script, shelf and scanner.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pricing and business model · Runemic">
+<meta name="twitter:description" content="How Runemic works: free open-weight models, a pay-per-page API, enterprise licences, the Runemic Scan app and digitization services.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=c4cf96b0">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds multilingual OCR and document AI: open-weight models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/pricing#page","url":"https://runemic.com/pricing","name":"Pricing and business model","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://runemic.com/pricing"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the open models really free for commercial use?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rune-1 Small is released under an open licence that allows commercial use. The licence is published with the weights on Hugging Face."}},{"@type":"Question","name":"Which languages and scripts does Rune-1 support?","acceptedAnswer":{"@type":"Answer","text":"Rune-1 is multilingual and built for scripts that most OCR handles poorly: Arabic, Persian and Urdu, Devanagari, Ge'ez, Tibetan, Chinese and Japanese, and historical handwriting, alongside Latin. The exact list, with a production, beta or research status for each script, is published with each release."}},{"@type":"Question","name":"What is the difference between Rune-1 Small and Rune-1?","acceptedAnswer":{"@type":"Answer","text":"Rune-1 Small is compact enough to run on your own hardware. Rune-1 is our largest model, with better accuracy on complex layouts, tables and rare scripts. It is available through the API and enterprise licences."}},{"@type":"Question","name":"Do you train on my documents?","acceptedAnswer":{"@type":"Answer","text":"No. Documents sent to the API and enterprise deployments are not used for training. For custom models, we only train on material you give us for that purpose."}},{"@type":"Question","name":"When can I use Rune-1?","acceptedAnswer":{"@type":"Answer","text":"Rune-1 is in training now. Request early access and we will contact you as soon as the first release is ready. Follow progress on the roadmap."}},{"@type":"Question","name":"Can you scan our collection?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tell us what you have, roughly how many pages, and how fragile it is, and we will plan the project with you."}}]}]}</script>
+<script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" aria-label="Main">
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing" aria-current="page">Pricing</a>
+        <a href="/about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <span class="eyebrow">Pricing</span>
+    <h1>Open models. Paid products.</h1>
+    <p class="lede">We release open-weight models, and we sell the things that make them useful at scale: a hosted API, enterprise deployments, apps and digitization services.</p>
+  </header>
+
+  <section class="section">
+    <div class="split">
+      <figure class="figure"><img class="ill ill--light " src="/assets/ill/flywheel.svg" alt="A cycle: open weights lead to adoption and benchmarks, which lead to API, licence and service revenue, which funds better Rune models, which are released as open weights." width="576" height="476" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/flywheel-dark.svg" alt="" width="576" height="476" loading="lazy" decoding="async" aria-hidden="true"></figure>
+      <div>
+        <span class="eyebrow">How it fits together</span>
+        <h2>Why we give models away</h2>
+        <ol class="steps">
+          <li><div><h3>Open weights</h3><p>Anyone can download, inspect and run our <a href="/models#family">compact models</a>. No lock-in, no surprises.</p></div></li>
+          <li><div><h3>Adoption and trust</h3><p>Researchers and developers test Rune on their own pages and on RuneBench, in public.</p></div></li>
+          <li><div><h3>Revenue</h3><p>Teams that need scale, support or our largest models pay for the API, licences, apps and services.</p></div></li>
+          <li><div><h3>Better models</h3><p>That revenue trains the next Rune, and the cycle starts again.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card try-card">
+      <div>
+        <span class="eyebrow">Free to start</span>
+        <h2>Start free, pay per page later</h2>
+        <p>During the preview, every new account gets $5 of credit and nothing is ever billed. Try the playground, then call the API from your code.</p>
+        <ul class="ticks">
+          <li><strong>$5 free credit</strong> when you sign up, no card needed</li>
+          <li>Playground: compare four models side by side on your own pages</li>
+          <li>API key in one click, with cURL, Python and JavaScript examples</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="/products#api">About the API</a>
+        </div>
+      </div>
+      <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span>
+
+<span class="c"># →</span> { <span class="k">"text"</span>: <span class="s">"# Invoice No. 4821 …"</span>,
+    <span class="k">"usage"</span>: { <span class="k">"cost_usd"</span>: 0.002 } }</pre>
+    </div>
+  </section>
+
+  <section class="section" id="plans">
+    <div class="section__head">
+      <span class="eyebrow">Models and API</span>
+      <h2>Choose how you run Rune.</h2>
+    </div>
+    <div class="grid grid--3">
+      <article class="card plan">
+        <span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-open.svg" alt="" width="76" height="86" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-open-dark.svg" alt="" width="76" height="86" loading="lazy" decoding="async" aria-hidden="true"></span>
+        <h3>Open</h3>
+        <div class="plan__price">Free</div>
+        <div class="plan__unit">forever</div>
+        <ul class="ticks">
+          <li>Rune-1 Small weights on Hugging Face</li>
+          <li>Open licence, commercial use allowed</li>
+          <li>RuneBench and model cards</li>
+          <li>Community support on GitHub</li>
+        </ul>
+        <a class="btn btn--ghost" href="https://huggingface.co/runemic">Download <span class="arrow"></span></a>
+      </article>
+      <article class="card plan card--featured">
+        <span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-api.svg" alt="" width="88" height="72" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-api-dark.svg" alt="" width="88" height="72" loading="lazy" decoding="async" aria-hidden="true"></span>
+        <h3>API</h3>
+        <div class="plan__price">Pay per page</div>
+        <div class="plan__unit">$5 free credit when you sign up</div>
+        <ul class="ticks">
+          <li>All Rune-1 models, always the latest</li>
+          <li>Batch mode at a lower rate</li>
+          <li>Volume discounts</li>
+          <li>Documents never used for training</li>
+        </ul>
+        <a class="btn btn--primary" href="https://console.runemic.com#keys" data-in="Open your API keys">Get an API key <span class="arrow"></span></a>
+      </article>
+      <article class="card plan">
+        <span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-enterprise.svg" alt="" width="84" height="76" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-enterprise-dark.svg" alt="" width="84" height="76" loading="lazy" decoding="async" aria-hidden="true"></span>
+        <h3>Enterprise</h3>
+        <div class="plan__price">Annual licence</div>
+        <div class="plan__unit">per deployment</div>
+        <ul class="ticks">
+          <li>Self-hosted or on-premises</li>
+          <li>Custom scripts and fine-tuning</li>
+          <li>SLA, security review and support</li>
+          <li>Private model weights</li>
+        </ul>
+        <a class="btn btn--ghost" href="mailto:hello@runemic.com?subject=Enterprise">Talk to us <span class="arrow"></span></a>
+      </article>
+    </div>
+    <p class="note">Per-page prices are published when the API opens. Academic, non-profit and cultural-heritage projects get a standing discount.</p>
+  </section>
+
+  <section class="section" id="apps">
+    <div class="section__head">
+      <span class="eyebrow">Apps and services</span>
+      <h2>For people and institutions.</h2>
+    </div>
+    <div class="grid grid--2">
+      <article class="card plan">
+        <span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-app.svg" alt="" width="52" height="92" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-app-dark.svg" alt="" width="52" height="92" loading="lazy" decoding="async" aria-hidden="true"></span>
+        <h3>Runemic Scan</h3>
+        <div class="plan__price">Free</div>
+        <div class="plan__unit">with an optional Pro subscription</div>
+        <ul class="ticks">
+          <li>Free: scan, read and search your documents</li>
+          <li>Pro: unlimited scans, bills and receipts tracking, sync and exports</li>
+        </ul>
+        <a class="btn btn--ghost" href="/early-access?interest=scan">Join the waitlist <span class="arrow"></span></a>
+      </article>
+      <article class="card plan">
+        <span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-library.svg" alt="" width="96" height="72" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-library-dark.svg" alt="" width="96" height="72" loading="lazy" decoding="async" aria-hidden="true"></span>
+        <h3>Digitization</h3>
+        <div class="plan__price">Per project</div>
+        <div class="plan__unit">quoted by volume and handling needs</div>
+        <ul class="ticks">
+          <li>Scanning on-site or in our studio</li>
+          <li>OCR, metadata and quality checks</li>
+          <li>Delivered in open archival formats</li>
+        </ul>
+        <a class="btn btn--ghost" href="/early-access?interest=digitization">Get a quote <span class="arrow"></span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="section__head"><span class="eyebrow">Questions</span><h2>Frequently asked</h2></div>
+    <div class="faq">
+      <details><summary>Are the open models really free for commercial use?</summary><p>Yes. Rune-1 Small is released under an open licence that allows commercial use. The licence is published with the weights on Hugging Face.</p></details>
+      <details><summary>Which languages and scripts does Rune-1 support?</summary><p>Rune-1 is multilingual and built for scripts that most OCR handles poorly: Arabic, Persian and Urdu, Devanagari, Ge'ez, Tibetan, Chinese and Japanese, and historical handwriting, alongside Latin. The exact list, with a production, beta or research status for each script, is published with each release.</p></details>
+      <details><summary>What is the difference between Rune-1 Small and Rune-1?</summary><p>Rune-1 Small is compact enough to run on your own hardware. Rune-1 is our largest model, with better accuracy on complex layouts, tables and rare scripts. It is available through the API and enterprise licences.</p></details>
+      <details><summary>Do you train on my documents?</summary><p>No. Documents sent to the API and enterprise deployments are not used for training. For custom models, we only train on material you give us for that purpose.</p></details>
+      <details><summary>When can I use Rune-1?</summary><p>Rune-1 is in training now. Request early access and we will contact you as soon as the first release is ready. Follow progress on the <a href="/about#roadmap">roadmap</a>.</p></details>
+      <details><summary>Can you scan our collection?</summary><p>Yes. Tell us what you have, roughly how many pages, and how fragile it is, and we will plan the project with you.</p></details>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>Document intelligence for every script, shelf and scanner.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs · <a href="/privacy" style="color:inherit">Privacy</a></span>
+    <span>Rune + Numeric</span>
+  </div>
+</footer>
+</body>
+</html>

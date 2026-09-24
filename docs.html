@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API docs: OCR API reference · Runemic</title>
+<meta name="description" content="Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.">
+<link rel="canonical" href="https://runemic.com/docs">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#f4f8f8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/docs">
+<meta property="og:title" content="API docs: OCR API reference · Runemic">
+<meta property="og:description" content="Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Runemic logo with the line: Document intelligence for every script, shelf and scanner.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API docs: OCR API reference · Runemic">
+<meta name="twitter:description" content="Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=c4cf96b0">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds multilingual OCR and document AI: open-weight models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"TechArticle","@id":"https://runemic.com/docs#page","url":"https://runemic.com/docs","name":"API docs: OCR API reference","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://runemic.com/docs"}]}]}</script>
+<script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" aria-label="Main">
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs" aria-current="page">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <span class="eyebrow">Docs</span>
+    <h1>API reference</h1>
+    <p class="lede">Send a page image, get its text back in reading order, as Markdown or plain text, in the original language and script. One endpoint, one key.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="https://console.runemic.com#keys" data-in="Open your API keys">Get an API key <span class="arrow"></span></a>
+      <a class="btn btn--ghost" href="https://console.runemic.com#playground">Try the playground</a>
+    </div>
+    <p class="hero__note"><span class="pill pill--open">Preview</span> The API serves preview models until Rune-1 launches. $5 free credit for new accounts.</p>
+  </header>
+
+  <div class="docs-layout">
+    <nav class="docs-toc" aria-label="On this page">
+      <span class="docs-toc__h">On this page</span>
+      <a href="#quick-start">Quick start</a>
+      <a href="#authentication">Authentication</a>
+      <a href="#ocr">POST /v1/ocr</a>
+      <a href="#models">GET /v1/models</a>
+      <a href="#errors">Errors</a>
+      <a href="#limits">Rate limits</a>
+      <a href="#privacy">Data and privacy</a>
+      <a href="#changelog">Changelog</a>
+    </nav>
+
+    <div class="docs-body">
+      <section id="quick-start">
+        <h2>Quick start</h2>
+        <ol class="steps">
+          <li><div><h3>Create a key</h3><p>Sign in to the <a href="https://console.runemic.com">Runemic Console</a> with GitHub or Hugging Face and create a key under <strong>API keys</strong>. It is shown once.</p></div></li>
+          <li><div><h3>Store it</h3><p>Keep it out of your code: <code>export RUNEMIC_API_KEY="rk_live_…"</code></p></div></li>
+          <li><div><h3>Send a page</h3><p>PNG, JPEG, WebP or GIF, up to 4 MB.</p></div></li>
+        </ol>
+        <h3>cURL</h3>
+        <pre class="code">curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span> \
+  -F <span class="s">"model=preview-gemma-4"</span></pre>
+        <h3>Python</h3>
+        <pre class="code"><span class="k">import</span> os, requests
+
+resp = requests.post(
+    <span class="s">"https://api.runemic.com/v1/ocr"</span>,
+    headers={<span class="s">"Authorization"</span>: f<span class="s">"Bearer {os.environ['RUNEMIC_API_KEY']}"</span>},
+    files={<span class="s">"file"</span>: open(<span class="s">"page.png"</span>, <span class="s">"rb"</span>)},
+    data={<span class="s">"model"</span>: <span class="s">"preview-gemma-4"</span>},
+)
+resp.raise_for_status()
+print(resp.json()[<span class="s">"text"</span>])</pre>
+        <h3>JavaScript (Node 18+)</h3>
+        <pre class="code"><span class="k">import</span> { readFile } <span class="k">from</span> <span class="s">"node:fs/promises"</span>;
+
+<span class="k">const</span> form = <span class="k">new</span> FormData();
+form.append(<span class="s">"file"</span>, <span class="k">new</span> Blob([<span class="k">await</span> readFile(<span class="s">"page.png"</span>)], { type: <span class="s">"image/png"</span> }), <span class="s">"page.png"</span>);
+form.append(<span class="s">"model"</span>, <span class="s">"preview-gemma-4"</span>);
+
+<span class="k">const</span> res = <span class="k">await</span> fetch(<span class="s">"https://api.runemic.com/v1/ocr"</span>, {
+  method: <span class="s">"POST"</span>,
+  headers: { Authorization: `Bearer ${process.env.RUNEMIC_API_KEY}` },
+  body: form,
+});
+console.log((<span class="k">await</span> res.json()).text);</pre>
+      </section>
+
+      <section id="authentication">
+        <h2>Authentication</h2>
+        <p>Every request to <code>/v1/ocr</code> needs your key in the <code>Authorization</code> header: <code>Authorization: Bearer rk_live_…</code>. Keys can be renamed and revoked in the console; a revoked key stops working immediately. Never put a key in a website or app that other people can inspect; call the API from your server.</p>
+      </section>
+
+      <section id="ocr">
+        <h2><span class="method">POST</span> /v1/ocr</h2>
+        <p>Reads one page. Send <code>multipart/form-data</code> with a <code>file</code>, or JSON with an <code>image</code>.</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>file</code></td><td>file</td><td>The page image (multipart). PNG, JPEG, WebP or GIF, max 4 MB.</td></tr>
+            <tr><td><code>image</code></td><td>string</td><td>JSON alternative: a base64 data URI (<code>data:image/png;base64,…</code>) or a public <code>https://</code> URL.</td></tr>
+            <tr><td><code>model</code></td><td>string</td><td>Optional. A model ID from <a href="#models"><code>GET /v1/models</code></a>. Default <code>preview-gemma-4</code>.</td></tr>
+            <tr><td><code>format</code></td><td>string</td><td>Optional. <code>markdown</code> (default: headings, lists and tables) or <code>text</code> (plain text).</td></tr>
+            <tr><td><code>instructions</code></td><td>string</td><td>Optional, up to 500 characters of extra guidance, for example <em>"Only return the table"</em>.</td></tr>
+          </tbody>
+        </table></div>
+        <h3>JSON request</h3>
+        <pre class="code">curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"image": "https://example.com/page.jpg", "format": "text"}'</span></pre>
+        <h3>Response</h3>
+        <pre class="code">{
+  <span class="k">"id"</span>: <span class="s">"req_1842"</span>,
+  <span class="k">"object"</span>: <span class="s">"ocr.result"</span>,
+  <span class="k">"model"</span>: <span class="s">"preview-gemma-4"</span>,
+  <span class="k">"text"</span>: <span class="s">"# INVOICE No. 4821\n\nCity Library …"</span>,
+  <span class="k">"format"</span>: <span class="s">"markdown"</span>,
+  <span class="k">"usage"</span>: { <span class="k">"pages"</span>: 1, <span class="k">"cost_usd"</span>: 0.002, <span class="k">"ms"</span>: 2210 },
+  <span class="k">"balance_usd"</span>: 4.998
+}</pre>
+        <p>Every response also has an <code>X-Request-Id</code> header that matches the request in the console's <strong>Logs</strong>.</p>
+      </section>
+
+      <section id="models">
+        <h2><span class="method method--get">GET</span> /v1/models</h2>
+        <p>Lists the available models and their price per page. No key needed: <code>curl https://api.runemic.com/v1/models</code></p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Model ID</th><th>Based on</th><th>Speed</th><th>Best for</th><th class="num">Per page</th></tr></thead>
+          <tbody>
+            <tr><td><code>preview-gemma-4</code><br><span class="muted small-note">default</span></td><td>Google Gemma 4 26B</td><td>Balanced</td><td>Multilingual pages, right-to-left scripts</td><td class="num">$0.002</td></tr>
+            <tr><td><code>preview-mistral-small</code></td><td>Mistral Small 3.1 24B</td><td>Fast</td><td>Tables, forms, invoices</td><td class="num">$0.003</td></tr>
+            <tr><td><code>preview-qwen-3.8</code></td><td>Qwen 3.8 27B</td><td>Thorough</td><td>Chinese, Japanese, Korean, mixed scripts</td><td class="num">$0.003</td></tr>
+            <tr><td><code>preview-llama-4-scout</code></td><td>Meta Llama 4 Scout</td><td>Fastest</td><td>Clean printed pages, high volume</td><td class="num">$0.002</td></tr>
+          </tbody>
+        </table></div>
+        <p>Preview models run on Cloudflare Workers AI. When <a href="/models">Rune-1</a> launches it becomes a new model ID; your key and code stay the same.</p>
+      </section>
+
+      <section id="errors">
+        <h2>Errors</h2>
+        <p>Errors return JSON like <code>{"error": {"code": "…", "message": "…"}}</code>. Failed requests are never charged.</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Status</th><th>Code</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>400</td><td><code>invalid_image</code> · <code>unknown_model</code> · <code>invalid_format</code></td><td>Check the request body.</td></tr>
+            <tr><td>401</td><td><code>invalid_api_key</code></td><td>Missing, wrong or revoked key.</td></tr>
+            <tr><td>413 · 415</td><td><code>too_large</code> · <code>unsupported_type</code></td><td>PNG, JPEG, WebP or GIF up to 4 MB. PDFs are coming soon.</td></tr>
+            <tr><td>429</td><td><code>rate_limited</code> · <code>daily_limit</code></td><td>Too many requests per minute, or today's page limit reached.</td></tr>
+            <tr><td>502</td><td><code>model_error</code></td><td>The model failed. You are not charged; retry or pick another model.</td></tr>
+            <tr><td>503</td><td><code>capacity</code></td><td>Today's shared preview capacity is used up. Try again after 00:00 UTC.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="limits">
+        <h2>Rate limits</h2>
+        <div class="table-wrap"><table class="doc-table">
+          <tbody>
+            <tr><td>Requests per minute, per key</td><td class="num">20</td></tr>
+            <tr><td>Pages per day, per account (preview)</td><td class="num">50</td></tr>
+            <tr><td>Image size</td><td class="num">4 MB</td></tr>
+            <tr><td>Active keys per account</td><td class="num">10</td></tr>
+          </tbody>
+        </table></div>
+        <p>Need more? Email <a href="mailto:hello@runemic.com">hello@runemic.com</a>.</p>
+      </section>
+
+      <section id="privacy">
+        <h2>Data and privacy</h2>
+        <p>Images are processed by the selected model and returned to you. We never store your images or their text, and never use them for training. We keep request metadata (time, model, pages, cost, latency, status) for your usage and billing. Read the <a href="/privacy">privacy notice</a>.</p>
+      </section>
+
+      <section id="changelog">
+        <h2>Changelog</h2>
+        <ul class="ticks">
+          <li><strong>24 Sep 2026</strong>: public preview. Four preview models, <code>format</code> and <code>instructions</code> parameters, request IDs, console with playground and usage analytics.</li>
+        </ul>
+      </section>
+
+      <div class="card try-card try-card--slim">
+        <div><h2>Ready to try it?</h2><p>New accounts get $5 of free credit. No card needed.</p></div>
+        <div class="hero__cta"><a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Try it free <span class="arrow"></span></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>Document intelligence for every script, shelf and scanner.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs · <a href="/privacy" style="color:inherit">Privacy</a></span>
+    <span>Rune + Numeric</span>
+  </div>
+</footer>
+</body>
+</html>

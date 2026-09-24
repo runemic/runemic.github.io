@@ -1,0 +1,21 @@
+# Runemic
+
+> Runemic Labs builds multilingual OCR and document AI for every script: open-weight models, a hosted API, a scanner app, and digitization services for libraries and archives. Our first OCR model family is Rune-1 (in training).
+
+## Pages
+
+- [Home](https://runemic.com/): what Runemic does, in brief
+- [Rune-1 models](https://runemic.com/models): multilingual OCR for Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting (HTR); PDF to Markdown/JSON. The model family (Rune-1 Small with open weights, Rune-1 via API, Rune-1 Custom), how it reads a page, supported writing directions, deployment options, RuneBench
+- [Products](https://runemic.com/products): Runemic API, Runemic Scan mobile app, digitization services, scanning hardware (research)
+- [Pricing](https://runemic.com/pricing): business model (open weights, pay-per-page API, enterprise licences, app subscription, per-project digitization) and FAQ
+- [API docs](https://runemic.com/docs): OCR API reference: POST /v1/ocr, models, errors, rate limits, code in cURL, Python and JavaScript
+- [Console](https://console.runemic.com): sign in with GitHub or Hugging Face, playground, API keys, $5 free credit
+- [Early access](https://runemic.com/early-access): join the list for the API, app, open models or a digitization project
+- [Privacy](https://runemic.com/privacy): privacy notice (no cookies or tracking)
+- [About](https://runemic.com/about): mission, the name (Rune + Numeric), roadmap, principles, contact
+
+## Elsewhere
+
+- [GitHub](https://github.com/runemic)
+- [Hugging Face](https://huggingface.co/runemic)
+- Contact: hello@runemic.com

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rune-1: multilingual OCR models · Runemic</title>
+<meta name="description" content="Rune-1: multilingual OCR for Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting. PDF to Markdown or JSON, open weights and an API.">
+<link rel="canonical" href="https://runemic.com/models">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#f4f8f8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/models">
+<meta property="og:title" content="Rune-1: multilingual OCR models · Runemic">
+<meta property="og:description" content="Rune-1: multilingual OCR for Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting. PDF to Markdown or JSON, open weights and an API.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Runemic logo with the line: Document intelligence for every script, shelf and scanner.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rune-1: multilingual OCR models · Runemic">
+<meta name="twitter:description" content="Rune-1: multilingual OCR for Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting. PDF to Markdown or JSON, open weights and an API.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=c4cf96b0">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds multilingual OCR and document AI: open-weight models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/models#page","url":"https://runemic.com/models","name":"Rune-1: multilingual OCR models","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Models","item":"https://runemic.com/models"}]}]}</script>
+<script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" aria-label="Main">
+        <a href="/models" aria-current="page">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <span class="eyebrow">Models</span>
+    <h1>Rune-1</h1>
+    <p class="lede">Our first multilingual OCR model family. Rune-1 reads a page the way a careful person does: it finds the regions, decides the reading order, recognises every line, printed or handwritten, and returns a document you can use: Markdown, JSON or searchable PDF.</p>
+    <p class="hero__note"><span class="pill pill--dev">In training</span> Can't wait? <a href="https://console.runemic.com">Try our preview models free</a> today.</p>
+  </header>
+
+  <section class="section">
+    <figure class="figure"><picture><source media="(max-width: 720px)" srcset="/assets/ill/pipeline-m.svg" width="386" height="452"><img class="ill ill--light " src="/assets/ill/pipeline.svg" alt="Four steps: layout detection, reading order, line recognition, and structured JSON output." width="816" height="222" loading="lazy" decoding="async"></picture><picture><source media="(max-width: 720px)" srcset="/assets/ill/pipeline-m-dark.svg" width="386" height="452"><img class="ill ill--dark " src="/assets/ill/pipeline-dark.svg" alt="" width="816" height="222" loading="lazy" decoding="async" aria-hidden="true"></picture></figure>
+  </section>
+
+  <section class="section" id="family">
+    <div class="section__head">
+      <span class="eyebrow">The family</span>
+      <h2>Open at the core, stronger in the cloud.</h2>
+      <p>One architecture in different sizes. The small model is yours to keep. The large model powers our API and enterprise deployments.</p>
+    </div>
+    <div class="grid grid--3">
+      <article class="card">
+        <div class="card__top"><span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-open.svg" alt="" width="76" height="86" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-open-dark.svg" alt="" width="76" height="86" loading="lazy" decoding="async" aria-hidden="true"></span><span class="pill pill--open">Open weights</span></div>
+        <h3>Rune-1 Small</h3>
+        <p>A compact model for local and on-device use, released on Hugging Face under an open licence.</p>
+        <ul class="ticks">
+          <li>Multilingual and multi-script</li>
+          <li>Runs on a single GPU, or a laptop</li>
+          <li>Text lines with layout blocks</li>
+          <li>Fine-tune on your own pages</li>
+        </ul>
+        <a class="card__link" href="https://huggingface.co/runemic">Hugging Face <span class="arrow"></span></a>
+      </article>
+      <article class="card card--featured">
+        <div class="card__top"><span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-api.svg" alt="" width="88" height="72" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-api-dark.svg" alt="" width="88" height="72" loading="lazy" decoding="async" aria-hidden="true"></span><span class="pill">API</span></div>
+        <h3>Rune-1</h3>
+        <p>Our most capable model, available through the Runemic API and for enterprise deployment.</p>
+        <ul class="ticks">
+          <li>Multilingual, with mixed-script pages</li>
+          <li>Tables, forms, figures and footnotes</li>
+          <li>Reading order across columns and scripts</li>
+          <li>Confidence for every line</li>
+          <li>Markdown, JSON and searchable PDF</li>
+        </ul>
+        <a class="card__link" href="/products#api">Runemic API <span class="arrow"></span></a>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-custom.svg" alt="" width="84" height="84" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-custom-dark.svg" alt="" width="84" height="84" loading="lazy" decoding="async" aria-hidden="true"></span><span class="pill pill--dev">Enterprise</span></div>
+        <h3>Rune-1 Custom</h3>
+        <p>Adaptation for a script, historical hand or document type that nobody covers well yet, trained with your material.</p>
+        <ul class="ticks">
+          <li>Rare and historical scripts</li>
+          <li>Domain forms and ledgers</li>
+          <li>Private weights, your servers</li>
+        </ul>
+        <a class="card__link" href="mailto:hello@runemic.com?subject=Rune-1%20Custom">Talk to us <span class="arrow"></span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="scripts">
+    <div class="section__head">
+      <span class="eyebrow">Scripts</span>
+      <h2>Built for the scripts others round down to “other”.</h2>
+      <p>Most OCR is tuned for Latin text in neat columns. Rune-1 is trained from the start on right-to-left, vertical and mixed-script pages: Arabic, Persian (Farsi) and Urdu, including nastaliq; Hindi, Marathi and Nepali in Devanagari; Amharic and Tigrinya in Ge'ez; Tibetan; Chinese and Japanese; and historical manuscripts through handwritten text recognition (HTR).</p>
+      <p>We will publish coverage per script, each marked production, beta or research, so you know what to expect before you send a page.</p>
+    </div>
+    <figure class="figure"><picture><source media="(max-width: 720px)" srcset="/assets/ill/directions-m.svg" width="386" height="454"><img class="ill ill--light " src="/assets/ill/directions.svg" alt="Four page layouts: left to right, right to left, top to bottom, and mixed scripts on one page." width="816" height="224" loading="lazy" decoding="async"></picture><picture><source media="(max-width: 720px)" srcset="/assets/ill/directions-m-dark.svg" width="386" height="454"><img class="ill ill--dark " src="/assets/ill/directions-dark.svg" alt="" width="816" height="224" loading="lazy" decoding="async" aria-hidden="true"></picture></figure>
+  </section>
+
+  <section class="section" id="deploy">
+    <div class="section__head">
+      <span class="eyebrow">Deployment</span>
+      <h2>Run it where your documents live.</h2>
+      <p>Use our cloud, run it inside your own network, or ship it in an app. Same model, same output.</p>
+    </div>
+    <figure class="figure"><picture><source media="(max-width: 720px)" srcset="/assets/ill/deploy-m.svg" width="506" height="514"><img class="ill ill--light " src="/assets/ill/deploy.svg" alt="Three deployment options: the cloud API, your own servers, and on a device." width="786" height="254" loading="lazy" decoding="async"></picture><picture><source media="(max-width: 720px)" srcset="/assets/ill/deploy-m-dark.svg" width="506" height="514"><img class="ill ill--dark " src="/assets/ill/deploy-dark.svg" alt="" width="786" height="254" loading="lazy" decoding="async" aria-hidden="true"></picture></figure>
+  </section>
+
+  <section class="section" id="runebench">
+    <div class="split split--flip">
+      <div>
+        <span class="eyebrow">Benchmark</span>
+        <h2>RuneBench</h2>
+        <p class="muted">An open benchmark for OCR on low-resource scripts. Character error rate is reported per script, not averaged into a single flattering number. The dataset, scoring code and every prediction file will be public, including the rows where we lose. We will also report results on established public benchmarks, so Rune can be compared like for like.</p>
+        <p><span class="pill pill--dev">Releasing with Rune-1</span></p>
+        <a class="btn btn--ghost" href="https://github.com/runemic">Follow on GitHub <span class="arrow"></span></a>
+      </div>
+      <figure class="figure split__fig"><img class="ill ill--light " src="/assets/ill/bench.svg" alt="RuneBench publishes three things: the dataset, the scoring code, and every prediction, including the wrong ones." width="506" height="222" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/bench-dark.svg" alt="" width="506" height="222" loading="lazy" decoding="async" aria-hidden="true"></figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="card try-card">
+      <div>
+        <span class="eyebrow">Start building</span>
+        <h2>Test the API while Rune-1 trains</h2>
+        <p>The same endpoint Rune-1 will use is live today with four preview models. Build now; switch to Rune-1 by changing one model name.</p>
+        <ul class="ticks">
+          <li><strong>$5 free credit</strong> when you sign up, no card needed</li>
+          <li>Playground: compare four models side by side on your own pages</li>
+          <li>API key in one click, with cURL, Python and JavaScript examples</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="/products#api">About the API</a>
+        </div>
+      </div>
+      <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span>
+
+<span class="c"># →</span> { <span class="k">"text"</span>: <span class="s">"# Invoice No. 4821 …"</span>,
+    <span class="k">"usage"</span>: { <span class="k">"cost_usd"</span>: 0.002 } }</pre>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>Document intelligence for every script, shelf and scanner.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs · <a href="/privacy" style="color:inherit">Privacy</a></span>
+    <span>Rune + Numeric</span>
+  </div>
+</footer>
+</body>
+</html>
