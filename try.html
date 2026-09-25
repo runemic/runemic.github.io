@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="/assets/css/site.css?v=c5970a10">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/try#page","url":"https://runemic.com/try","name":"Free OCR: image to text online","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Try it","item":"https://runemic.com/try"}]},{"@type":"WebApplication","name":"Free OCR: image to text online","url":"https://runemic.com/try","description":"Free online OCR: upload a photo, scan or screenshot and get the text back in reading order. Arabic, Persian, Urdu, Hindi, Chinese, Cyrillic, Latin and more. 5 free pages a day, no sign-up.","inLanguage":"en","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@id":"https://runemic.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can read 5 pages a day here without an account. If you sign in, you get $5 of free credit, which is about 2,500 pages at preview prices (up to 50 a day). Nothing is billed during the preview."}},{"@type":"Question","name":"Which languages and scripts does it read?","acceptedAnswer":{"@type":"Answer","text":"Most widely used scripts, including Latin, Arabic, Persian, Urdu, Hebrew, Cyrillic, Greek, Devanagari, Chinese, Japanese and Korean. Results depend on the image: a sharp, straight photo works best. Rune-1, our own model, is being trained for the harder cases."}},{"@type":"Question","name":"Do you keep my images?","acceptedAnswer":{"@type":"Answer","text":"No. The image is sent to the model, the text comes back to you, and nothing is saved. We only count how many pages you've used today."}},{"@type":"Question","name":"Can I use it from my own code?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sign in to the console, create an API key and send images to POST /v1/ocr. See the API docs."}},{"@type":"Question","name":"Can it read PDFs?","acceptedAnswer":{"@type":"Answer","text":"Not yet. For now, take a screenshot of the page or export it as an image. PDF support comes with Rune-1."}}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
-<script src="/assets/js/try.js?v=e8cf10b8" defer></script>
+<script src="/assets/js/try.js?v=007098a9" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -116,8 +116,18 @@
         <p class="muted">No card needed. The free pages here reset at 00:00 UTC.</p>
       </div>
       <div class="tool__gate-actions">
-        <a class="btn btn--primary" href="https://console.runemic.com/auth/github">Continue with GitHub</a>
-        <a class="btn btn--ghost" href="https://console.runemic.com/auth/huggingface">Continue with Hugging Face</a>
+        <a class="btn btn--primary" href="https://console.runemic.com/auth/github?from=try">Continue with GitHub</a>
+        <a class="btn btn--ghost" href="https://console.runemic.com/auth/huggingface?from=try">Continue with Hugging Face</a>
+      </div>
+    </div>
+
+    <div class="card tool__gate" id="try-gate-in" hidden>
+      <div>
+        <h2>Continue in the playground</h2>
+        <p>You've used the free pages here for today. You're signed in, so the playground gives you up to 50 pages a day, with model comparison and your API keys.</p>
+      </div>
+      <div class="tool__gate-actions">
+        <a class="btn btn--primary" href="https://console.runemic.com/#playground">Open the playground</a>
       </div>
     </div>
     <p class="note">Images are read by an open preview model on Cloudflare Workers AI. We don't store them or use them for training. See the <a href="/privacy#try">privacy notice</a>.</p>

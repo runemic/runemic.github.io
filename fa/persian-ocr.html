@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="/assets/css/site.css?v=c5970a10">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/fa/persian-ocr#page","url":"https://runemic.com/fa/persian-ocr","name":"تبدیل عکس به متن فارسی (OCR رایگان)","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"fa"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"تبدیل عکس به متن فارسی (OCR رایگان)","item":"https://runemic.com/fa/persian-ocr"}]},{"@type":"WebApplication","name":"تبدیل عکس به متن فارسی (OCR رایگان)","url":"https://runemic.com/fa/persian-ocr","description":"تبدیل رایگان عکس، اسکن و اسکرین‌شات به متن فارسی قابل ویرایش، از راست به چپ و به ترتیب خواندن. روزانه ۵ صفحه رایگان، بدون ثبت‌نام.","inLanguage":"fa","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@id":"https://runemic.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"آیا واقعاً رایگان است؟","acceptedAnswer":{"@type":"Answer","text":"بله. روزانه ۵ صفحه را بدون حساب کاربری می‌توانید بخوانید. اگر وارد شوید، ۵ دلار اعتبار رایگان می‌گیرید که با قیمت‌های پیش‌نمایش حدود ۲٬۵۰۰ صفحه است (تا ۵۰ صفحه در روز)."}},{"@type":"Question","name":"آیا اعداد فارسی را هم می‌خواند؟","acceptedAnswer":{"@type":"Answer","text":"بله. اعداد فارسی (۱۲۳) و لاتین (123) هر دو خوانده می‌شوند و همان‌طور که در صفحه آمده‌اند برگردانده می‌شوند."}},{"@type":"Question","name":"متن را چطور در Word یا Google Docs بچسبانم؟","acceptedAnswer":{"@type":"Answer","text":"متن را کپی یا به صورت فایل دانلود کنید و بچسبانید. اگر ویرایشگر خودش راست‌به‌چپ نشد، جهت پاراگراف را راست‌به‌چپ کنید."}},{"@type":"Question","name":"آیا تصویرهای من ذخیره می‌شوند؟","acceptedAnswer":{"@type":"Answer","text":"خیر. تصویر برای مدل فرستاده می‌شود، متن به شما برمی‌گردد و چیزی ذخیره نمی‌شود. فقط تعداد صفحه‌هایی که امروز استفاده کرده‌اید شمرده می‌شود."}},{"@type":"Question","name":"آیا دست‌نوشته و نسخه‌های خطی قدیمی را هم می‌خواند؟","acceptedAnswer":{"@type":"Answer","text":"دست‌نوشتهٔ مرتب گاهی خوب خوانده می‌شود، اما نسخه‌های خطی قدیمی دشوارترند. مدل خودمان، Rune-1، برای همین موارد در حال آموزش است."}}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
-<script src="/assets/js/try.js?v=e8cf10b8" defer></script>
+<script src="/assets/js/try.js?v=007098a9" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -116,8 +116,18 @@
         <p class="muted">نیازی به کارت بانکی نیست. صفحه‌های رایگان این‌جا ساعت ۰۰:۰۰ به وقت UTC دوباره فعال می‌شوند.</p>
       </div>
       <div class="tool__gate-actions">
-        <a class="btn btn--primary" href="https://console.runemic.com/auth/github">ادامه با GitHub</a>
-        <a class="btn btn--ghost" href="https://console.runemic.com/auth/huggingface">ادامه با Hugging Face</a>
+        <a class="btn btn--primary" href="https://console.runemic.com/auth/github?from=try">ادامه با GitHub</a>
+        <a class="btn btn--ghost" href="https://console.runemic.com/auth/huggingface?from=try">ادامه با Hugging Face</a>
+      </div>
+    </div>
+
+    <div class="card tool__gate" id="try-gate-in" hidden>
+      <div>
+        <h2>در محیط آزمایش ادامه دهید</h2>
+        <p>صفحه‌های رایگان امروز این‌جا تمام شده است. شما وارد حساب خود شده‌اید، پس در محیط آزمایش (playground) تا ۵۰ صفحه در روز، همراه با مقایسهٔ مدل‌ها و کلیدهای API، در اختیار دارید.</p>
+      </div>
+      <div class="tool__gate-actions">
+        <a class="btn btn--primary" href="https://console.runemic.com/#playground">باز کردن محیط آزمایش</a>
       </div>
     </div>
     <p class="note">تصویرها با یک مدل پیش‌نمایش متن‌باز روی Cloudflare Workers AI خوانده می‌شوند. ما آن‌ها را ذخیره نمی‌کنیم و برای آموزش مدل به کار نمی‌بریم. <a href="/privacy#try">اطلاعیهٔ حریم خصوصی</a> (به انگلیسی).</p>

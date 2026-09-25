@@ -12,10 +12,14 @@
 
   // interface text (English, or Persian on /fa/ pages); error codes from the server map to local messages
   var FA = tool.getAttribute("data-lang") === "fa";
+  // signed in to the console? rk_signed_in is a non-secret hint ("1", no identity). /v1/try never reads it,
+  // and the console session cookie is never sent here, so free-tool use is not linked to any account.
+  var SIGNED_IN = /(?:^|;\s*)rk_signed_in=1/.test(document.cookie);
   var faDigits = function (n) { return String(n).replace(/\d/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[d]; }); };
   var T = FA ? {
     left: function (r, l) { return faDigits(r) + " صفحهٔ رایگان از " + faDigits(l) + " صفحهٔ امروز باقی مانده · "; },
     signin: "برای ۵ دلار اعتبار رایگان وارد شوید", none: "صفحهٔ رایگان امروز شما تمام شده است.",
+    inLeft: "شما وارد شده‌اید: ", inLink: "در محیط آزمایش تا ۵۰ صفحه در روز بخوانید",
     type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید. پشتیبانی از PDF به‌زودی اضافه می‌شود.",
     size: "حجم این تصویر بیشتر از ۴ مگابایت است. یک عکس یا اسکرین‌شات کوچک‌تر امتحان کنید.",
     sample: "نمونه بارگذاری نشد. دوباره تلاش کنید.", reading: "در حال خواندن…", run: "دریافت متن",
@@ -29,6 +33,7 @@
   } : {
     left: function (r, l) { return r + " of " + l + " free pages left today · "; },
     signin: "Sign in for $5 of free credit", none: "No free pages left today.",
+    inLeft: "You're signed in: ", inLink: "use the playground for up to 50 pages a day",
     type: "Use a PNG, JPEG, WebP or GIF image. PDFs are coming soon.",
     size: "That image is larger than 4 MB. Try a smaller photo or screenshot.",
     sample: "Couldn't load the sample. Please try again.", reading: "Reading…", run: "Get text",
@@ -44,13 +49,20 @@
     remaining = rem;
     var el = $("try-left");
     el.textContent = "";
-    if (rem === 0) {
+    if (SIGNED_IN) {
+      // signed-in visitors get the better offer instead of the 5-page counter
+      el.appendChild(document.createTextNode(T.inLeft));
+      var p = document.createElement("a");
+      p.href = CONSOLE + "/#playground"; p.textContent = T.inLink;
+      el.appendChild(p);
+      if (rem === 0) $("try-gate-in").hidden = false;
+    } else if (rem === 0) {
       el.textContent = T.none;
       $("try-gate").hidden = false;
     } else if (rem != null) {
       el.appendChild(document.createTextNode(T.left(rem, limit)));
       var a = document.createElement("a");
-      a.href = CONSOLE; a.textContent = T.signin;
+      a.href = CONSOLE + "/?from=try"; a.textContent = T.signin;
       el.appendChild(a);
     }
     refresh();
@@ -109,7 +121,7 @@
           return;
         }
         var code = d.error && d.error.code;
-        if (code === "try_limit" || code === "capacity") { $("try-gate").hidden = false; showLeft(0, d.limit); }
+        if (code === "try_limit" || code === "capacity") showLeft(0, d.limit);
         say((code && T.codes[code]) || (!FA && d.error && d.error.message) || T.generic, "error");
       })
       .catch(function () { say(T.network, "error"); })
