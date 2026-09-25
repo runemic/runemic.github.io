@@ -32,7 +32,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=c5970a10">
+<link rel="stylesheet" href="/assets/css/site.css?v=bbda2238">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/fa/persian-ocr#page","url":"https://runemic.com/fa/persian-ocr","name":"تبدیل عکس به متن فارسی (OCR رایگان)","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"fa"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"تبدیل عکس به متن فارسی (OCR رایگان)","item":"https://runemic.com/fa/persian-ocr"}]},{"@type":"WebApplication","name":"تبدیل عکس به متن فارسی (OCR رایگان)","url":"https://runemic.com/fa/persian-ocr","description":"تبدیل رایگان عکس، اسکن و اسکرین‌شات به متن فارسی قابل ویرایش، از راست به چپ و به ترتیب خواندن. روزانه ۵ صفحه رایگان، بدون ثبت‌نام.","inLanguage":"fa","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@id":"https://runemic.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"آیا واقعاً رایگان است؟","acceptedAnswer":{"@type":"Answer","text":"بله. روزانه ۵ صفحه را بدون حساب کاربری می‌توانید بخوانید. اگر وارد شوید، ۵ دلار اعتبار رایگان می‌گیرید که با قیمت‌های پیش‌نمایش حدود ۲٬۵۰۰ صفحه است (تا ۵۰ صفحه در روز)."}},{"@type":"Question","name":"آیا اعداد فارسی را هم می‌خواند؟","acceptedAnswer":{"@type":"Answer","text":"بله. اعداد فارسی (۱۲۳) و لاتین (123) هر دو خوانده می‌شوند و همان‌طور که در صفحه آمده‌اند برگردانده می‌شوند."}},{"@type":"Question","name":"متن را چطور در Word یا Google Docs بچسبانم؟","acceptedAnswer":{"@type":"Answer","text":"متن را کپی یا به صورت فایل دانلود کنید و بچسبانید. اگر ویرایشگر خودش راست‌به‌چپ نشد، جهت پاراگراف را راست‌به‌چپ کنید."}},{"@type":"Question","name":"من وارد شده‌ام. آیا این صفحه از اعتبار من استفاده می‌کند؟","acceptedAnswer":{"@type":"Answer","text":"خیر. این صفحه همیشه از ۵ صفحهٔ رایگان روزانه استفاده می‌کند، حتی وقتی وارد شده‌اید. اعتبار شما در محیط آزمایش و از طریق API مصرف می‌شود، تا ۵۰ صفحه در روز."}},{"@type":"Question","name":"آیا تصویرهای من ذخیره می‌شوند؟","acceptedAnswer":{"@type":"Answer","text":"خیر. تصویر برای مدل فرستاده می‌شود، متن به شما برمی‌گردد و چیزی ذخیره نمی‌شود. فقط تعداد صفحه‌هایی که امروز استفاده کرده‌اید شمرده می‌شود."}},{"@type":"Question","name":"آیا دست‌نوشته و نسخه‌های خطی قدیمی را هم می‌خواند؟","acceptedAnswer":{"@type":"Answer","text":"دست‌نوشتهٔ مرتب گاهی خوب خوانده می‌شود، اما نسخه‌های خطی قدیمی دشوارترند. مدل خودمان، Rune-1، برای همین موارد در حال آموزش است."}}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
 <script src="/assets/js/try.js?v=8cbf7c71" defer></script>
@@ -48,7 +48,7 @@
       <span>Runemic</span>
     </a>
     <nav class="tabs" aria-label="Main">
-        <a href="/try" aria-current="page">Try it</a>
+        <a href="/try" aria-current="page">Try for free</a>
         <a href="/models">Models</a>
         <a href="/products">Products</a>
         <a href="/docs">Docs</a>
@@ -169,7 +169,7 @@
     </div>
     <nav aria-labelledby="f-products">
       <p class="site-footer__h" id="f-products">Products</p>
-      <a href="/try">Try it online</a>
+      <a href="/try">Try for free</a>
       <a href="/models">Rune-1 models</a>
       <a href="/products#api">Runemic API</a>
       <a href="/products#scan">Runemic Scan</a>

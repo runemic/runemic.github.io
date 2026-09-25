@@ -308,8 +308,8 @@ a.card:hover { border-color: var(--line-strong); color: inherit; }
 @media (max-width: 720px) { .site-footer__base { background-size: calc(100% - 32px) 1px; } }
 @media (max-width: 720px) {
   .tabs { margin: 8px 0 0; gap: 0; }
-  .tabs a { padding: 8px 6px; font-size: .875rem; }
-  .tabs a[aria-current="page"]::after { left: 6px; right: 6px; }
+  .tabs a { padding: 8px 5px; font-size: .875rem; }
+  .tabs a[aria-current="page"]::after { left: 5px; right: 5px; }
   /* wide diagrams: keep them readable and let them scroll sideways */
   .figure--wide { overflow-x: auto; margin: 0 -16px; padding: 0 16px 6px; scrollbar-width: thin; }
   .figure--wide img { min-width: 620px; }
