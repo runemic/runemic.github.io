@@ -29,14 +29,14 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=b7bf6288">
+<link rel="stylesheet" href="/assets/css/site.css?v=c5970a10">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/#page","url":"https://runemic.com/","name":"Runemic: OCR for documents that are hard to read","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header" lang="en" dir="ltr">
   <div class="wrap site-header__inner">
     <a class="brand" href="/" aria-label="Runemic home">
       <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
@@ -44,6 +44,7 @@
       <span>Runemic</span>
     </a>
     <nav class="tabs" aria-label="Main">
+        <a href="/try">Free OCR</a>
         <a href="/models">Models</a>
         <a href="/products">Products</a>
         <a href="/docs">Docs</a>
@@ -104,15 +105,15 @@
     <div class="card try-card">
       <div>
         <h2>Try it free</h2>
-        <p>While Rune-1 trains, the API runs four open preview models. Sign in with GitHub or Hugging Face, upload a page and look at the result.</p>
+        <p>Read up to 5 pages a day in your browser, with no account. When you want more, sign in with GitHub or Hugging Face.</p>
         <ul class="ticks">
-          <li><strong>$5 of free credit</strong>, no card needed</li>
-          <li>Run one page through up to three models and compare them</li>
-          <li>An API key, with cURL, Python and JavaScript examples</li>
+          <li>5 free pages a day at <a href="/try">runemic.com/try</a>, no sign-up</li>
+          <li>Sign in for <strong>$5 of free credit</strong>, no card needed</li>
+          <li>Compare up to three models, and get an API key with cURL, Python and JavaScript examples</li>
         </ul>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Try it free <span class="arrow"></span></a>
-          <a class="btn btn--ghost" href="/products#api">About the API</a>
+          <a class="btn btn--primary" href="/try">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="https://console.runemic.com" data-in="Open console">Get an API key</a>
         </div>
       </div>
       <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
@@ -127,7 +128,7 @@ curl https://api.runemic.com/v1/ocr \
 </div>
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" lang="en" dir="ltr">
   <div class="wrap site-footer__inner">
     <div class="site-footer__brand">
       <a class="brand" href="/">

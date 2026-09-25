@@ -6,6 +6,7 @@
 
 - [Home](https://runemic.com/): what Runemic does, in brief
 - [Free OCR](https://runemic.com/try): free image-to-text tool, no account needed (5 pages a day)
+- [Persian OCR](https://runemic.com/persian-ocr), [Arabic OCR](https://runemic.com/arabic-ocr), [Urdu OCR](https://runemic.com/urdu-ocr) (including Nastaliq), [Hindi OCR](https://runemic.com/hindi-ocr): the same free tool, with tips for each script; [تبدیل عکس به متن فارسی](https://runemic.com/fa/persian-ocr) (Persian-language page)
 - [Rune-1 models](https://runemic.com/models): multilingual OCR for Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting (HTR); PDF to Markdown/JSON. The model family (Rune-1 Small with open weights, Rune-1 via API, Rune-1 Custom), how it reads a page, supported writing directions, deployment options, RuneBench
 - [Products](https://runemic.com/products): Runemic API, Runemic Scan mobile app, digitization services, scanning hardware (research)
 - [Pricing](https://runemic.com/pricing): business model (open weights, pay-per-page API, enterprise licences, app subscription, per-project digitization) and FAQ
