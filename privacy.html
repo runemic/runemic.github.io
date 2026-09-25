@@ -29,7 +29,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=e83d8f18">
+<link rel="stylesheet" href="/assets/css/site.css?v=b7bf6288">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/privacy#page","url":"https://runemic.com/privacy","name":"Privacy notice","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://runemic.com/privacy"}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
 </head>
@@ -65,7 +65,7 @@
     <span class="eyebrow">Legal</span>
     <h1>Privacy notice</h1>
     <p class="lede">The short version: no tracking and no advertising. We use only a few small cookies that the site and console need to work. We store only what you give us, and you can download or delete it at any time.</p>
-    <p class="muted">Last updated: 24 September 2026</p>
+    <p class="muted">Last updated: 25 September 2026</p>
   </header>
 
   <section class="section">
@@ -96,6 +96,7 @@
       <li><strong>Usage records:</strong> time, model, number of pages, cost and status of each request, to show your usage and credit balance and to prevent abuse.</li>
       <li><strong>Your documents:</strong> images you send to the API or the playground are processed by the selected model on Cloudflare Workers AI and returned to you. We do not store them and do not use them for training.</li>
     </ul>
+    <p id="try"><strong>The free OCR tool (runemic.com/try).</strong> You can use it without an account. The image you upload is sent to the model on Cloudflare Workers AI and the text is returned to you; the image is not stored and not used for training. To limit free use to a few pages a day, api.runemic.com sets one cookie, <code>rk_try</code>: a random, signed ID with no personal data that only counts your free pages (30 days). We also count pages per network using the daily keyed IP hash described below. These counts are deleted after at most 7 days. Legal basis: our legitimate interest in offering a free tool without it being misused (Art. 6(1)(f) GDPR); the cookie is strictly necessary for that.</p>
     <p><strong>Preventing abuse.</strong> The preview is free, so we protect it against misuse:</p>
     <ul class="ticks">
       <li>We count requests and pages per network using a keyed hash of your IP address that changes every day. It cannot be turned back into your IP address or linked across days, and it is deleted after at most 7 days.</li>
@@ -140,6 +141,7 @@
     </div>
     <nav aria-labelledby="f-products">
       <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Free OCR tool</a>
       <a href="/models">Rune-1 models</a>
       <a href="/products#api">Runemic API</a>
       <a href="/products#scan">Runemic Scan</a>
