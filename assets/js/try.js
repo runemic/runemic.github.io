@@ -12,39 +12,92 @@
   function $(id) { return document.getElementById(id); }
   var file = null, busy = false, remaining = null, open = true, lastText = "", lastFormat = "markdown";
 
-  // interface text (English, or Persian on /fa/ pages); error codes from the server map to local messages
-  var FA = tool.getAttribute("data-lang") === "fa";
+  // interface text in the page's language; error codes from the server map to local messages
+  var LANG = tool.getAttribute("data-lang") || "en";
   // signed in to the console? rk_signed_in is a non-secret hint ("1", no identity). /v1/try never reads it,
   // and the console session cookie is never sent here, so free-tool use is not linked to any account.
   var SIGNED_IN = /(?:^|;\s*)rk_signed_in=1/.test(document.cookie);
-  var faDigits = function (n) { return String(n).replace(/\d/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[d]; }); };
-  var T = FA ? {
-    left: function (r, l) { return faDigits(r) + " صفحهٔ رایگان از " + faDigits(l) + " صفحهٔ امروز باقی مانده · "; },
-    signin: "برای ۵ دلار اعتبار رایگان وارد شوید", none: "صفحهٔ رایگان امروز شما تمام شده است.",
-    inLeft: "شما وارد شده‌اید: ", inLink: "در محیط آزمایش تا ۵۰۰ صفحه در روز بخوانید (روز اول ۵۰)",
-    leftHere: function (r, l) { return faDigits(r) + " از " + faDigits(l) + " صفحهٔ رایگان این‌جا باقی مانده · "; },
-    type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید. پشتیبانی از PDF به‌زودی اضافه می‌شود.",
-    size: "حجم این تصویر بیشتر از ۲۵ مگابایت است. یک عکس یا اسکرین‌شات کوچک‌تر امتحان کنید.",
-    sample: "نمونه بارگذاری نشد. دوباره تلاش کنید.", reading: "در حال خواندن…", run: "خواندن دوباره",
-    notext: "(در این تصویر متنی پیدا نشد.)", network: "اتصال به سرور برقرار نشد. اینترنت خود را بررسی کنید و دوباره تلاش کنید.",
-    paused: "ابزار رایگان فعلاً متوقف است. می‌توانید وارد کنسول شوید و از اعتبار رایگان خود استفاده کنید.",
-    copied: "کپی شد", copy: "کپی", generic: "مشکلی پیش آمد. دوباره تلاش کنید.",
-    codes: { try_limit: "صفحه‌های رایگان امروز شما تمام شده است.", capacity: "ظرفیت رایگان امروز تمام شده است. وارد شوید یا بعد از ساعت ۰۰:۰۰ UTC دوباره بیایید.",
-             rate_limited: "درخواست‌ها زیاد است. یک دقیقه صبر کنید.", model_error: "مدل نتوانست این تصویر را بخواند. یک عکس واضح‌تر امتحان کنید.",
-             too_large: "حجم این تصویر بیشتر از ۴ مگابایت است.", unsupported_type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید.",
-             unavailable: "ابزار رایگان فعلاً متوقف است." }
-  } : {
-    left: function (r, l) { return r + " of " + l + " free pages left today · "; },
-    signin: "Sign in for $5 of free credit", none: "No free pages left today.",
-    inLeft: "You're signed in: ", inLink: "the playground gives you up to 500 pages a day (50 on day one)",
-    leftHere: function (r, l) { return r + " of " + l + " free pages left here · "; },
-    type: "Use a PNG, JPEG, WebP or GIF image. PDFs are coming soon.",
-    size: "That image is larger than 25 MB. Try a smaller photo or screenshot.",
-    sample: "Couldn't load the sample. Please try again.", reading: "Reading…", run: "Read again",
-    notext: "(No text found in this image.)", network: "Couldn't reach the server. Check your connection and try again.",
-    paused: "The free tool is paused right now. You can still sign in to the console and use your free credit.",
-    copied: "Copied", copy: "Copy", generic: "Something went wrong. Please try again.", codes: {}
+  function digits(set) { return function (n) { return String(n).replace(/\d/g, function (d) { return set[d]; }); }; }
+  var D = { fa: digits("۰۱۲۳۴۵۶۷۸۹"), ur: digits("۰۱۲۳۴۵۶۷۸۹"), ar: digits("٠١٢٣٤٥٦٧٨٩") }[LANG] || function (n) { return String(n); };
+  var TEXT = {
+    en: {
+      left: function (r, l) { return r + " of " + l + " free pages left today · "; },
+      leftHere: function (r, l) { return r + " of " + l + " free pages left here · "; },
+      signin: "Sign in for $5 of free credit", none: "No free pages left today.",
+      inLeft: "You're signed in: ", inLink: "the playground gives you up to 500 pages a day (50 on day one)",
+      type: "Use a PNG, JPEG, WebP or GIF image. PDFs are coming soon.",
+      size: "That image is larger than 25 MB. Try a smaller photo or screenshot.",
+      sample: "Couldn't load the sample. Please try again.", reading: "Reading…", run: "Read again",
+      notext: "(No text found in this image.)", network: "Couldn't reach the server. Check your connection and try again.",
+      paused: "The free tool is paused right now. You can still sign in to the console and use your free credit.",
+      copied: "Copied", copy: "Copy", generic: "Something went wrong. Please try again.", pasted: "Pasted image", codes: {}
+    },
+    fa: {
+      left: function (r, l) { return D(r) + " صفحهٔ رایگان از " + D(l) + " صفحهٔ امروز باقی مانده · "; },
+      leftHere: function (r, l) { return D(r) + " از " + D(l) + " صفحهٔ رایگان این‌جا باقی مانده · "; },
+      signin: "برای ۵ دلار اعتبار رایگان وارد شوید", none: "صفحهٔ رایگان امروز شما تمام شده است.",
+      inLeft: "شما وارد شده‌اید: ", inLink: "در محیط آزمایش تا ۵۰۰ صفحه در روز بخوانید (روز اول ۵۰)",
+      type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید. پشتیبانی از PDF به‌زودی اضافه می‌شود.",
+      size: "حجم این تصویر بیشتر از ۲۵ مگابایت است. یک عکس یا اسکرین‌شات کوچک‌تر امتحان کنید.",
+      sample: "نمونه بارگذاری نشد. دوباره تلاش کنید.", reading: "در حال خواندن…", run: "خواندن دوباره",
+      notext: "(در این تصویر متنی پیدا نشد.)", network: "اتصال به سرور برقرار نشد. اینترنت خود را بررسی کنید و دوباره تلاش کنید.",
+      paused: "ابزار رایگان فعلاً متوقف است. می‌توانید وارد کنسول شوید و از اعتبار رایگان خود استفاده کنید.",
+      copied: "کپی شد", copy: "کپی", generic: "مشکلی پیش آمد. دوباره تلاش کنید.", pasted: "تصویر چسبانده‌شده",
+      codes: { try_limit: "صفحه‌های رایگان امروز شما تمام شده است.", capacity: "ظرفیت رایگان امروز تمام شده است. وارد شوید یا بعد از ساعت ۰۰:۰۰ UTC دوباره بیایید.",
+               rate_limited: "درخواست‌ها زیاد است. یک دقیقه صبر کنید.", model_error: "مدل نتوانست این تصویر را بخواند. یک عکس واضح‌تر امتحان کنید.",
+               too_large: "این تصویر حتی پس از کوچک شدن بیشتر از ۴ مگابایت است.", unsupported_type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید.",
+               unavailable: "ابزار رایگان فعلاً متوقف است." }
+    },
+    ar: {
+      left: function (r, l) { return "تبقّى لك " + D(r) + " من " + D(l) + " صفحات مجانية اليوم · "; },
+      leftHere: function (r, l) { return "تبقّى " + D(r) + " من " + D(l) + " صفحات مجانية هنا · "; },
+      signin: "سجّل الدخول للحصول على رصيد مجاني بقيمة ٥ دولارات", none: "لم تتبقَّ صفحات مجانية اليوم.",
+      inLeft: "أنت مسجّل الدخول: ", inLink: "بيئة التجربة تمنحك حتى ٥٠٠ صفحة يوميًا (٥٠ في اليوم الأول)",
+      type: "استخدم صورة PNG أو JPEG أو WebP أو GIF. دعم PDF قريبًا.",
+      size: "حجم هذه الصورة أكبر من ٢٥ ميغابايت. جرّب صورة أو لقطة شاشة أصغر.",
+      sample: "تعذّر تحميل المثال. حاول مرة أخرى.", reading: "جارٍ القراءة…", run: "اقرأ مجددًا",
+      notext: "(لم يُعثر على نص في هذه الصورة.)", network: "تعذّر الاتصال بالخادم. تحقّق من اتصالك وحاول مرة أخرى.",
+      paused: "الأداة المجانية متوقفة حاليًا. لا يزال بإمكانك تسجيل الدخول واستخدام رصيدك المجاني.",
+      copied: "تم النسخ", copy: "نسخ", generic: "حدث خطأ ما. حاول مرة أخرى.", pasted: "صورة ملصقة",
+      codes: { try_limit: "لقد استخدمت صفحاتك المجانية لهذا اليوم.", capacity: "نفدت السعة المجانية لهذا اليوم. سجّل الدخول أو عد بعد الساعة ٠٠:٠٠ بتوقيت UTC.",
+               rate_limited: "طلبات كثيرة. انتظر دقيقة.", model_error: "لم يتمكن النموذج من قراءة هذه الصورة. جرّب صورة أوضح.",
+               too_large: "هذه الصورة أكبر من ٤ ميغابايت حتى بعد التصغير.", unsupported_type: "استخدم صورة PNG أو JPEG أو WebP أو GIF.",
+               unavailable: "الأداة المجانية متوقفة حاليًا." }
+    },
+    ur: {
+      left: function (r, l) { return "آج " + D(l) + " میں سے " + D(r) + " مفت صفحات باقی ہیں · "; },
+      leftHere: function (r, l) { return "یہاں " + D(l) + " میں سے " + D(r) + " مفت صفحات باقی ہیں · "; },
+      signin: "۵ ڈالر کے مفت کریڈٹ کے لیے سائن اِن کریں", none: "آج کوئی مفت صفحہ باقی نہیں۔",
+      inLeft: "آپ سائن اِن ہیں: ", inLink: "playground میں روزانہ ۵۰۰ صفحات تک (پہلے دن ۵۰)",
+      type: "PNG، JPEG، WebP یا GIF تصویر استعمال کریں۔ PDF جلد آ رہا ہے۔",
+      size: "یہ تصویر ۲۵ MB سے بڑی ہے۔ چھوٹی تصویر یا اسکرین شاٹ آزمائیں۔",
+      sample: "نمونہ لوڈ نہیں ہو سکا۔ دوبارہ کوشش کریں۔", reading: "پڑھا جا رہا ہے…", run: "دوبارہ پڑھیں",
+      notext: "(اس تصویر میں کوئی متن نہیں ملا۔)", network: "سرور سے رابطہ نہیں ہو سکا۔ اپنا کنکشن دیکھیں اور دوبارہ کوشش کریں۔",
+      paused: "مفت ٹول ابھی رکا ہوا ہے۔ آپ سائن اِن کر کے اپنا مفت کریڈٹ استعمال کر سکتے ہیں۔",
+      copied: "کاپی ہو گیا", copy: "کاپی", generic: "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔", pasted: "چسپاں کی گئی تصویر",
+      codes: { try_limit: "آج کے آپ کے مفت صفحات ختم ہو گئے ہیں۔", capacity: "آج کی مفت گنجائش ختم ہو گئی ہے۔ سائن اِن کریں یا ۰۰:۰۰ UTC کے بعد دوبارہ آئیں۔",
+               rate_limited: "بہت زیادہ درخواستیں۔ ایک منٹ انتظار کریں۔", model_error: "ماڈل یہ تصویر نہیں پڑھ سکا۔ زیادہ واضح تصویر آزمائیں۔",
+               too_large: "چھوٹا کرنے کے بعد بھی یہ تصویر ۴ MB سے بڑی ہے۔", unsupported_type: "PNG، JPEG، WebP یا GIF تصویر استعمال کریں۔",
+               unavailable: "مفت ٹول ابھی رکا ہوا ہے۔" }
+    },
+    hi: {
+      left: function (r, l) { return "आज " + l + " में से " + r + " मुफ़्त पेज बचे हैं · "; },
+      leftHere: function (r, l) { return "यहाँ " + l + " में से " + r + " मुफ़्त पेज बचे हैं · "; },
+      signin: "$5 के मुफ़्त क्रेडिट के लिए साइन इन करें", none: "आज कोई मुफ़्त पेज नहीं बचा।",
+      inLeft: "आप साइन इन हैं: ", inLink: "playground में हर दिन 500 पेज तक (पहले दिन 50)",
+      type: "PNG, JPEG, WebP या GIF इमेज इस्तेमाल करें। PDF जल्द आ रहा है।",
+      size: "यह इमेज 25 MB से बड़ी है। छोटी फ़ोटो या स्क्रीनशॉट आज़माएँ।",
+      sample: "नमूना लोड नहीं हो सका। फिर कोशिश करें।", reading: "पढ़ा जा रहा है…", run: "फिर से पढ़ें",
+      notext: "(इस इमेज में कोई टेक्स्ट नहीं मिला।)", network: "सर्वर से कनेक्ट नहीं हो सका। अपना कनेक्शन जाँचें और फिर कोशिश करें।",
+      paused: "मुफ़्त टूल अभी रुका हुआ है। आप साइन इन करके अपना मुफ़्त क्रेडिट इस्तेमाल कर सकते हैं।",
+      copied: "कॉपी हो गया", copy: "कॉपी", generic: "कुछ गड़बड़ हो गई। फिर कोशिश करें।", pasted: "चिपकाई गई इमेज",
+      codes: { try_limit: "आज के आपके मुफ़्त पेज खत्म हो गए हैं।", capacity: "आज की मुफ़्त क्षमता खत्म हो गई है। साइन इन करें या 00:00 UTC के बाद फिर आएँ।",
+               rate_limited: "बहुत ज़्यादा अनुरोध। एक मिनट रुकें।", model_error: "मॉडल यह इमेज नहीं पढ़ सका। ज़्यादा साफ़ फ़ोटो आज़माएँ।",
+               too_large: "छोटा करने के बाद भी यह इमेज 4 MB से बड़ी है।", unsupported_type: "PNG, JPEG, WebP या GIF इमेज इस्तेमाल करें।",
+               unavailable: "मुफ़्त टूल अभी रुका हुआ है।" }
+    }
   };
+  var T = TEXT[LANG] || TEXT.en;
 
   var ws = $("ws"), pane = document.querySelector(".ws__pane--txt"), split = $("ws-split"), out = $("try-out");
   var gateHome = document.querySelector(".tool-section > .note");
@@ -255,7 +308,7 @@
   });
   document.addEventListener("paste", function (e) {
     var items = (e.clipboardData && e.clipboardData.files) || [];
-    if (items[0]) { e.preventDefault(); setFile(items[0], FA ? "تصویر چسبانده‌شده" : "Pasted image"); }
+    if (items[0]) { e.preventDefault(); setFile(items[0], T.pasted); }
   });
   Array.prototype.forEach.call(document.querySelectorAll("[data-sample]"), function (b) {
     b.addEventListener("click", function () {
@@ -304,7 +357,7 @@
       var code = d.error && d.error.code;
       if (d.remaining != null) showLeft(d.remaining, d.limit);
       if (code === "try_limit" || code === "capacity") showLeft(0, d.limit);
-      say((code && T.codes[code]) || (!FA && d.error && d.error.message) || T.generic, "error");
+      say((code && T.codes[code]) || (LANG === "en" && d.error && d.error.message) || T.generic, "error");
     }
     function finish(d) {
       lastText = d.text || ""; lastFormat = d.format || fmt;
