@@ -28,8 +28,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
-<link rel="preload" href="/assets/fonts/nunito-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=c4cf96b0">
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=ec929de7">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds multilingual OCR and document AI: open-weight models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"AboutPage","@id":"https://runemic.com/about#page","url":"https://runemic.com/about","name":"About Runemic Labs","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://runemic.com/about"}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
 </head>
@@ -70,7 +70,6 @@
   <section class="section">
     <div class="split">
       <div>
-        <span class="eyebrow">The name</span>
         <h2>Rune + Numeric</h2>
         <p class="muted"><strong>Rune</strong>: symbols, writing, ancient scripts, deciphering text. <strong>Numeric</strong>: data, numbers, computation, machines. <strong>Runemic</strong> is the work in between: turning written symbols into structured digital information.</p>
         <p class="muted">Our mark is the rune ᚱ, the letter R, drawn inside a scanner's frame. Its corners are data points, and the line crossing it is the scan.</p>
@@ -84,7 +83,6 @@
 
   <section class="section" id="roadmap">
     <div class="section__head">
-      <span class="eyebrow">Roadmap</span>
       <h2>Software first, then the machines.</h2>
       <p>We start with the models, because everything else depends on them. Then the products people use every day, then the services and hardware to digitize whole collections.</p>
     </div>
@@ -92,7 +90,7 @@
   </section>
 
   <section class="section">
-    <div class="section__head"><span class="eyebrow">Principles</span><h2>How we work</h2></div>
+    <div class="section__head"><h2>How we work</h2></div>
     <div class="grid grid--3">
       <div class="card"><span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-open.svg" alt="" width="76" height="86" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-open-dark.svg" alt="" width="76" height="86" loading="lazy" decoding="async" aria-hidden="true"></span><h3>Open by default</h3><p>We publish model weights, benchmarks and evaluation code. You should be able to check our claims yourself.</p></div>
       <div class="card"><span class="card__icon" aria-hidden="true"><img class="ill ill--light " src="/assets/ill/icon-services.svg" alt="" width="84" height="84" loading="lazy" decoding="async"><img class="ill ill--dark " src="/assets/ill/icon-services-dark.svg" alt="" width="84" height="84" loading="lazy" decoding="async" aria-hidden="true"></span><h3>Measured honestly</h3><p>Accuracy is reported per script and per document type in <a href="/models#runebench">RuneBench</a>, including where we are weak.</p></div>
