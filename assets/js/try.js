@@ -20,6 +20,7 @@
     left: function (r, l) { return faDigits(r) + " صفحهٔ رایگان از " + faDigits(l) + " صفحهٔ امروز باقی مانده · "; },
     signin: "برای ۵ دلار اعتبار رایگان وارد شوید", none: "صفحهٔ رایگان امروز شما تمام شده است.",
     inLeft: "شما وارد شده‌اید: ", inLink: "در محیط آزمایش تا ۵۰ صفحه در روز بخوانید",
+    leftHere: function (r, l) { return faDigits(r) + " از " + faDigits(l) + " صفحهٔ رایگان این‌جا باقی مانده · "; },
     type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید. پشتیبانی از PDF به‌زودی اضافه می‌شود.",
     size: "حجم این تصویر بیشتر از ۴ مگابایت است. یک عکس یا اسکرین‌شات کوچک‌تر امتحان کنید.",
     sample: "نمونه بارگذاری نشد. دوباره تلاش کنید.", reading: "در حال خواندن…", run: "دریافت متن",
@@ -33,7 +34,8 @@
   } : {
     left: function (r, l) { return r + " of " + l + " free pages left today · "; },
     signin: "Sign in for $5 of free credit", none: "No free pages left today.",
-    inLeft: "You're signed in: ", inLink: "use the playground for up to 50 pages a day",
+    inLeft: "You're signed in: ", inLink: "the playground gives you up to 50 a day",
+    leftHere: function (r, l) { return r + " of " + l + " free pages left here · "; },
     type: "Use a PNG, JPEG, WebP or GIF image. PDFs are coming soon.",
     size: "That image is larger than 4 MB. Try a smaller photo or screenshot.",
     sample: "Couldn't load the sample. Please try again.", reading: "Reading…", run: "Get text",
@@ -50,7 +52,9 @@
     var el = $("try-left");
     el.textContent = "";
     if (SIGNED_IN) {
-      // signed-in visitors get the better offer instead of the 5-page counter
+      // signed-in visitors: this tool still uses the anonymous free pages (never account credit),
+      // so show what's left here next to the better offer in the playground
+      if (rem != null) el.appendChild(document.createTextNode(rem === 0 ? T.none + " " : T.leftHere(rem, limit)));
       el.appendChild(document.createTextNode(T.inLeft));
       var p = document.createElement("a");
       p.href = CONSOLE + "/#playground"; p.textContent = T.inLink;
