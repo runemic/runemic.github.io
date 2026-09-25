@@ -517,6 +517,7 @@ body.ws-open { overflow: hidden; }
 /* OCR-by-language links, tips */
 .lang-links { margin: 16px 0 0; font-size: .9375rem; }
 .lang-links .muted { margin-inline-end: 4px; }
+.lang-links a { unicode-bidi: isolate; } /* keeps names in right-to-left scripts in their listed order */
 .tips { max-width: 46em; gap: 12px; font-size: 1rem; }
 
 /* right-to-left pages (/fa/…) */
