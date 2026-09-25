@@ -6,7 +6,7 @@
   if (!tool) return;
   var API = tool.getAttribute("data-api") + "/v1/try";
   var CONSOLE = "https://console.runemic.com";
-  var MAX = 4194304, TYPES = /^image\/(png|jpeg|webp|gif)$/;
+  var MAX = 4194304, MAX_IN = 25 * 1048576, TYPES = /^image\/(png|jpeg|webp|gif)$/; // big photos are shrunk before sending
   function $(id) { return document.getElementById(id); }
   var file = null, busy = false, remaining = null, open = true, lastText = "", lastFormat = "markdown";
 
@@ -72,16 +72,66 @@
     refresh();
   }
 
+  // The image is prepared the moment it's chosen (scaled to at most 2000 px on the long side and compressed),
+  // so "Get text" sends a small, ready file. Nothing is uploaded before the click: we don't store images.
+  var MAXSIDE = 2000, SMALL = 1500000, prepared = null;
+  function prepare(f, dataUrl) {
+    return new Promise(function (resolve) {
+      var img = new Image();
+      img.onload = function () {
+        var w = img.naturalWidth, h = img.naturalHeight, scale = Math.min(1, MAXSIDE / Math.max(w, h));
+        if (scale === 1 && f.size <= SMALL && f.type !== "image/gif") return resolve(f);
+        var c = document.createElement("canvas");
+        c.width = Math.round(w * scale); c.height = Math.round(h * scale);
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(function (b) { resolve(b && b.size < f.size ? new File([b], "page.jpg", { type: "image/jpeg" }) : f); }, "image/jpeg", 0.9);
+      };
+      img.onerror = function () { resolve(f); };
+      img.src = dataUrl;
+    });
+  }
+
   function setFile(f) {
     if (!f) return;
     if (!TYPES.test(f.type)) { say(T.type, "error"); return; }
-    if (f.size > MAX) { say(T.size, "error"); return; }
+    if (f.size > MAX_IN) { say(T.size, "error"); return; }
     file = f;
-    var r = new FileReader();
-    r.onload = function () { var img = $("try-preview"); img.src = r.result; img.hidden = false; $("drop-empty").hidden = true; };
-    r.readAsDataURL(f);
+    prepared = new Promise(function (resolve) {
+      var r = new FileReader();
+      r.onload = function () {
+        var img = $("try-preview"); img.src = r.result; img.hidden = false; $("drop-empty").hidden = true;
+        prepare(f, r.result).then(resolve);
+      };
+      r.onerror = function () { resolve(f); };
+      r.readAsDataURL(f);
+    });
     say("");
     refresh();
+  }
+
+  // reads a server-sent-events response: on(event, data) for each event; resolves when the stream ends
+  function readEvents(res, on) {
+    var reader = res.body.getReader(), dec = new TextDecoder(), buf = "";
+    function pump() {
+      return reader.read().then(function (r) {
+        if (r.done) return;
+        buf += dec.decode(r.value, { stream: true });
+        var i;
+        while ((i = buf.indexOf("\n\n")) >= 0) {
+          var block = buf.slice(0, i), ev = "message", data = "";
+          buf = buf.slice(i + 2);
+          block.split("\n").forEach(function (l) {
+            if (l.indexOf("event:") === 0) ev = l.slice(6).trim();
+            else if (l.indexOf("data:") === 0) data += l.slice(5).trim();
+          });
+          if (data) { try { on(ev, JSON.parse(data)); } catch (e) { /* ignore a malformed event */ } }
+        }
+        return pump();
+      });
+    }
+    return pump();
   }
 
   $("try-file").addEventListener("change", function (e) { setFile(e.target.files[0]); });
@@ -106,28 +156,50 @@
     if ($("try-run").disabled) return;
     busy = true; refresh();
     var fmt = document.querySelector('input[name="try-format"]:checked').value;
-    var fd = new FormData();
-    fd.append("file", file);
-    fd.append("format", fmt);
+    var out = $("try-out");
     $("try-run").textContent = T.reading;
+    $("try-copy").disabled = $("try-download").disabled = true;
     say("");
-    fetch(API, { method: "POST", body: fd, credentials: "include" })
-      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
-      .then(function (x) {
-        var d = x.d || {};
-        if (d.remaining != null) showLeft(d.remaining, d.limit);
-        if (x.ok && typeof d.text === "string") {
-          lastText = d.text; lastFormat = d.format || fmt;
-          var out = $("try-out");
-          out.textContent = d.text || T.notext;
-          out.classList.remove("is-empty");
-          $("try-copy").disabled = $("try-download").disabled = !d.text;
-          return;
-        }
-        var code = d.error && d.error.code;
-        if (code === "try_limit" || code === "capacity") showLeft(0, d.limit);
-        say((code && T.codes[code]) || (!FA && d.error && d.error.message) || T.generic, "error");
+    function fail(d) {
+      var code = d.error && d.error.code;
+      if (d.remaining != null) showLeft(d.remaining, d.limit);
+      if (code === "try_limit" || code === "capacity") showLeft(0, d.limit);
+      say((code && T.codes[code]) || (!FA && d.error && d.error.message) || T.generic, "error");
+    }
+    function finish(d) {
+      lastText = d.text || ""; lastFormat = d.format || fmt;
+      out.textContent = lastText || T.notext;
+      out.classList.remove("is-empty", "is-streaming");
+      $("try-copy").disabled = $("try-download").disabled = !lastText;
+      if (d.remaining != null) showLeft(d.remaining, d.limit);
+    }
+    (prepared || Promise.resolve(file))
+      .then(function (f) {
+        if (f.size > MAX) throw { tooBig: true };
+        var fd = new FormData();
+        fd.append("file", f);
+        fd.append("format", fmt);
+        fd.append("stream", "true");
+        return fetch(API, { method: "POST", body: fd, credentials: "include" });
       })
+      .then(function (r) {
+        if ((r.headers.get("Content-Type") || "").indexOf("text/event-stream") !== 0) {
+          // refused before reading (limits, bad file …): a plain JSON answer
+          return r.json().catch(function () { return {}; }).then(function (d) { if (r.ok && typeof d.text === "string") finish(d); else fail(d); });
+        }
+        // the text arrives as the model writes it
+        out.textContent = ""; out.classList.remove("is-empty"); out.classList.add("is-streaming");
+        var ended = false;
+        return readEvents(r, function (ev, d) {
+          if (ev === "delta") {
+            var atEnd = out.scrollHeight - out.scrollTop - out.clientHeight < 40;
+            out.textContent += d.text;
+            if (atEnd) out.scrollTop = out.scrollHeight;
+          } else if (ev === "done") { ended = true; finish(d); }
+          else if (ev === "error") { ended = true; out.classList.remove("is-streaming"); fail(d); }
+        }).then(function () { if (!ended) { out.classList.remove("is-streaming"); say(T.generic, "error"); } });
+      })
+      .catch(function (e) { out.classList.remove("is-streaming"); say(e && e.tooBig ? T.size : T.network, "error"); })
       .catch(function () { say(T.network, "error"); })
       .then(function () { busy = false; $("try-run").textContent = T.run; refresh(); });
   }

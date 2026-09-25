@@ -464,3 +464,11 @@ a.card:hover { border-color: var(--line-strong); color: inherit; }
 [dir="rtl"] .ticks li { padding-left: 0; padding-right: 24px; }
 [dir="rtl"] .ticks li::before { left: auto; right: 3px; }
 [dir="rtl"] .faq summary::after { margin-right: auto; }
+
+/* text arriving live: a blinking cursor at the end */
+.tool__text.is-streaming::after {
+  content: ""; display: inline-block; width: .5em; height: 1.1em; margin-inline-start: 2px; vertical-align: text-bottom;
+  background: var(--brand); animation: caret 1s steps(2, start) infinite;
+}
+@keyframes caret { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .tool__text.is-streaming::after { animation: none; } }

@@ -29,7 +29,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=bbda2238">
+<link rel="stylesheet" href="/assets/css/site.css?v=46fdbef2">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"TechArticle","@id":"https://runemic.com/docs#page","url":"https://runemic.com/docs","name":"API docs: OCR API reference","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://runemic.com/docs"}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
 </head>
@@ -140,9 +140,22 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
             <tr><td><code>image</code></td><td>string</td><td>JSON alternative: a base64 data URI (<code>data:image/png;base64,…</code>) or a public <code>https://</code> URL.</td></tr>
             <tr><td><code>model</code></td><td>string</td><td>Optional. A model ID from <a href="#models"><code>GET /v1/models</code></a>. Default <code>preview-gemma-4</code>.</td></tr>
             <tr><td><code>format</code></td><td>string</td><td>Optional. <code>markdown</code> (default: headings, lists and tables) or <code>text</code> (plain text).</td></tr>
-            <tr><td><code>instructions</code></td><td>string</td><td>Optional, up to 500 characters of extra guidance, for example <em>"Only return the table"</em>.</td></tr>
+            <tr><td><code>instructions</code></td><td>string</td><td>Optional, up to 300 characters of extra guidance, for example <em>"Only return the table"</em>.</td></tr>
+            <tr><td><code>stream</code></td><td>boolean</td><td>Optional. <code>true</code> sends the text while the model writes it, as server-sent events (see below).</td></tr>
           </tbody>
         </table></div>
+        <h3>Streaming</h3>
+        <p>A full page takes several seconds to write out. With <code>stream</code> set, the response is <code>text/event-stream</code>: <code>delta</code> events carry pieces of text as they are written, then one <code>done</code> event carries the full result, with the same fields as a normal response. If the model fails, you get an <code>error</code> event instead, and you are not charged.</p>
+        <pre class="code">curl -N https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span> \
+  -F <span class="s">"stream=true"</span>
+
+<span class="c">event: delta</span>
+<span class="c">data: {"text": "# Invoice No. 4821\n\nCity"}</span>
+
+<span class="c">event: done</span>
+<span class="c">data: {"id": "req_1843", "object": "ocr.result", "text": "# Invoice No. 4821 …", "usage": {…}}</span></pre>
         <h3>JSON request</h3>
         <pre class="code">curl https://api.runemic.com/v1/ocr \
   -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
@@ -214,6 +227,7 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
       <section id="changelog">
         <h2>Changelog</h2>
         <ul class="ticks">
+          <li><strong>25 Sep 2026</strong>: <code>stream</code> parameter: get the text while it is being written.</li>
           <li><strong>24 Sep 2026</strong>: public preview. Four preview models, <code>format</code> and <code>instructions</code> parameters, request IDs, console with playground and usage analytics.</li>
         </ul>
       </section>
