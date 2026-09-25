@@ -32,10 +32,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=46fdbef2">
+<link rel="stylesheet" href="/assets/css/site.css?v=323b355a">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/fa/persian-ocr#page","url":"https://runemic.com/fa/persian-ocr","name":"تبدیل عکس به متن فارسی (OCR رایگان)","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"fa"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"تبدیل عکس به متن فارسی (OCR رایگان)","item":"https://runemic.com/fa/persian-ocr"}]},{"@type":"WebApplication","name":"تبدیل عکس به متن فارسی (OCR رایگان)","url":"https://runemic.com/fa/persian-ocr","description":"تبدیل رایگان عکس، اسکن و اسکرین‌شات به متن فارسی قابل ویرایش، از راست به چپ و به ترتیب خواندن. روزانه ۵ صفحه رایگان، بدون ثبت‌نام.","inLanguage":"fa","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@id":"https://runemic.com/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"آیا واقعاً رایگان است؟","acceptedAnswer":{"@type":"Answer","text":"بله. روزانه ۵ صفحه را بدون حساب کاربری می‌توانید بخوانید. اگر وارد شوید، ۵ دلار اعتبار رایگان می‌گیرید که با قیمت‌های پیش‌نمایش حدود ۲٬۵۰۰ صفحه است (روز اول تا ۵۰ صفحه، و بعد از آن تا ۵۰۰ صفحه در روز)."}},{"@type":"Question","name":"آیا اعداد فارسی را هم می‌خواند؟","acceptedAnswer":{"@type":"Answer","text":"بله. اعداد فارسی (۱۲۳) و لاتین (123) هر دو خوانده می‌شوند و همان‌طور که در صفحه آمده‌اند برگردانده می‌شوند."}},{"@type":"Question","name":"متن را چطور در Word یا Google Docs بچسبانم؟","acceptedAnswer":{"@type":"Answer","text":"متن را کپی یا به صورت فایل دانلود کنید و بچسبانید. اگر ویرایشگر خودش راست‌به‌چپ نشد، جهت پاراگراف را راست‌به‌چپ کنید."}},{"@type":"Question","name":"من وارد شده‌ام. آیا این صفحه از اعتبار من استفاده می‌کند؟","acceptedAnswer":{"@type":"Answer","text":"خیر. این صفحه همیشه از ۵ صفحهٔ رایگان روزانه استفاده می‌کند، حتی وقتی وارد شده‌اید. اعتبار شما در محیط آزمایش و از طریق API مصرف می‌شود: تا ۵۰۰ صفحه در روز، یا ۵۰ صفحه در روز اول حساب."}},{"@type":"Question","name":"آیا تصویرهای من ذخیره می‌شوند؟","acceptedAnswer":{"@type":"Answer","text":"خیر. تصویر برای مدل فرستاده می‌شود، متن به شما برمی‌گردد و چیزی ذخیره نمی‌شود. فقط تعداد صفحه‌هایی که امروز استفاده کرده‌اید شمرده می‌شود."}},{"@type":"Question","name":"آیا دست‌نوشته و نسخه‌های خطی قدیمی را هم می‌خواند؟","acceptedAnswer":{"@type":"Answer","text":"دست‌نوشتهٔ مرتب گاهی خوب خوانده می‌شود، اما نسخه‌های خطی قدیمی دشوارترند. مدل خودمان، Rune-1، برای همین موارد در حال آموزش است."}}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
-<script src="/assets/js/try.js?v=19a09100" defer></script>
+<script src="/assets/js/try.js?v=f204fc64" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -75,38 +75,21 @@
 
   <section class="section tool-section">
     <div class="tool" id="tool" data-api="https://api.runemic.com" data-lang="fa">
-      <div class="card tool__in">
-        <label class="drop" id="drop" for="try-file">
-          <input type="file" id="try-file" accept="image/png,image/jpeg,image/webp,image/gif" class="visually-hidden">
-          <img id="try-preview" alt="تصویری که انتخاب کردید" hidden>
-          <span class="drop__empty" id="drop-empty"><svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M4 14v4.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V14"/></svg><strong>تصویر را اینجا رها کنید</strong><span class="drop__or">یا <span class="drop__link">یک فایل انتخاب کنید</span></span><small>می‌توانید با Ctrl/⌘ + V هم تصویر را بچسبانید · PNG، JPEG، WebP یا GIF، تا ۴ مگابایت</small></span>
-        </label>
-        <div class="tool__samples"><span class="muted">تصویری ندارید؟</span>
-          <button class="chip" type="button" data-sample="persian">صفحهٔ کتاب فارسی</button>
-          <button class="chip" type="button" data-sample="invoice">فاکتور</button>
-          <button class="chip" type="button" data-sample="arabic">اطلاعیهٔ عربی</button>
-          <button class="chip" type="button" data-sample="table">جدول</button>
+      <label class="drop drop--big" id="drop" for="try-file">
+        <input type="file" id="try-file" accept="image/png,image/jpeg,image/webp,image/gif" class="visually-hidden">
+        <span class="drop__empty"><svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M4 14v4.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V14"/></svg><strong>تصویر را اینجا رها کنید</strong><span class="drop__or">یا <span class="drop__link">یک فایل انتخاب کنید</span></span><small>می‌توانید با Ctrl/⌘ + V هم تصویر را بچسبانید · PNG، JPEG، WebP یا GIF، تا ۲۵ مگابایت</small></span>
+      </label>
+      <div class="samples">
+        <span class="samples__label">تصویری ندارید؟</span>
+        <div class="samples__row">
+          <button class="sample" type="button" data-sample="persian"><img src="/assets/samples/persian.png" alt="" loading="lazy" width="180" height="120"><span>صفحهٔ کتاب فارسی</span></button>
+          <button class="sample" type="button" data-sample="invoice"><img src="/assets/samples/invoice.png" alt="" loading="lazy" width="180" height="120"><span>فاکتور</span></button>
+          <button class="sample" type="button" data-sample="arabic"><img src="/assets/samples/arabic.png" alt="" loading="lazy" width="180" height="120"><span>اطلاعیهٔ عربی</span></button>
+          <button class="sample" type="button" data-sample="table"><img src="/assets/samples/table.png" alt="" loading="lazy" width="180" height="120"><span>جدول</span></button>
         </div>
-        <div class="tool__row">
-          <div class="seg" role="radiogroup" aria-label="قالب خروجی">
-            <label><input type="radio" name="try-format" value="markdown" checked><span>Markdown</span></label>
-            <label><input type="radio" name="try-format" value="text"><span>متن ساده</span></label>
-          </div>
-          <button class="btn btn--primary" id="try-run" type="button" disabled>دریافت متن</button>
-        </div>
-        <p class="tool__left" id="try-left" aria-live="polite"></p>
       </div>
-      <div class="card tool__out">
-        <div class="tool__bar">
-          <strong>متن</strong>
-          <span class="tool__actions">
-            <button class="btn btn--ghost btn--sm" id="try-copy" type="button" disabled>کپی</button>
-            <button class="btn btn--ghost btn--sm" id="try-download" type="button" disabled>دانلود</button>
-          </span>
-        </div>
-        <pre class="tool__text is-empty" id="try-out" dir="auto">متن اینجا نمایش داده می‌شود.</pre>
-        <p class="form__status" id="try-status" role="status"></p>
-      </div>
+      <p class="tool__left" id="try-left" aria-live="polite"></p>
+      <p class="form__status" id="try-status-start" role="status"></p>
     </div>
 
     <div class="card tool__gate" id="try-gate" hidden>
@@ -131,6 +114,43 @@
       </div>
     </div>
     <p class="note">تصویرها با یک مدل پیش‌نمایش متن‌باز روی Cloudflare Workers AI خوانده می‌شوند. ما آن‌ها را ذخیره نمی‌کنیم و برای آموزش مدل به کار نمی‌بریم. <a href="/privacy#try">اطلاعیهٔ حریم خصوصی</a> (به انگلیسی).</p>
+
+    <div class="ws" id="ws" hidden role="dialog" aria-modal="true" aria-label="خواندن تصویر" lang="fa" dir="ltr">
+      <div class="ws__top">
+        <button class="ws__icon" id="ws-close" type="button" aria-label="بستن" title="بستن (Esc)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        <span class="ws__name" id="ws-name"></span>
+        <div class="seg ws__tabs" role="tablist" aria-label="نمایش">
+          <button type="button" role="tab" id="ws-tab-img" aria-selected="false">تصویر</button>
+          <button type="button" role="tab" id="ws-tab-txt" aria-selected="true">متن</button>
+        </div>
+        <span class="ws__left" id="ws-left"></span>
+      </div>
+      <div class="ws__split" id="ws-split">
+        <div class="ws__pane ws__pane--img"><img id="try-preview" alt="تصویری که انتخاب کردید"></div>
+        <div class="ws__divider" id="ws-divider" role="separator" aria-orientation="vertical" aria-label="برای تغییر اندازه بکشید" tabindex="0" aria-valuemin="20" aria-valuemax="80" aria-valuenow="50"></div>
+        <div class="ws__pane ws__pane--txt">
+          <div class="seg ws__view" id="try-view" role="tablist" aria-label="نمایش" hidden>
+            <button type="button" role="tab" data-v="md" aria-selected="true">قالب‌بندی‌شده</button>
+            <button type="button" role="tab" data-v="raw" aria-selected="false">Markdown</button>
+          </div>
+          <div class="md" id="try-md" dir="auto" hidden></div>
+          <pre class="tool__text is-empty" id="try-out" dir="auto">متن اینجا نمایش داده می‌شود.</pre>
+          <p class="form__status" id="try-status" role="status"></p>
+          <div class="ws__gates" id="ws-gates"></div>
+        </div>
+      </div>
+      <div class="ws__dock">
+        <div class="seg" role="radiogroup" aria-label="قالب خروجی">
+          <label><input type="radio" name="try-format" value="markdown" checked><span>Markdown</span></label>
+          <label><input type="radio" name="try-format" value="text"><span>متن ساده</span></label>
+        </div>
+        <button class="btn btn--primary" id="try-run" type="button" disabled>خواندن دوباره</button>
+        <button class="btn btn--ghost btn--i" id="try-copy" type="button" disabled title="کپی"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>کپی</span></button>
+        <button class="btn btn--ghost btn--i" id="try-download" type="button" disabled title="دانلود"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg><span>دانلود</span></button>
+        <button class="btn btn--ghost btn--i" id="ws-new" type="button" title="تصویر جدید"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>تصویر جدید</span></button>
+      </div>
+    </div>
+    <div class="dropall" id="dropall" hidden><span><svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M4 14v4.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V14"/></svg>تصویر را رها کنید تا خوانده شود</span></div>
   </section>
 
   <section class="section">
