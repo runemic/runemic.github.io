@@ -1,6 +1,6 @@
 # Runemic
 
-> Runemic Labs builds multilingual OCR and document AI for every script: open-weight models, a hosted API, a scanner app, and digitization services for libraries and archives. Our first OCR model family is Rune-1 (in training).
+> Runemic builds OCR for documents that standard tools get wrong: non-Latin scripts, old scans, handwriting and complex layouts. Open-weight models, a hosted API (preview live), a scanner app, and digitization services for libraries and archives. Our first OCR model family is Rune-1 (in training).
 
 ## Pages
 
@@ -11,9 +11,9 @@
 - [API docs](https://runemic.com/docs): OCR API reference: POST /v1/ocr, models, errors, rate limits, code in cURL, Python and JavaScript
 - [Console](https://console.runemic.com): sign in with GitHub or Hugging Face, playground, API keys, $5 free credit
 - [Early access](https://runemic.com/early-access): join the list for the API, app, open models or a digitization project
-- [Privacy](https://runemic.com/privacy): privacy notice (no cookies or tracking)
+- [Privacy](https://runemic.com/privacy): privacy notice (no tracking or advertising; a few necessary cookies)
 - [Terms](https://runemic.com/terms): terms of use (fair use, your content stays yours, our code and brand stay ours)
-- [About](https://runemic.com/about): mission, the name (Rune + Numeric), roadmap, principles, contact
+- [About](https://runemic.com/about): what we work on, the name (Rune + Numeric), roadmap, principles, contact
 
 ## Elsewhere
 
