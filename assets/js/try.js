@@ -19,7 +19,7 @@
   var T = FA ? {
     left: function (r, l) { return faDigits(r) + " صفحهٔ رایگان از " + faDigits(l) + " صفحهٔ امروز باقی مانده · "; },
     signin: "برای ۵ دلار اعتبار رایگان وارد شوید", none: "صفحهٔ رایگان امروز شما تمام شده است.",
-    inLeft: "شما وارد شده‌اید: ", inLink: "در محیط آزمایش تا ۵۰ صفحه در روز بخوانید",
+    inLeft: "شما وارد شده‌اید: ", inLink: "در محیط آزمایش تا ۵۰ صفحه در روز بخوانید (روز اول ۱۵)",
     leftHere: function (r, l) { return faDigits(r) + " از " + faDigits(l) + " صفحهٔ رایگان این‌جا باقی مانده · "; },
     type: "لطفاً یک تصویر PNG، JPEG، WebP یا GIF انتخاب کنید. پشتیبانی از PDF به‌زودی اضافه می‌شود.",
     size: "حجم این تصویر بیشتر از ۴ مگابایت است. یک عکس یا اسکرین‌شات کوچک‌تر امتحان کنید.",
@@ -34,7 +34,7 @@
   } : {
     left: function (r, l) { return r + " of " + l + " free pages left today · "; },
     signin: "Sign in for $5 of free credit", none: "No free pages left today.",
-    inLeft: "You're signed in: ", inLink: "the playground gives you up to 50 a day",
+    inLeft: "You're signed in: ", inLink: "the playground gives you up to 50 pages a day (15 on day one)",
     leftHere: function (r, l) { return r + " of " + l + " free pages left here · "; },
     type: "Use a PNG, JPEG, WebP or GIF image. PDFs are coming soon.",
     size: "That image is larger than 4 MB. Try a smaller photo or screenshot.",
