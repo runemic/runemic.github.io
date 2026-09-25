@@ -75,6 +75,7 @@ h2 { font-size: clamp(1.55rem, 2.8vw, 2.1rem); letter-spacing: -0.025em; }
 h3 { font-size: 1.125rem; letter-spacing: -0.01em; }
 p { margin: 0 0 1em; }
 code, pre { font-family: var(--mono); font-size: .875em; }
+[hidden] { display: none !important; } /* the hidden attribute always wins over display rules */
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .skip { position: absolute; left: 12px; top: -48px; z-index: 50; background: var(--brand-strong); color: var(--on-brand); padding: 8px 16px; border-radius: 6px; }
@@ -138,6 +139,8 @@ code, pre { font-family: var(--mono); font-size: .875em; }
 .btn--ghost { border-color: var(--line); color: var(--ink); background: var(--surface-2); }
 .btn--ghost:hover { border-color: var(--line-strong); color: var(--ink); background: var(--surface); }
 .btn--sm { padding: 6px 12px; font-size: .875rem; }
+.btn:disabled, .btn[disabled] { opacity: .5; cursor: not-allowed; }
+.btn--primary:disabled:hover { background: var(--brand); }
 .arrow::after { content: "→"; transition: transform .15s; }
 .btn:hover .arrow::after, a:hover > .arrow::after { transform: translateX(3px); }
 
@@ -404,8 +407,15 @@ a.card:hover { border-color: var(--line-strong); color: inherit; }
 .drop:hover, .drop.is-over { border-color: var(--brand); background: var(--brand-soft); }
 .drop:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
 .drop img { max-height: 340px; width: auto; max-width: 100%; border-radius: 4px; box-shadow: 0 0 0 1px var(--line); }
-.drop__empty strong { color: var(--ink); }
-.drop__empty small { display: block; margin-top: 8px; color: var(--muted); font-size: .8125rem; }
+.drop__empty { display: grid; justify-items: center; gap: 4px; }
+.drop__icon {
+  width: 44px; height: 44px; padding: 10px; margin-bottom: 8px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line); fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.drop:hover .drop__icon, .drop.is-over .drop__icon { border-color: var(--brand); }
+.drop__empty strong { color: var(--ink); font-size: 1rem; }
+.drop__or { font-size: .9375rem; }
+.drop__empty small { display: block; margin-top: 8px; color: var(--muted); font-size: .8125rem; max-width: 30em; }
 .drop__link { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
 .tool__samples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .875rem; }
 .chip {
