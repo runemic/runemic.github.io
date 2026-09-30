@@ -29,7 +29,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=f15f49c0">
+<link rel="stylesheet" href="/assets/css/site.css?v=f4e8384b">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"TechArticle","@id":"https://runemic.com/docs#page","url":"https://runemic.com/docs","name":"API docs: OCR API reference","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://runemic.com/docs"}]}]}</script>
 <script src="/assets/js/theme.js?v=cdbe6c0c" defer></script>
 </head>
@@ -79,6 +79,7 @@
       <a href="#authentication">Authentication</a>
       <a href="#ocr">POST /v1/ocr</a>
       <a href="#models">GET /v1/models</a>
+      <a href="#openai">OpenAI-compatible</a>
       <a href="#errors">Errors</a>
       <a href="#limits">Rate limits</a>
       <a href="#privacy">Data and privacy</a>
@@ -187,6 +188,45 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
         <p>Preview models run on Cloudflare Workers AI. When <a href="/models">Rune-1</a> launches it becomes a new model ID; your key and code stay the same.</p>
       </section>
 
+      <section id="openai">
+        <h2>OpenAI-compatible API</h2>
+        <p>Already using an OpenAI SDK, or a tool built on one? Point it at <code>https://api.runemic.com/v1</code> with your Runemic key and send the page as an image in a chat message. <code>POST /v1/chat/completions</code>, <code>GET /v1/models</code> and <code>GET /v1/models/{id}</code> follow OpenAI's format, including streaming and error types.</p>
+        <pre class="code"><span class="k">from</span> openai <span class="k">import</span> OpenAI
+<span class="k">import</span> base64, os
+
+client = OpenAI(base_url=<span class="s">"https://api.runemic.com/v1"</span>, api_key=os.environ[<span class="s">"RUNEMIC_API_KEY"</span>])
+image = <span class="s">"data:image/png;base64,"</span> + base64.b64encode(open(<span class="s">"page.png"</span>, <span class="s">"rb"</span>).read()).decode()
+
+reply = client.chat.completions.create(
+    model=<span class="s">"preview-gemma-4"</span>,
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: [
+        {<span class="s">"type"</span>: <span class="s">"text"</span>, <span class="s">"text"</span>: <span class="s">"Only return the table."</span>},  <span class="c"># optional: how to transcribe</span>
+        {<span class="s">"type"</span>: <span class="s">"image_url"</span>, <span class="s">"image_url"</span>: {<span class="s">"url"</span>: image}},
+    ]}],
+)
+print(reply.choices[0].message.content)</pre>
+        <pre class="code"><span class="k">import</span> OpenAI <span class="k">from</span> <span class="s">"openai"</span>;
+
+<span class="k">const</span> client = <span class="k">new</span> OpenAI({ baseURL: <span class="s">"https://api.runemic.com/v1"</span>, apiKey: process.env.RUNEMIC_API_KEY });
+<span class="k">const</span> stream = <span class="k">await</span> client.chat.completions.create({
+  model: <span class="s">"preview-gemma-4"</span>,
+  stream: <span class="k">true</span>,
+  messages: [{ role: <span class="s">"user"</span>, content: [{ type: <span class="s">"image_url"</span>, image_url: { url: <span class="s">"https://example.com/page.jpg"</span> } }] }],
+});
+<span class="k">for await</span> (<span class="k">const</span> chunk <span class="k">of</span> stream) process.stdout.write(chunk.choices[0]?.delta?.content ?? <span class="s">""</span>);</pre>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>In the request</th><th>What Runemic does with it</th></tr></thead>
+          <tbody>
+            <tr><td><code>messages</code></td><td>Exactly one image, as an <code>image_url</code> part in a user message: a <code>data:</code> URI or a public <code>https</code> URL (PNG, JPEG, WebP or GIF, up to 4 MB). Text in user messages becomes transcription instructions (up to 300 characters). System and assistant messages are ignored.</td></tr>
+            <tr><td><code>model</code></td><td>A model ID from <a href="#models"><code>GET /v1/models</code></a>. Leave it out to use the default with automatic fallback.</td></tr>
+            <tr><td><code>stream</code>, <code>stream_options.include_usage</code></td><td>Streams <code>chat.completion.chunk</code> events and ends with <code>data: [DONE]</code>, like OpenAI.</td></tr>
+            <tr><td><code>format</code> (Runemic extension)</td><td><code>markdown</code> (default) or <code>text</code>. With the OpenAI SDKs, pass it as <code>extra_body={"format": "text"}</code> (Python) or add it to the request object (JavaScript).</td></tr>
+            <tr><td><code>temperature</code>, <code>max_tokens</code>, <code>tools</code> and other chat options</td><td>Accepted and ignored: the models only transcribe.</td></tr>
+          </tbody>
+        </table></div>
+        <p>The answer is the page's text as the assistant message. <code>usage</code> counts tokens; the price is per page, as with <code>/v1/ocr</code>, and is shown in the extra <code>runemic</code> field with <code>cost_usd</code> and <code>balance_usd</code>. Same key, limits and billing as <code>/v1/ocr</code>.</p>
+      </section>
+
       <section id="errors">
         <h2>Errors</h2>
         <p>Errors return JSON like <code>{"error": {"code": "…", "message": "…"}}</code>. Failed requests are never charged.</p>
@@ -199,6 +239,7 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
             <tr><td>429</td><td><code>rate_limited</code> · <code>daily_limit</code></td><td>Too many requests per minute, or today's page limit reached.</td></tr>
             <tr><td>502</td><td><code>model_error</code></td><td>The model failed. You are not charged; retry or pick another model.</td></tr>
             <tr><td>503</td><td><code>capacity</code></td><td>Today's shared preview capacity is used up. Try again after 00:00 UTC.</td></tr>
+            <tr><td>504</td><td><code>model_timeout</code></td><td>The model you chose didn't answer in time. You are not charged; retry or pick another model.</td></tr>
           </tbody>
         </table></div>
       </section>
@@ -225,6 +266,7 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
       <section id="changelog">
         <h2>Changelog</h2>
         <ul class="ticks">
+          <li><strong>30 Sep 2026</strong>: OpenAI-compatible <code>POST /v1/chat/completions</code>. Without a <code>model</code>, another model takes over automatically if the default fails or doesn't answer; a chosen model that doesn't answer returns <code>504 model_timeout</code>. Request IDs are now random (<code>req_</code> + 20 characters).</li>
           <li><strong>25 Sep 2026</strong>: <code>stream</code> parameter: get the text while it is being written. Removed <code>preview-qwen-3.8</code>.</li>
           <li><strong>24 Sep 2026</strong>: public preview. Four preview models, <code>format</code> and <code>instructions</code> parameters, request IDs, console with playground and usage analytics.</li>
         </ul>

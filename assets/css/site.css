@@ -732,3 +732,4 @@ code { font-family: var(--mono); }
   h1 { font-size: 2.125rem; }
   .lede { font-size: 1.0625rem; }
 }
+.docs-body .code + .code { margin-top: 12px; }

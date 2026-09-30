@@ -77,6 +77,23 @@ The same `id` is in the `X-Request-Id` header. Failed requests are never charged
 
 Streaming (`stream=true`): the response is `text/event-stream` with `event: delta` messages (`{"text": "<piece>"}`) while the page is read, then one `event: done` whose data is the full response above, or `event: error` with `{"error": {"code", "message"}}`. Join the `delta` pieces to show text early; use the `done` text as the final result.
 
+### OpenAI-compatible: POST /v1/chat/completions
+
+Existing OpenAI SDK code works: set the base URL to `https://api.runemic.com/v1` and use the Runemic key. Put exactly one page image in a user message as an `image_url` part (data URI or public https URL); any text in user messages is used as transcription instructions (up to 300 characters); system and assistant messages are ignored. The page's text comes back as the assistant message. `stream`, `stream_options.include_usage`, `GET /v1/models` and `GET /v1/models/{id}` follow OpenAI's format; errors use OpenAI's shape (`{"error": {"message", "type", "param", "code"}}`). Runemic extension: `"format": "text"` for plain text (Python SDK: `extra_body={"format": "text"}`). Other chat options (temperature, tools, max_tokens) are accepted and ignored.
+
+```python
+from openai import OpenAI
+import base64, os
+
+client = OpenAI(base_url="https://api.runemic.com/v1", api_key=os.environ["RUNEMIC_API_KEY"])
+image = "data:image/png;base64," + base64.b64encode(open("page.png", "rb").read()).decode()
+reply = client.chat.completions.create(
+    model="preview-gemma-4",
+    messages=[{"role": "user", "content": [{"type": "image_url", "image_url": {"url": image}}]}],
+)
+print(reply.choices[0].message.content)
+```
+
 ### GET /v1/models
 
 Lists the models currently available, with ids, prices per page and what each is best for. No key needed.
