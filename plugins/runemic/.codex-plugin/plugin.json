@@ -1,0 +1,29 @@
+{
+  "name": "runemic",
+  "version": "1.0.0",
+  "description": "OCR for documents other tools get wrong: non-Latin scripts, old scans, handwriting and complex layouts.",
+  "author": { "name": "Runemic", "email": "hello@runemic.com", "url": "https://runemic.com" },
+  "homepage": "https://runemic.com/docs#mcp",
+  "repository": "https://github.com/runemic/runemic.github.io",
+  "keywords": ["ocr", "documents", "arabic", "persian", "urdu", "hindi", "handwriting", "markdown"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Runemic OCR",
+    "shortDescription": "Read page images in any script",
+    "longDescription": "Send a page image, get its text back in reading order as Markdown (headings, lists and tables kept) or plain text. Strong on Arabic, Persian, Urdu, Hindi, Cyrillic and CJK, old scans and handwriting. Sign in with your Runemic account; new accounts get $5 of free credit.",
+    "developerName": "Runemic",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "websiteURL": "https://runemic.com",
+    "privacyPolicyURL": "https://runemic.com/privacy",
+    "termsOfServiceURL": "https://runemic.com/terms",
+    "defaultPrompt": [
+      "Transcribe the scanned page in this folder to Markdown.",
+      "Read the Persian text in page.png and translate it to English.",
+      "Extract the table from this invoice image as CSV."
+    ],
+    "brandColor": "#0F5257",
+    "logo": "./assets/logo.png"
+  }
+}

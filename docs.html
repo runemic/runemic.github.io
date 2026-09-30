@@ -88,6 +88,7 @@
       <a href="#ocr">POST /v1/ocr</a>
       <a href="#models">GET /v1/models</a>
       <a href="#openai">OpenAI-compatible</a>
+      <a href="#mcp">AI assistants (MCP)</a>
       <span class="docs-toc__h">Reference</span>
       <a href="#errors">Errors</a>
       <a href="#limits">Rate limits</a>
@@ -236,6 +237,50 @@ print(reply.choices[0].message.content)</pre>
         <p>The answer is the page's text as the assistant message. <code>usage</code> counts tokens; the price is per page, as with <code>/v1/ocr</code>, and is shown in the extra <code>runemic</code> field with <code>cost_usd</code> and <code>balance_usd</code>. Same key, limits and billing as <code>/v1/ocr</code>.</p>
       </section>
 
+      <section id="mcp">
+        <h2>Use with AI assistants (MCP)</h2>
+        <p>Runemic is an <a href="https://modelcontextprotocol.io">MCP</a> server, so Claude, ChatGPT, Codex, Cursor, VS Code and other assistants can read pages for you. The server address is <code>https://mcp.runemic.com/mcp</code>.</p>
+        <p>Add it to your assistant and it sends you to Runemic to sign in (GitHub or Hugging Face) and allow access. There is no key to copy. Pages are charged to your Runemic credit, with the same prices and limits as the API.</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Assistant</th><th>How to add it</th></tr></thead>
+          <tbody>
+            <tr><td>Claude (web, desktop, mobile)</td><td>Settings → Connectors → Add custom connector. Name it Runemic, paste the address, then Connect.</td></tr>
+            <tr><td>Claude Code</td><td>Run the commands below, then <code>/mcp</code> and choose Authenticate.</td></tr>
+            <tr><td>Codex (CLI, app, IDE)</td><td>Add the lines below; <code>codex mcp login runemic</code> opens the sign-in page.</td></tr>
+            <tr><td>ChatGPT</td><td>With developer mode on: Settings → Apps → Create app, paste the address and choose OAuth.</td></tr>
+            <tr><td>Cursor</td><td><a href="cursor://anysphere.cursor-deeplink/mcp/install?name=runemic&amp;config=eyJ1cmwiOiJodHRwczovL21jcC5ydW5lbWljLmNvbS9tY3AifQ==">Add to Cursor</a>, or put the JSON below in <code>~/.cursor/mcp.json</code>.</td></tr>
+            <tr><td>VS Code</td><td><a href="vscode:mcp/install?%7B%22name%22%3A%22runemic%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//mcp.runemic.com/mcp%22%7D">Add to VS Code</a>, or MCP: Add Server → HTTP and paste the address.</td></tr>
+            <tr><td>Anything else</td><td>Use the address with the Streamable HTTP transport. Clients that can't sign in can send <code>Authorization: Bearer &lt;your API key&gt;</code> instead.</td></tr>
+          </tbody>
+        </table></div>
+        <pre class="code"><span class="c"># Claude Code: add the server, then run /mcp in Claude Code to sign in</span>
+claude mcp add --transport http runemic https://mcp.runemic.com/mcp
+
+<span class="c"># or install the plugin (the server plus a skill for local files)</span>
+/plugin marketplace add runemic/runemic.github.io
+/plugin install runemic@runemic</pre>
+        <pre class="code"><span class="c"># Codex: ~/.codex/config.toml</span>
+[mcp_servers.runemic]
+url = <span class="s">"https://mcp.runemic.com/mcp"</span>
+
+<span class="c"># then sign in once</span>
+codex mcp login runemic</pre>
+        <pre class="code">{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"runemic"</span>: { <span class="s">"type"</span>: <span class="s">"http"</span>, <span class="s">"url"</span>: <span class="s">"https://mcp.runemic.com/mcp"</span> }
+  }
+}</pre>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>read_page</code></td><td>Reads one page image, given as a public <code>https</code> URL or a <code>data:</code> URI (PNG, JPEG, WebP or GIF, up to 4 MB). Optional <code>format</code>, <code>model</code> and <code>instructions</code>, as in <a href="#ocr"><code>POST /v1/ocr</code></a>. Returns the text, the model, the cost and your balance.</td></tr>
+            <tr><td><code>list_models</code></td><td>The models available now, with prices.</td></tr>
+            <tr><td><code>get_account</code></td><td>Your credit balance, today's pages and limit, and this month's usage.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Assistants can't pass an image you attach in a chat to a tool, so give them a link to it. In Claude Code and Codex you can give a file path instead: the plugin's skill sends the file with the <a href="#ocr">OCR API</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
+      </section>
+
       <section id="errors">
         <h2>Errors</h2>
         <p>Errors return JSON like <code>{"error": {"code": "…", "message": "…"}}</code>. Failed requests are never charged.</p>
@@ -275,6 +320,7 @@ print(reply.choices[0].message.content)</pre>
       <section id="changelog">
         <h2>Changelog</h2>
         <ul class="ticks">
+          <li><strong>1 Oct 2026</strong>: MCP server at <code>https://mcp.runemic.com/mcp</code> for Claude, ChatGPT, Codex, Cursor and VS Code, with sign-in, plus plugins for Claude Code and Codex.</li>
           <li><strong>30 Sep 2026</strong>: OpenAI-compatible <code>POST /v1/chat/completions</code>. Without a <code>model</code>, another model takes over automatically if the default fails or doesn't answer; a chosen model that doesn't answer returns <code>504 model_timeout</code>. Request IDs are now random (<code>req_</code> + 20 characters).</li>
           <li><strong>25 Sep 2026</strong>: <code>stream</code> parameter: get the text while it is being written. Removed <code>preview-qwen-3.8</code>.</li>
           <li><strong>24 Sep 2026</strong>: public preview. Four preview models, <code>format</code> and <code>instructions</code> parameters, request IDs, console with playground and usage analytics.</li>

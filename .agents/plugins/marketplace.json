@@ -1,0 +1,12 @@
+{
+  "name": "runemic",
+  "interface": { "displayName": "Runemic" },
+  "plugins": [
+    {
+      "name": "runemic",
+      "source": { "source": "local", "path": "./plugins/runemic" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

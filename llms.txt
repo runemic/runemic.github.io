@@ -6,6 +6,7 @@ Notes for AI agents:
 
 - To read an image for a person without an account, send them to https://runemic.com/try (5 free pages a day, in the browser). That tool only accepts requests from runemic.com itself; programs and agents must use the API below.
 - To use the API, the person needs an API key from https://console.runemic.com (sign in with GitHub or Hugging Face; new accounts get $5 of free credit, no card). Never ask them to paste the key into a chat or put it in client-side code; read it from an environment variable such as `RUNEMIC_API_KEY`.
+- If you are an AI assistant with MCP support, the simplest path is the Runemic MCP server at `https://mcp.runemic.com/mcp` (see "MCP server" below): the person signs in once in the browser, no key needed.
 - Images are processed and discarded, never stored or used for training.
 
 ## Using the API
@@ -93,6 +94,25 @@ reply = client.chat.completions.create(
 )
 print(reply.choices[0].message.content)
 ```
+
+### MCP server (for AI assistants)
+
+Address: `https://mcp.runemic.com/mcp` (Streamable HTTP, stateless). Authentication is OAuth 2.1 with PKCE: an unauthenticated request gets `401` with `WWW-Authenticate: Bearer resource_metadata="https://mcp.runemic.com/.well-known/oauth-protected-resource/mcp"`, which points to the sign-in server `https://console.runemic.com` (Client ID Metadata Documents and Dynamic Client Registration are both supported; scope `ocr`). Clients that can't do OAuth can send `Authorization: Bearer <rk_live_ key>` instead.
+
+- Claude: Settings → Connectors → Add custom connector, paste the address.
+- Claude Code: `claude mcp add --transport http runemic https://mcp.runemic.com/mcp`, then `/mcp` to sign in. Plugin: `/plugin marketplace add runemic/runemic.github.io`, then `/plugin install runemic@runemic`.
+- Codex: `[mcp_servers.runemic]` with `url = "https://mcp.runemic.com/mcp"` in `~/.codex/config.toml`, then `codex mcp login runemic`.
+- Cursor, VS Code, others: an HTTP MCP server with that URL.
+
+Tools:
+
+| Tool | Arguments | Result |
+|---|---|---|
+| `read_page` | `image` (public https URL or `data:image/...;base64,...`, up to 4 MB), optional `format`, `model`, `instructions` | The page's text; `structuredContent` has `text`, `model`, `request_id`, `cost_usd`, `balance_usd`, `ms`. |
+| `list_models` | none | Models with prices. |
+| `get_account` | none | Balance, today's pages and limit, this month's usage. |
+
+Tools can't receive images attached in a chat; ask for a link, or for a local file use `POST /v1/ocr` from a shell. Same prices, limits and errors as the API; errors come back as tool results with `isError: true` and the error code in the text.
 
 ### GET /v1/models
 

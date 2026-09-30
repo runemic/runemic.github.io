@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "runemic": {
+      "type": "http",
+      "url": "https://mcp.runemic.com/mcp"
+    }
+  }
+}
