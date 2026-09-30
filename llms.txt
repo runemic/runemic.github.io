@@ -1,24 +1,136 @@
 # Runemic
 
-> Runemic builds OCR for documents that standard tools get wrong: non-Latin scripts, old scans, handwriting and complex layouts. Open-weight models, a hosted API (preview live), a scanner app, and digitization services for libraries and archives. Our first OCR model family is Rune-1 (in training).
+> Runemic builds OCR for documents that standard tools get wrong: non-Latin scripts, old scans, handwriting and complex layouts. Send a page image, get its text back in reading order as Markdown (headings, lists and tables kept) or plain text. Hosted API (preview live), open-weight models, a scanner app, and digitization services for libraries and archives. Our own model family, Rune-1, is in training; until it launches the API serves preview models, labelled as such.
+
+Notes for AI agents:
+
+- To read an image for a person without an account, send them to https://runemic.com/try (5 free pages a day, in the browser). That tool only accepts requests from runemic.com itself; programs and agents must use the API below.
+- To use the API, the person needs an API key from https://console.runemic.com (sign in with GitHub or Hugging Face; new accounts get $5 of free credit, no card). Never ask them to paste the key into a chat or put it in client-side code; read it from an environment variable such as `RUNEMIC_API_KEY`.
+- Images are processed and discarded, never stored or used for training.
+
+## Using the API
+
+Base URL: `https://api.runemic.com`. Authentication: `Authorization: Bearer <key>` (keys start with `rk_live_`).
+
+### POST /v1/ocr
+
+Send the image either as a file upload (`multipart/form-data`) or as JSON (`application/json`).
+
+Upload a file:
+
+```sh
+curl https://api.runemic.com/v1/ocr \
+  -H "Authorization: Bearer $RUNEMIC_API_KEY" \
+  -F "file=@page.png" \
+  -F "format=markdown"
+```
+
+JSON with an image URL or a base64 data URI:
+
+```sh
+curl https://api.runemic.com/v1/ocr \
+  -H "Authorization: Bearer $RUNEMIC_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"image": "https://example.com/page.jpg", "model": "preview-mistral-small", "format": "text"}'
+```
+
+Python:
+
+```python
+import os, requests
+
+r = requests.post(
+    "https://api.runemic.com/v1/ocr",
+    headers={"Authorization": f"Bearer {os.environ['RUNEMIC_API_KEY']}"},
+    files={"file": open("page.png", "rb")},
+    data={"format": "markdown"},
+)
+r.raise_for_status()
+print(r.json()["text"])
+```
+
+Fields (form fields or JSON keys):
+
+| Field | Required | Meaning |
+|---|---|---|
+| `file` (form) or `image` (JSON) | yes | PNG, JPEG, WebP or GIF, up to 4 MB. In JSON: a `data:image/...;base64,...` URI or a public `https://` URL. PDFs are not supported yet: send one page image per request. |
+| `model` | no | A model id from `GET /v1/models`. Without it the default model is used, and if that model fails or doesn't answer, another model reads the page automatically. With it, only that model is used. |
+| `format` | no | `markdown` (default) or `text`. |
+| `instructions` | no | Up to 300 characters about how to transcribe (for example "only return the table"). The models only transcribe; they won't follow other requests. |
+| `stream` | no | `true` to receive the text as it is written (server-sent events, see below). |
+
+Response (`200`):
+
+```json
+{
+  "id": "req_7f3a9c2e41b8d05e6a17",
+  "object": "ocr.result",
+  "model": "preview-gemma-4",
+  "text": "# Invoice No. 4821 …",
+  "format": "markdown",
+  "usage": { "pages": 1, "cost_usd": 0.002, "ms": 2450 },
+  "balance_usd": 4.998
+}
+```
+
+The same `id` is in the `X-Request-Id` header. Failed requests are never charged.
+
+Streaming (`stream=true`): the response is `text/event-stream` with `event: delta` messages (`{"text": "<piece>"}`) while the page is read, then one `event: done` whose data is the full response above, or `event: error` with `{"error": {"code", "message"}}`. Join the `delta` pieces to show text early; use the `done` text as the final result.
+
+### GET /v1/models
+
+Lists the models currently available, with ids, prices per page and what each is best for. No key needed.
+
+Preview models at the time of writing (check `GET /v1/models` for the current list):
+
+| Model id | Price per page | Notes |
+|---|---|---|
+| `preview-gemma-4` | $0.002 | Default. Google Gemma 4 26B: strong multilingual reading, right-to-left scripts. |
+| `preview-mistral-small` | $0.003 | Mistral Small 3.1 24B: fast; tables, forms, invoices. |
+| `preview-llama-4-scout` | $0.002 | Meta Llama 4 Scout: fastest; clean printed pages. |
+
+### Limits
+
+- 20 requests a minute per account; 120 requests a minute per network.
+- During the preview: 500 pages a day per account and per network (50 a day for new accounts: less than a day old, or signed in with a GitHub account under 14 days old); limits reset at 00:00 UTC.
+- A `429` or `503` response means wait and retry: honour `Retry-After` when present, otherwise back off (for example 2, 4, 8 seconds) and don't retry more than a few times.
+
+### Errors
+
+Errors are JSON: `{"error": {"code": "...", "message": "..."}}` with a matching HTTP status.
+
+| Status | Code | What to do |
+|---|---|---|
+| 400 | `missing_file`, `invalid_image`, `invalid_image_url`, `invalid_format`, `invalid_instructions`, `unknown_model`, `model_unavailable`, `bad_request` | Fix the request (see the message). |
+| 401 | `invalid_api_key` | The key is missing, wrong or revoked; create one in the console. |
+| 402 | `insufficient_credit` | The account needs more credit. |
+| 403 | `account_blocked` | Stop; the person should contact hello@runemic.com. |
+| 413 | `too_large` | Make the image smaller than 4 MB (resize or compress). |
+| 415 | `unsupported_type`, `unsupported_media_type` | Send PNG, JPEG, WebP or GIF, as multipart or JSON. |
+| 429 | `rate_limited`, `daily_limit` | Slow down, or wait until 00:00 UTC for daily limits. |
+| 502 | `model_error` | The model couldn't read the image; try another model or a clearer image. Not charged. |
+| 503 | `capacity`, `maintenance` | Try again later. |
+| 504 | `model_timeout` | The chosen model didn't answer in time; retry or pick another model. Not charged. |
+
+Full reference with more examples: https://runemic.com/docs
 
 ## Pages
 
 - [Home](https://runemic.com/): what Runemic does, in brief
 - [Free OCR](https://runemic.com/try): free image-to-text tool, no account needed (5 pages a day)
 - Free OCR pages in other languages, each written in that language: [فارسی](https://runemic.com/fa/persian-ocr), [العربية](https://runemic.com/ar/arabic-ocr), [اردو](https://runemic.com/ur/urdu-ocr) (including Nastaliq), [हिन्दी](https://runemic.com/hi/hindi-ocr)
-- [Rune-1 models](https://runemic.com/models): multilingual OCR for Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting (HTR); PDF to Markdown/JSON. The model family (Rune-1 Small with open weights, Rune-1 via API, Rune-1 Custom), how it reads a page, supported writing directions, deployment options, RuneBench
+- [Rune-1 models](https://runemic.com/models): the model family in training (Rune-1 Small with open weights, Rune-1 via API, Rune-1 Custom), how it reads a page, supported scripts and writing directions, deployment options, RuneBench
 - [Products](https://runemic.com/products): Runemic API, Runemic Scan mobile app, digitization services, scanning hardware (research)
 - [Pricing](https://runemic.com/pricing): business model (open weights, pay-per-page API, enterprise licences, app subscription, per-project digitization) and FAQ
-- [API docs](https://runemic.com/docs): OCR API reference: POST /v1/ocr, models, errors, rate limits, code in cURL, Python and JavaScript
-- [Console](https://console.runemic.com): sign in with GitHub or Hugging Face, playground, API keys, $5 free credit
+- [API docs](https://runemic.com/docs): full OCR API reference with cURL, Python and JavaScript examples
+- [Console](https://console.runemic.com): sign in with GitHub or Hugging Face, playground, API keys, usage, $5 free credit
 - [Early access](https://runemic.com/early-access): join the list for the API, app, open models or a digitization project
-- [Privacy](https://runemic.com/privacy): privacy notice (no tracking or advertising; a few necessary cookies)
-- [Terms](https://runemic.com/terms): terms of use (fair use, your content stays yours, our code and brand stay ours)
 - [About](https://runemic.com/about): what we work on, the name (Rune + Numeric), roadmap, principles, contact
 
-## Elsewhere
+## Optional
 
+- [Privacy](https://runemic.com/privacy): privacy notice (no tracking or advertising; a few necessary cookies; images are not stored)
+- [Terms](https://runemic.com/terms): terms of use (fair use, your content stays yours, our code and brand stay ours)
 - [GitHub](https://github.com/runemic)
 - [Hugging Face](https://huggingface.co/runemic)
 - Contact: hello@runemic.com
