@@ -155,7 +155,7 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
 <span class="c">data: {"text": "# Invoice No. 4821\n\nCity"}</span>
 
 <span class="c">event: done</span>
-<span class="c">data: {"id": "req_1843", "object": "ocr.result", "text": "# Invoice No. 4821 …", "usage": {…}}</span></pre>
+<span class="c">data: {"id": "req_c28e0b7d9a4f13e65b02", "object": "ocr.result", "text": "# Invoice No. 4821 …", "usage": {…}}</span></pre>
         <h3>JSON request</h3>
         <pre class="code">curl https://api.runemic.com/v1/ocr \
   -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
@@ -163,7 +163,7 @@ console.log((<span class="k">await</span> res.json()).text);</pre>
   -d <span class="s">'{"image": "https://example.com/page.jpg", "format": "text"}'</span></pre>
         <h3>Response</h3>
         <pre class="code">{
-  <span class="k">"id"</span>: <span class="s">"req_1842"</span>,
+  <span class="k">"id"</span>: <span class="s">"req_7f3a9c2e41b8d05e6a17"</span>,
   <span class="k">"object"</span>: <span class="s">"ocr.result"</span>,
   <span class="k">"model"</span>: <span class="s">"preview-gemma-4"</span>,
   <span class="k">"text"</span>: <span class="s">"# INVOICE No. 4821\n\nCity Library …"</span>,
