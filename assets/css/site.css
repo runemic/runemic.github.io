@@ -717,3 +717,18 @@ code { font-family: var(--mono); }
 .drop__icon { background: var(--bg); stroke: var(--ink); box-shadow: var(--shadow-xs); }
 .drop:hover .drop__icon, .drop.is-over .drop__icon { border-color: var(--line-strong); }
 .drop:focus-within { outline: 3px solid color-mix(in srgb, var(--ring) 50%, transparent); outline-offset: 1px; }
+
+/* phones and tablets: the header wraps (logo + actions, then the scrollable menu), so its height follows the content */
+@media (max-width: 960px) {
+  .site-header__inner { height: auto; min-height: 56px; flex-wrap: wrap; gap: 0 8px; padding-top: 10px; padding-bottom: 0; }
+  .brand { margin-right: auto; }
+  .tabs { order: 3; width: 100%; margin: 6px 0 0; padding-bottom: 6px; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a { padding: 8px 10px; flex: none; }
+  .tabs a:first-child { padding-left: 0; }
+}
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  h1 { font-size: 2.125rem; }
+  .lede { font-size: 1.0625rem; }
+}
