@@ -6,7 +6,7 @@
   function apply(theme) {
     if (theme === "dark") root.setAttribute("data-theme", "dark");
     else root.removeAttribute("data-theme");
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#101816" : "#f4f8f8");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#0a0a0a" : "#ffffff");
     var btn = document.querySelector(".theme-toggle");
     if (btn) btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
   }
@@ -23,6 +23,24 @@
     apply(next);
     save(next);
   });
+
+  // Phones and tablets: the menu opens from the ☰ button as a panel under the header.
+  function setNav(open) {
+    var header = document.querySelector(".site-header"), btn = document.querySelector(".nav-toggle");
+    if (!header || !btn) return;
+    header.classList.toggle("is-open", open);
+    root.classList.toggle("nav-open", open);
+    btn.setAttribute("aria-expanded", String(open));
+    btn.setAttribute("aria-label", open ? "Close menu" : "Menu");
+  }
+  document.addEventListener("click", function (e) {
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+    if (e.target.closest(".nav-toggle")) { setNav(!header.classList.contains("is-open")); return; }
+    if (header.classList.contains("is-open") && e.target.closest("#site-nav a")) setNav(false);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setNav(false); });
+  window.addEventListener("resize", function () { if (window.innerWidth > 960) setNav(false); });
 
   // Signed in to the console? (rk_signed_in is a non-secret hint set by console.runemic.com)
   if (/(?:^|;\s*)rk_signed_in=1/.test(document.cookie)) {

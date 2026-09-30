@@ -751,3 +751,33 @@ code { font-family: var(--mono); }
 }
 .docs-toc a.btn--primary, .docs-toc a.btn--primary:hover { color: var(--on-brand); background: var(--brand); border: 1px solid transparent; font-size: .8125rem; font-weight: 500; }
 .docs-toc a.btn--primary:hover { background: color-mix(in srgb, var(--brand) 90%, var(--bg)); }
+
+/* phones and tablets: logo, theme, ☰; the menu opens as a panel under the header (no sideways-scrolling row) */
+.nav-toggle, .tabs__actions { display: none; }
+.nav-toggle .menu-close { display: none; }
+.site-header.is-open .nav-toggle .menu-open { display: none; }
+.site-header.is-open .nav-toggle .menu-close { display: block; }
+@media (max-width: 960px) {
+  .site-header__inner { height: 56px; min-height: 0; flex-wrap: nowrap; gap: 8px; padding-top: 0; padding-bottom: 0; }
+  .brand { margin-right: auto; }
+  .nav-toggle { display: inline-grid; }
+  .header-actions .btn { display: none; }
+  .tabs { display: none; }
+  .site-header.is-open .tabs {
+    display: flex; flex-direction: column; gap: 0; position: fixed; top: 57px; left: 0; right: 0; bottom: 0; z-index: 30;
+    margin: 0; padding: 8px 16px calc(24px + env(safe-area-inset-bottom)); overflow-y: auto; background: var(--bg); width: auto;
+  }
+  .site-header.is-open .tabs a:not(.btn) { display: flex; align-items: center; height: 52px; padding: 0 4px; border-radius: 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 1.0625rem; font-weight: 500; }
+  .site-header.is-open .tabs a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+  .site-header.is-open .tabs__actions { display: grid; gap: 8px; margin-top: 24px; }
+  .tabs__actions .btn { height: 44px; font-size: .9375rem; }
+  html.nav-open { overflow: hidden; }
+}
+@media (max-width: 960px) and (min-width: 721px) { .site-header.is-open .tabs { left: auto; width: 360px; border-left: 1px solid var(--line); box-shadow: var(--shadow-md); } }
+@media (max-width: 960px) {
+  /* the header's backdrop blur would make the fixed panel size itself to the 56px header */
+  .site-header.is-open { backdrop-filter: none; background: var(--bg); }
+  .site-header.is-open .tabs { height: calc(100dvh - 57px); bottom: auto; }
+}
+.tabs .tabs__actions .btn--primary, .tabs .tabs__actions .btn--primary:hover { color: var(--on-brand); }
+.tabs .tabs__actions .btn--ghost, .tabs .tabs__actions .btn--ghost:hover { color: var(--ink); }
