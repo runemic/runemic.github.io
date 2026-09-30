@@ -19,7 +19,7 @@ Runemic returns a page's text in reading order, as Markdown (headings, lists and
    ```
 
    If `RUNEMIC_API_KEY` isn't set, ask the user to create a key at https://console.runemic.com and set it themselves. Never ask them to paste the key into the chat.
-3. **The user attached the image in the chat**: tools can't receive it. Ask for the file path or a link.
+3. **The user attached the image in the chat**: tools can't receive it. In an app that shows MCP Apps (Claude, ChatGPT, VS Code), call `upload_page` and ask them to choose the same file in the Runemic panel. Otherwise ask for the file path or a link.
 
 ## Rules
 

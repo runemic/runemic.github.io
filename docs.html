@@ -274,11 +274,12 @@ codex mcp login runemic</pre>
           <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
           <tbody>
             <tr><td><code>read_page</code></td><td>Reads one page image, given as a public <code>https</code> URL or a <code>data:</code> URI (PNG, JPEG, WebP or GIF, up to 4 MB). Optional <code>format</code>, <code>model</code> and <code>instructions</code>, as in <a href="#ocr"><code>POST /v1/ocr</code></a>. Returns the text, the model, the cost and your balance.</td></tr>
+            <tr><td><code>upload_page</code></td><td>Shows a Runemic file picker in the chat (in assistants that support MCP Apps, such as Claude and ChatGPT). You choose page images from your device, even several at once, and their text is sent to the conversation. Images are read and not stored.</td></tr>
             <tr><td><code>list_models</code></td><td>The models available now, with prices.</td></tr>
             <tr><td><code>get_account</code></td><td>Your credit balance, today's pages and limit, and this month's usage.</td></tr>
           </tbody>
         </table></div>
-        <p>Assistants can't pass an image you attach in a chat to a tool, so give them a link to it. In Claude Code and Codex you can give a file path instead: the plugin's skill sends the file with the <a href="#ocr">OCR API</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
+        <p>Assistants can't pass an image you attach in a chat to a tool, so Runemic brings its own picker: ask the assistant to read a page and choose the file in the Runemic panel that appears. Where no panel can be shown, give a link instead; in Claude Code and Codex, a file path works too, because the plugin's skill sends the file with the <a href="#ocr">OCR API</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
       </section>
 
       <section id="errors">

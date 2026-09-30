@@ -109,10 +109,11 @@ Tools:
 | Tool | Arguments | Result |
 |---|---|---|
 | `read_page` | `image` (public https URL or `data:image/...;base64,...`, up to 4 MB), optional `format`, `model`, `instructions` | The page's text; `structuredContent` has `text`, `model`, `request_id`, `cost_usd`, `balance_usd`, `ms`. |
+| `upload_page` | optional `format`, `instructions` | Shows a Runemic file picker in the chat (MCP Apps: Claude, ChatGPT, VS Code …); the user chooses images, and their text is sent to the conversation. Use it for images attached to the chat or files on the user's device. |
 | `list_models` | none | Models with prices. |
 | `get_account` | none | Balance, today's pages and limit, this month's usage. |
 
-Tools can't receive images attached in a chat; ask for a link, or for a local file use `POST /v1/ocr` from a shell. Same prices, limits and errors as the API; errors come back as tool results with `isError: true` and the error code in the text.
+Tools can't receive images attached in a chat: call `upload_page` so the user can choose the file in Runemic's picker; without MCP Apps support, ask for a link, or for a local file use `POST /v1/ocr` from a shell. Same prices, limits and errors as the API; errors come back as tool results with `isError: true` and the error code in the text.
 
 ### GET /v1/models
 
