@@ -90,6 +90,7 @@
       <a href="#models">GET /v1/models</a>
       <a href="#openai">OpenAI-compatible</a>
       <a href="#mcp">AI assistants (MCP)</a>
+      <a href="#mcp-local">Files on your computer</a>
       <span class="docs-toc__h">Reference</span>
       <a href="#errors">Errors</a>
       <a href="#limits">Rate limits</a>
@@ -276,11 +277,47 @@ codex mcp login runemic</pre>
           <tbody>
             <tr><td><code>read_page</code></td><td>Reads one page image, given as a public <code>https</code> URL or a <code>data:</code> URI (PNG, JPEG, WebP or GIF, up to 4 MB). In ChatGPT, a file you attach to the chat is passed to it directly. Optional <code>format</code>, <code>model</code> and <code>instructions</code>, as in <a href="#ocr"><code>POST /v1/ocr</code></a>; without a <code>model</code>, the fastest model right now reads the page and another takes over if it fails. Returns the text, the model, the cost and your balance.</td></tr>
             <tr><td><code>upload_page</code></td><td>Shows a Runemic file picker in the chat (in assistants that support MCP Apps, such as Claude and ChatGPT). You choose page images from your device, even several at once, and their text is sent to the conversation. Images are read and not stored.</td></tr>
+            <tr><td><code>create_upload_link</code></td><td>A one-time link for sending saved files with one command (see <a href="#mcp-local">upload links</a>).</td></tr>
             <tr><td><code>list_models</code></td><td>The models available now, with prices.</td></tr>
             <tr><td><code>get_account</code></td><td>Your credit balance, today's pages and limit, and this month's usage.</td></tr>
           </tbody>
         </table></div>
-        <p>Assistants can't pass an image you attach in a chat to a tool, so Runemic brings its own picker: ask the assistant to read a page and choose the file in the Runemic panel that appears. Where no panel can be shown, give a link instead; in Claude Code and Codex, a file path works too, because the plugin's skill sends the file with the <a href="#ocr">OCR API</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
+        <p>Assistants can't pass an image you attach in a chat to a tool, so Runemic brings its own picker: ask the assistant to read a page and choose the file in the Runemic panel that appears. Where no panel can be shown, give a link instead, or use an <a href="#mcp-local">upload link</a>; for files on your computer, add the <a href="#mcp-local">local server</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
+      </section>
+
+      <section id="mcp-local">
+        <h2>Files on your computer (local MCP server)</h2>
+        <p>The hosted server can't see your files. For Claude Desktop, Claude Code, Codex, Cursor and other apps that run MCP servers on your computer, there is a local Runemic server: give it a path to an image, a PDF or a folder of pages and it sends them to Runemic with your <a href="#authentication">API key</a>. Large scans, HEIC and TIFF are converted first; PDFs need <a href="https://poppler.freedesktop.org/">Poppler</a> (<code>brew install poppler</code>, <code>apt install poppler-utils</code>).</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>App</th><th>How to add it</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Desktop</td><td>Download <a href="/mcp/runemic.mcpb">runemic.mcpb</a> and open it (or Settings → Extensions → Install extension). Paste your API key when asked; it is kept in your system's keychain.</td></tr>
+            <tr><td>Claude Code, Codex</td><td>See below (for Claude Code, set <code>RUNEMIC_API_KEY</code> in your shell first).</td></tr>
+            <tr><td>Cursor, VS Code, others</td><td>Add the JSON below to the app's MCP settings, with your key. Needs Node 18 or newer.</td></tr>
+          </tbody>
+        </table></div>
+        <pre class="code">{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"runemic-files"</span>: {
+      <span class="s">"command"</span>: <span class="s">"npx"</span>,
+      <span class="s">"args"</span>: [<span class="s">"-y"</span>, <span class="s">"--package=https://runemic.com/mcp/runemic-mcp.tgz"</span>, <span class="s">"runemic-mcp"</span>],
+      <span class="s">"env"</span>: { <span class="s">"RUNEMIC_API_KEY"</span>: <span class="s">"rk_live_…"</span> }
+    }
+  }
+}</pre>
+        <pre class="code"><span class="c"># Claude Code</span>
+claude mcp add runemic-files -e RUNEMIC_API_KEY=$RUNEMIC_API_KEY -- npx -y --package=https://runemic.com/mcp/runemic-mcp.tgz runemic-mcp
+
+<span class="c"># Codex: ~/.codex/config.toml</span>
+[mcp_servers.runemic-files]
+command = <span class="s">"npx"</span>
+args = [<span class="s">"-y"</span>, <span class="s">"--package=https://runemic.com/mcp/runemic-mcp.tgz"</span>, <span class="s">"runemic-mcp"</span>]
+env = { RUNEMIC_API_KEY = <span class="s">"rk_live_…"</span> }</pre>
+        <p>Tools: <code>read_file</code> (an image, or a PDF with optional <code>pages</code> like <code>1-3,7</code>), <code>read_folder</code> (every page in a folder in name order, page2 before page10, up to 50), <code>list_models</code> and <code>get_account</code>. Then ask, for example, “read the PDF in my Downloads called letter.pdf”.</p>
+        <h3>Upload links</h3>
+        <p>Assistants that can run commands but can't show the Runemic panel (for example Claude with code execution) can ask <code>create_upload_link</code> on the hosted server for a one-time link: 15 minutes, up to 20 pages, on your account. The saved file is sent with one command and the text comes back in the response. You can also open the link in a browser and choose the file. Images are read and not stored.</p>
+        <pre class="code"><span class="c"># the assistant asks create_upload_link for a link, then sends each saved page:</span>
+curl -s -F <span class="s">"file=@page.png"</span> https://mcp.runemic.com/u/<span class="c">&lt;token&gt;</span></pre>
       </section>
 
       <section id="errors">
@@ -322,6 +359,7 @@ codex mcp login runemic</pre>
       <section id="changelog">
         <h2>Changelog</h2>
         <ul class="ticks">
+          <li><strong>2 Oct 2026</strong>: local MCP server for files, PDFs and folders on your computer (and a Claude Desktop extension); upload links; the fastest model reads MCP pages, with quick fallback.</li>
           <li><strong>1 Oct 2026</strong>: MCP server at <code>https://mcp.runemic.com/mcp</code> for Claude, ChatGPT, Codex, Cursor and VS Code, with sign-in, plus plugins for Claude Code and Codex.</li>
           <li><strong>30 Sep 2026</strong>: OpenAI-compatible <code>POST /v1/chat/completions</code>. Without a <code>model</code>, another model takes over automatically if the default fails or doesn't answer; a chosen model that doesn't answer returns <code>504 model_timeout</code>. Request IDs are now random (<code>req_</code> + 20 characters).</li>
           <li><strong>25 Sep 2026</strong>: <code>stream</code> parameter: get the text while it is being written. Removed <code>preview-qwen-3.8</code>.</li>

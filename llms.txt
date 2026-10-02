@@ -113,6 +113,10 @@ Tools:
 | `list_models` | none | Models with prices. |
 | `get_account` | none | Balance, today's pages and limit, this month's usage. |
 
+Also `create_upload_link` (optional `format`, `instructions`): a one-time link (15 minutes, 20 pages); send saved files with `curl -s -F file=@page.png <url>` and read `text` from the JSON response.
+
+Local server for files on the user's computer (Claude Desktop, Claude Code, Codex, Cursor): `npx -y --package=https://runemic.com/mcp/runemic-mcp.tgz runemic-mcp` with `RUNEMIC_API_KEY` in its environment, or the Claude Desktop extension https://runemic.com/mcp/runemic.mcpb. Tools: `read_file` (`path` to an image or PDF, optional `pages` like `1-3`), `read_folder` (`path`, pages in name order, up to 50), `list_models`, `get_account`.
+
 Tools can't receive images attached in a chat: call `upload_page` so the user can choose the file in Runemic's picker; without MCP Apps support, ask for a link, or for a local file use `POST /v1/ocr` from a shell. Same prices, limits and errors as the API; errors come back as tool results with `isError: true` and the error code in the text.
 
 ### GET /v1/models

@@ -10,7 +10,7 @@ Runemic returns a page's text in reading order, as Markdown (headings, lists and
 ## Which way to send the page
 
 1. **The image is at a public https URL**: call the `read_page` tool of the `runemic` MCP server with `image` set to the URL.
-2. **The image is a local file** (in the workspace or on the user's computer): don't paste base64 into a tool call, which is slow and costly for anything but tiny images. Call the REST API from the shell instead, with the user's key in `RUNEMIC_API_KEY`:
+2. **The image is a local file** (in the workspace or on the user's computer): don't paste base64 into a tool call, which is slow and costly for anything but tiny images. If the local server (`runemic-files`, tools `read_file` / `read_folder`) is connected, give it the path. Otherwise ask the hosted server's `create_upload_link` for a link and send the file with `curl -s -F file=@page.png <url>`, or call the REST API from the shell with the user's key in `RUNEMIC_API_KEY`:
 
    ```sh
    curl -s https://api.runemic.com/v1/ocr \
