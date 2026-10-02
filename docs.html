@@ -274,7 +274,7 @@ codex mcp login runemic</pre>
         <div class="table-wrap"><table class="doc-table">
           <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
           <tbody>
-            <tr><td><code>read_page</code></td><td>Reads one page image, given as a public <code>https</code> URL or a <code>data:</code> URI (PNG, JPEG, WebP or GIF, up to 4 MB). Optional <code>format</code>, <code>model</code> and <code>instructions</code>, as in <a href="#ocr"><code>POST /v1/ocr</code></a>. Returns the text, the model, the cost and your balance.</td></tr>
+            <tr><td><code>read_page</code></td><td>Reads one page image, given as a public <code>https</code> URL or a <code>data:</code> URI (PNG, JPEG, WebP or GIF, up to 4 MB). In ChatGPT, a file you attach to the chat is passed to it directly. Optional <code>format</code>, <code>model</code> and <code>instructions</code>, as in <a href="#ocr"><code>POST /v1/ocr</code></a>; without a <code>model</code>, the fastest model right now reads the page and another takes over if it fails. Returns the text, the model, the cost and your balance.</td></tr>
             <tr><td><code>upload_page</code></td><td>Shows a Runemic file picker in the chat (in assistants that support MCP Apps, such as Claude and ChatGPT). You choose page images from your device, even several at once, and their text is sent to the conversation. Images are read and not stored.</td></tr>
             <tr><td><code>list_models</code></td><td>The models available now, with prices.</td></tr>
             <tr><td><code>get_account</code></td><td>Your credit balance, today's pages and limit, and this month's usage.</td></tr>
