@@ -91,6 +91,7 @@
       <a href="#openai">OpenAI-compatible</a>
       <a href="#mcp">AI assistants (MCP)</a>
       <a href="#mcp-local">Files on your computer</a>
+      <a href="#mcp-pages">Sending pages, help</a>
       <span class="docs-toc__h">Reference</span>
       <a href="#errors">Errors</a>
       <a href="#limits">Rate limits</a>
@@ -282,7 +283,7 @@ codex mcp login runemic</pre>
             <tr><td><code>get_account</code></td><td>Your credit balance, today's pages and limit, and this month's usage.</td></tr>
           </tbody>
         </table></div>
-        <p>Assistants can't pass an image you attach in a chat to a tool, so Runemic brings its own picker: ask the assistant to read a page and choose the file in the Runemic panel that appears. Where no panel can be shown, give a link instead, or use an <a href="#mcp-local">upload link</a>; for files on your computer, add the <a href="#mcp-local">local server</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
+        <p>Which way to send a page depends on where it is: see <a href="#mcp-pages">getting a page to Runemic</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
       </section>
 
       <section id="mcp-local">
@@ -318,6 +319,42 @@ env = { RUNEMIC_API_KEY = <span class="s">"rk_live_…"</span> }</pre>
         <p>Assistants that can run commands but can't show the Runemic panel (for example Claude with code execution) can ask <code>create_upload_link</code> on the hosted server for a one-time link: 15 minutes, up to 20 pages, on your account. The saved file is sent with one command and the text comes back in the response. You can also open the link in a browser and choose the file. Images are read and not stored.</p>
         <pre class="code"><span class="c"># the assistant asks create_upload_link for a link, then sends each saved page:</span>
 curl -s -F <span class="s">"file=@page.png"</span> https://mcp.runemic.com/u/<span class="c">&lt;token&gt;</span></pre>
+      </section>
+
+      <section id="mcp-pages">
+        <h2>Getting a page to Runemic from an assistant</h2>
+        <p>An assistant can only send a tool what it writes into the tool call. It sees an image you attach as a picture, not as the file, so it can't pass the attachment on. Copying the file in as text would mean writing out hundreds of thousands of characters for one page: slow, costly and easy to get wrong. So Runemic offers a way for each situation:</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Where the page is</th><th>What to do</th><th>Works in</th></tr></thead>
+          <tbody>
+            <tr><td>On the web (public <code>https</code> link)</td><td>Give the assistant the link; it calls <code>read_page</code>.</td><td>Every assistant</td></tr>
+            <tr><td>Attached to the chat, or on your phone or computer</td><td>Ask the assistant to read it with Runemic. A Runemic panel opens in the chat; choose the same file there (several pages at once are fine). The text is sent back to the chat.</td><td>Claude, ChatGPT, VS Code and other apps with MCP Apps</td></tr>
+            <tr><td>Attached to the chat in ChatGPT</td><td>Nothing extra: ChatGPT passes the attached file to <code>read_page</code>.</td><td>ChatGPT</td></tr>
+            <tr><td>A file on your computer, a PDF or a folder of pages</td><td>Add the <a href="#mcp-local">local server</a> and give the path, e.g. “read ~/Downloads/letter.pdf”.</td><td>Claude Desktop, Claude Code, Codex, Cursor</td></tr>
+            <tr><td>A file the assistant has saved in its sandbox or terminal</td><td>The assistant asks for an <a href="#mcp-local">upload link</a> and sends the file with <code>curl</code>; the text comes back in the response.</td><td>Assistants that can run commands</td></tr>
+          </tbody>
+        </table></div>
+        <p>This is how MCP servers handle files in general: servers that run on your computer read file paths, hosted servers take links or offer an upload step. Runemic does both.</p>
+        <h3>Privacy and billing</h3>
+        <ul class="ticks">
+          <li>Images are read and discarded, whichever way they arrive. They are never stored or used for training.</li>
+          <li>Each page costs the same as through the API and is charged to the Runemic account you signed in with (or whose key you use). Failed pages are free.</li>
+          <li>Without a chosen model, the model that is fastest right now reads the page; if it fails or doesn't start within 15 seconds, another model takes over.</li>
+          <li>Pages read through an assistant appear in the console's Usage and Logs as “AI assistant” (or under the key's name).</li>
+          <li>Connected apps are listed in the console under Settings → Connected apps, where you can disconnect them. Deleting your account disconnects all of them.</li>
+        </ul>
+        <h3>If something doesn't work</h3>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>What you see</th><th>What to do</th></tr></thead>
+          <tbody>
+            <tr><td>The assistant asks for a link instead of opening the Runemic panel</td><td>The app may still have an older list of Runemic's tools. Disconnect Runemic and connect it again (in Claude: Settings → Connectors), then start a new chat. Apps without MCP Apps support can't show the panel; use a link, an upload link or the local server.</td></tr>
+            <tr><td>“Sign in” keeps coming back</td><td>Allow the connection on the Runemic page that opens, in the same browser where you are signed in to the console. If you cancelled, connect again.</td></tr>
+            <tr><td>The upload link request is blocked</td><td>The assistant's sandbox may not be allowed to reach <code>mcp.runemic.com</code>. Use the Runemic panel or the local server instead.</td></tr>
+            <tr><td>The local server says the key is missing or wrong</td><td>Set <code>RUNEMIC_API_KEY</code> in the server's settings (in Claude Desktop: Settings → Extensions → Runemic OCR). Never paste the key into a chat.</td></tr>
+            <tr><td>A PDF can't be read by the local server</td><td>Install Poppler (<code>brew install poppler</code> on macOS, <code>sudo apt install poppler-utils</code> on Ubuntu), or export the pages as images.</td></tr>
+            <tr><td>The connector shows an old Runemic logo</td><td>Some apps show an icon they saved earlier and refresh it later. Removing and adding the connector again usually updates it.</td></tr>
+          </tbody>
+        </table></div>
       </section>
 
       <section id="errors">
