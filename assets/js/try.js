@@ -422,4 +422,15 @@
       showLeft(d.remaining, d.limit);
     })
     .catch(function () { /* the POST will report problems */ });
+
+  // a page dropped or chosen on the home page (home.js) is read here straight away
+  try {
+    var h = JSON.parse(sessionStorage.getItem("runemic-handoff") || "null");
+    sessionStorage.removeItem("runemic-handoff");
+    if (h && /^data:image\/[a-z+.-]+;base64,/.test(h.data)) {
+      var bin = atob(h.data.split(",")[1]), u8 = new Uint8Array(bin.length);
+      for (var k = 0; k < bin.length; k++) u8[k] = bin.charCodeAt(k);
+      setFile(new File([u8], h.name || "page", { type: h.type || "image/png" }), h.name);
+    }
+  } catch (e) { /* storage unavailable: nothing to pick up */ }
 })();
