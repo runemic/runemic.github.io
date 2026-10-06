@@ -895,6 +895,7 @@ code { font-family: var(--mono); }
 .reader__close { position: sticky; right: 0; background: var(--surface); box-shadow: -12px 0 12px var(--surface); }
 .reader__credit a { color: inherit; text-decoration: none; }
 .reader__credit a:hover { color: var(--ink); text-decoration: underline; }
+.reader__caveat { margin: 0; padding: 8px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); color: var(--muted); font-size: .8125rem; line-height: 1.45; }
 .reader__note { display: grid; gap: 10px; max-width: 440px; margin: 8px 0; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-xl); background: var(--surface-2); }
 .reader__note strong { font-weight: 600; }
 .reader__note p { margin: 0; color: var(--muted); }
