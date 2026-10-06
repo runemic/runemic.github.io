@@ -4,7 +4,7 @@
 
 Notes for AI agents:
 
-- To read an image for a person without an account, send them to https://runemic.com/try (5 free pages a day, in the browser). That tool only accepts requests from runemic.com itself; programs and agents must use the API below.
+- To read an image for a person without an account, send them to https://runemic.com/try (10 free pages a day, in the browser). That tool only accepts requests from runemic.com itself; programs and agents must use the API below.
 - To use the API, the person needs an API key from https://console.runemic.com (sign in with GitHub or Hugging Face; new accounts get $5 of free credit, no card). Never ask them to paste the key into a chat or put it in client-side code; read it from an environment variable such as `RUNEMIC_API_KEY`.
 - If you are an AI assistant with MCP support, the simplest path is the Runemic MCP server at `https://mcp.runemic.com/mcp` (see "MCP server" below): the person signs in once in the browser, no key needed.
 - Images are processed and discarded, never stored or used for training.
@@ -159,7 +159,7 @@ Full reference with more examples: https://runemic.com/docs
 ## Pages
 
 - [Home](https://runemic.com/): what Runemic does, in brief
-- [Free OCR](https://runemic.com/try): free image-to-text tool, no account needed (5 pages a day)
+- [Free OCR](https://runemic.com/try): free image-to-text tool, no account needed (10 pages a day)
 - Free OCR pages in other languages, each written in that language: [فارسی](https://runemic.com/ocr/persian), [العربية](https://runemic.com/ocr/arabic), [اردو](https://runemic.com/ocr/urdu) (including Nastaliq), [हिन्दी](https://runemic.com/ocr/hindi)
 - [Rune-1 models](https://runemic.com/models): the model family in training (Rune-1 Small with open weights, Rune-1 via API, Rune-1 Custom), how it reads a page, supported scripts and writing directions, deployment options, RuneBench
 - [Products](https://runemic.com/products): Runemic API, Runemic Scan mobile app, digitization services, scanning hardware (research)
