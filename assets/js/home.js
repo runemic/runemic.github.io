@@ -7,7 +7,7 @@
   var dataEl = document.getElementById("reader-data");
   if (!stage || !dlg || !root || !dataEl) return;
   var S = JSON.parse(dataEl.textContent);
-  var img = document.getElementById("reader-img"), md = document.getElementById("reader-md"), meta = document.getElementById("reader-meta");
+  var credit = document.getElementById("reader-credit"), img = document.getElementById("reader-img"), md = document.getElementById("reader-md"), meta = document.getElementById("reader-meta");
   var tabs = root.querySelectorAll('.reader__tabs [role="tab"]');
   var floats = stage.querySelectorAll(".float");
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -80,7 +80,8 @@
     tabs.forEach(function (b, k) { b.setAttribute("aria-selected", String(k === cur)); b.tabIndex = k === cur ? 0 : -1; });
     md.dir = s.dir; md.lang = tabs[cur].lang;
     meta.textContent = s.model + " · read in " + (s.ms / 1000).toFixed(1) + " s · $" + s.cost.toFixed(3);
-    img.src = "/assets/samples/" + s.id + ".png"; img.alt = s.name;
+    img.src = "/assets/samples/" + (s.img || s.id + ".png"); img.alt = s.name;
+    credit.textContent = s.credit || ""; credit.hidden = !s.credit;
     if (calm) { render(s.text); return; }
     md.textContent = "";
     void root.offsetWidth; // restart the scan animation
