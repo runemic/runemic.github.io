@@ -30,10 +30,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=1136276c">
+<link rel="stylesheet" href="/assets/css/site.css?v=b86b326e">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/#page","url":"https://runemic.com/","name":"Runemic: OCR for documents that are hard to read","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en"}]}</script>
 <script src="/assets/js/theme.js?v=dddaef34" defer></script>
-<script src="/assets/js/home.js?v=bd11eaec" defer></script>
+<script src="/assets/js/home.js?v=c464411f" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -70,52 +70,52 @@
 <main id="main">
 <section class="stage" aria-labelledby="stage-h" id="stage">
   <div class="stage__floats">
-    <button class="float float--tall" type="button" data-i="0" data-depth="1.1" style="top:5%;left:3%;--w:15vw;--rot:-3deg;--delay:-0.0s" aria-label="Read the Japanese manga page (Give My Regards to Black Jack) with Runemic">
+    <button class="float float--tall" type="button" data-i="0" data-depth="1.1" style="top:5%;left:3%;--w:14vw;--rot:-3deg;--delay:-0.0s" aria-label="Read the Japanese manga page (Give My Regards to Black Jack) with Runemic">
       <span class="float__card">
         <img src="/assets/samples/manga.jpg" alt="" width="900" height="700" fetchpriority="high">
-        <span class="float__tag" lang="ja">日本語</span><span class="float__credit" lang="ja">ブラックジャックによろしく 佐藤秀峰</span>
+        <span class="float__tag" lang="ja">日本語</span><span class="float__credit">ブラックジャックによろしく 佐藤秀峰</span>
         <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
       </span>
     </button>
-    <button class="float" type="button" data-i="1" data-depth="0.5" style="top:52%;left:0.5%;--w:13vw;--rot:2deg;--delay:-1.7s" aria-label="Read the Persian book page with Runemic">
+    <button class="float float--tall" type="button" data-i="1" data-depth="1.2" style="top:4%;right:3%;--w:14vw;--rot:2.5deg;--delay:-1.7s" aria-label="Read the Shahnameh folio: Rustam drinks wine with Kay Qubad with Runemic">
       <span class="float__card">
-        <img src="/assets/samples/persian.png" alt="" width="900" height="700" fetchpriority="high">
-        <span class="float__tag" lang="fa">فارسی</span>
+        <img src="/assets/samples/shahnameh.jpg" alt="" width="900" height="700" fetchpriority="high">
+        <span class="float__tag" lang="fa">فارسی</span><span class="float__credit">From The New York Public Library</span>
         <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
       </span>
     </button>
-    <button class="float" type="button" data-i="2" data-depth="1.2" style="top:4%;right:1.5%;--w:20vw;--rot:2.5deg;--delay:-3.4s" aria-label="Read the English invoice with a table with Runemic">
+    <button class="float" type="button" data-i="2" data-depth="0.8" style="bottom:3%;right:14%;--w:16vw;--rot:3deg;--delay:-3.4s" aria-label="Read the English invoice with a table with Runemic">
       <span class="float__card">
         <img src="/assets/samples/invoice.png" alt="" width="900" height="700" loading="lazy">
         <span class="float__tag" lang="en">Invoice</span>
         <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
       </span>
     </button>
-    <button class="float" type="button" data-i="3" data-depth="0.6" style="bottom:3%;right:1%;--w:13vw;--rot:-2deg;--delay:-5.1s" aria-label="Read the Arabic notice with Runemic">
+    <button class="float float--tall" type="button" data-i="3" data-depth="0.5" style="top:47%;left:1%;--w:11vw;--rot:2deg;--delay:-5.1s" aria-label="Read the Chinese woodblock print, 19th century with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/chinese.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="zh-Hant">中文</span><span class="float__credit">Wellcome Collection · CC BY 4.0</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float" type="button" data-i="4" data-depth="0.9" style="bottom:3%;left:13%;--w:15vw;--rot:-2deg;--delay:-6.8s" aria-label="Read the Arabic notice with Runemic">
       <span class="float__card">
         <img src="/assets/samples/arabic.png" alt="" width="900" height="700" loading="lazy">
         <span class="float__tag" lang="ar">العربية</span>
         <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
       </span>
     </button>
-    <button class="float" type="button" data-i="4" data-depth="0.9" style="bottom:4%;left:11%;--w:16vw;--rot:-2deg;--delay:-6.8s" aria-label="Read the Hindi book page with Runemic">
+    <button class="float" type="button" data-i="5" data-depth="0.6" style="top:50%;right:1%;--w:12vw;--rot:-3deg;--delay:-8.5s" aria-label="Read the Hindi book page with Runemic">
       <span class="float__card">
         <img src="/assets/samples/hindi.png" alt="" width="900" height="700" loading="lazy">
         <span class="float__tag" lang="hi">हिन्दी</span>
         <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
       </span>
     </button>
-    <button class="float" type="button" data-i="5" data-depth="0.7" style="top:44%;right:1%;--w:14vw;--rot:-3deg;--delay:-8.5s" aria-label="Read the Urdu page in Nastaliq with Runemic">
+    <button class="float float--tall" type="button" data-i="6" data-depth="0.7" style="bottom:2%;right:1%;--w:10vw;--rot:2deg;--delay:-10.2s" aria-label="Read the Grimm's Fairy Tales, first edition 1812: Aschenputtel with Runemic">
       <span class="float__card">
-        <img src="/assets/samples/urdu.png" alt="" width="900" height="700" loading="lazy">
-        <span class="float__tag" lang="ur">اردو</span>
-        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
-      </span>
-    </button>
-    <button class="float" type="button" data-i="6" data-depth="0.8" style="bottom:2%;right:15%;--w:17vw;--rot:3deg;--delay:-10.2s" aria-label="Read the German letter with Runemic">
-      <span class="float__card">
-        <img src="/assets/samples/letter.png" alt="" width="900" height="700" loading="lazy">
-        <span class="float__tag" lang="de">Deutsch</span>
+        <img src="/assets/samples/grimm.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="de">Fraktur</span><span class="float__credit">Brüder Grimm, 1812 · public domain</span>
         <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
       </span>
     </button>
@@ -136,16 +136,17 @@
         <button type="button" role="tab" data-i="0" aria-selected="true" lang="ja">日本語</button>
         <button type="button" role="tab" data-i="1" aria-selected="false" lang="fa">فارسی</button>
         <button type="button" role="tab" data-i="2" aria-selected="false" lang="en">Invoice</button>
-        <button type="button" role="tab" data-i="3" aria-selected="false" lang="ar">العربية</button>
-        <button type="button" role="tab" data-i="4" aria-selected="false" lang="hi">हिन्दी</button>
-        <button type="button" role="tab" data-i="5" aria-selected="false" lang="ur">اردو</button>
-        <button type="button" role="tab" data-i="6" aria-selected="false" lang="de">Deutsch</button>
+        <button type="button" role="tab" data-i="3" aria-selected="false" lang="zh-Hant">中文</button>
+        <button type="button" role="tab" data-i="4" aria-selected="false" lang="ar">العربية</button>
+        <button type="button" role="tab" data-i="5" aria-selected="false" lang="hi">हिन्दी</button>
+        <button type="button" role="tab" data-i="6" aria-selected="false" lang="de">Fraktur</button>
+        <button type="button" role="tab" data-i="7" aria-selected="false" lang="ur">اردو</button>
       <button class="reader__close" type="button" id="reader-close" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
     <div class="reader__body">
       <figure class="reader__page">
         <img id="reader-img" src="/assets/samples/manga.jpg" alt="Japanese manga page (Give My Regards to Black Jack)" width="900" height="700">
-        <figcaption class="reader__credit" id="reader-credit" lang="ja">ブラックジャックによろしく 佐藤秀峰</figcaption>
+        <figcaption class="reader__credit" id="reader-credit"><a id="reader-credit-link" href="https://densho810.com/free/" target="_blank" rel="noopener">ブラックジャックによろしく 佐藤秀峰</a></figcaption>
         <span class="reader__scan" aria-hidden="true"></span>
       </figure>
       <div class="reader__out">
@@ -159,7 +160,7 @@
       <span><strong>Read your own page.</strong> Drop an image here or choose a file; it's free, no account needed.</span>
     </label>
   </div>
-  <script type="application/json" id="reader-data">[{"id": "manga", "img": "manga.jpg", "tall": true, "label": "日本語", "name": "Japanese manga page (Give My Regards to Black Jack)", "dir": "ltr", "model": "preview-gemma-4", "ms": 1998, "cost": 0.002, "credit": "ブラックジャックによろしく 佐藤秀峰", "text": "第5話\n外科と内科と医局と斉藤、\n\nそれでは\n皆さん!!\n\n我らが最愛の\n恩師春日部教授の\nご挨拶です!!"}, {"id": "persian", "label": "فارسی", "name": "Persian book page", "dir": "rtl", "model": "preview-gemma-4", "ms": 4086, "cost": 0.002, "text": "# فصل سوم\n## کتابخانه‌ای در کنار رودخانه\n\nدر شهر کوچک ما کتابخانه‌ای قدیمی بود که دیوارهایش از آجر سرخ ساخته شده بود. هر صبح، پیش از آنکه آفتاب به قفسه‌ها برسد، کتابدار پیر پنجره‌ها را باز می‌کرد تا بوی کاغذ کهنه با نسیم رودخانه درآمیزد.\n\nدر آن سال‌ها کسی نمی‌دانست که بسیاری از این دست‌نوشته‌ها تنها نسخه باقی‌مانده از خود هستند. برخی را خوشنویسان گمنام در قرن سیزدهم نوشته بودند و برخی دیگر یادداشت‌های روزانه بازرگانی بودند که از راه ابریشم می‌گذشتند.\n\nامروز این صفحه‌ها یکی یکی اسکن می‌شوند تا هر کسی، در هر جای جهان، بتواند آن‌ها را بخواند و جست‌وجو کند.\n\n— ۴۷ —"}, {"id": "invoice", "label": "Invoice", "name": "English invoice with a table", "dir": "ltr", "model": "preview-gemma-4", "ms": 5522, "cost": 0.002, "text": "# INVOICE\n\nNo. 2026-0417 · 12 September 2026\n\n**Northfield Paper Works**\n8 Mill Lane\nHarrowgate HG4 2PL\nVAT GB 918 2217 40\n\n**Bill to**\nElm Street Community Library\nAttn. Ms. R. Okafor\n41 Elm Street, Leeds LS6 3AB\n\n| Description | Qty | Unit price | Amount |\n| :--- | :--- | :--- | :--- |\n| Archival storage boxes, A4, acid-free | 40 | £3.20 | £128.00 |\n| Book scanning, bound volumes (per page) | 1,250 | £0.08 | £100.00 |\n| Conservation tissue, 50 sheets | 3 | £14.50 | £43.50 |\n| | | Subtotal | £271.50 |\n| | | VAT 20% | £54.30 |\n| | | **Total due** | **£325.80** |\n\nPayment due within 30 days. Thank you for your order."}, {"id": "arabic", "label": "العربية", "name": "Arabic notice", "dir": "rtl", "model": "preview-gemma-4", "ms": 2786, "cost": 0.002, "text": "# إعلان\n\n## مكتبة المدينة العامة\n\nيسرّ مكتبة المدينة أن تعلن عن افتتاح قاعة المخطوطات بعد ترميمها. تضم القاعة أكثر من ألفي مخطوطة قديمة في الأدب والفلك والطب، جُمعت على مدى قرنين.\n\nتفتح القاعة أبوابها يوميًا من الساعة التاسعة صباحًا حتى الرابعة عصرًا، ما عدا يوم الجمعة. يُرجى من الزوار إبراز بطاقة المكتبة عند الدخول.\n\nللاستفسار يمكنكم الاتصال على الرقم ٤٥٦٧ ١٢٣ أو زيارة مكتب الاستعلامات في الطابق الأول.\n\n— ١٢ —"}, {"id": "hindi", "label": "हिन्दी", "name": "Hindi book page", "dir": "ltr", "model": "preview-gemma-4", "ms": 1915, "cost": 0.002, "text": "# अध्याय दो\n\n## नदी किनारे का पुस्तकालय\n\nहमारे छोटे से शहर में एक पुराना पुस्तकालय था, जिसकी दीवारें लाल ईंटों से बनी थीं। हर सुबह पुस्तकालय के बूढ़े कर्मचारी खिड़कियाँ खोल देते थे, ताकि ताज़ी हवा अंदर आ सके।\n\nवहाँ हज़ारों पुरानी किताबें और हस्तलिखित पांडुलिपियाँ रखी थीं। आज इन पन्नों को एक-एक करके स्कैन किया जा रहा है, ताकि कोई भी उन्हें पढ़ और खोज सके।\n\n— ३१ —"}, {"id": "urdu", "label": "اردو", "name": "Urdu page in Nastaliq", "dir": "rtl", "model": "preview-gemma-4", "ms": 2000, "cost": 0.002, "text": "# باب دوم\n\n## پرانی کتابوں کی دکان\n\nشہر کے پرانے بازار میں ایک چھوٹی سی دکان تھی جہاں پرانی کتابیں بکتی تھیں۔ دکاندار ہر کتاب کو بڑی احتیاط سے صاف کرتا اور الماری میں رکھتا تھا۔\n\nلوگ دور دور سے آتے اور گھنٹوں کتابیں دیکھتے رہتے۔ کچھ کتابیں اتنی پرانی تھیں کہ ان کے صفحہ ہاتھ لگاتے ہی ٹوٹنے لگتے تھے۔\n\n—۲۳—"}, {"id": "letter", "label": "Deutsch", "name": "German letter", "dir": "ltr", "model": "preview-mistral-small", "ms": 6174, "cost": 0.003, "text": "Heimatverein Lindenbrück e.V. · Am Marktplatz 3 · 37581 Lindenbrück\n\nFrau\nDr. Johanna Weiß\nKreisarchiv Nordheide\nSchlossstraße 12\n37574 Nordheim\n\nLindenbrück, den 3. September 2026\n\n# Digitalisierung der Kirchenbücher 1754–1899\n\nSehr geehrte Frau Dr. Weiß,\n\nwir bedanken uns herzlich für Ihre Unterstützung bei der Sichtung unserer Bestände. Wie besprochen möchten wir die Tauf-, Trau- und Sterbebücher der Gemeinde vollständig digitalisieren lassen, damit Familienforscher sie künftig online durchsuchen können.\n\nDie Bücher umfassen etwa 2.300 Seiten in deutscher Kurrentschrift. Könnten Sie uns bis Ende Oktober mitteilen, ob das Kreisarchiv die Scans übernehmen kann?\n\nMit freundlichen Grüßen\n\nFriedrich Albers\nVorsitzender"}]</script>
+  <script type="application/json" id="reader-data">[{"id": "manga", "img": "manga.jpg", "tall": true, "label": "日本語", "name": "Japanese manga page (Give My Regards to Black Jack)", "dir": "ltr", "model": "preview-gemma-4", "ms": 1998, "cost": 0.002, "credit": "ブラックジャックによろしく 佐藤秀峰", "text": "第5話\n外科と内科と医局と斉藤、\n\nそれでは\n皆さん!!\n\n我らが最愛の\n恩師春日部教授の\nご挨拶です!!", "credit_url": "https://densho810.com/free/"}, {"id": "shahnameh", "img": "shahnameh.jpg", "tall": true, "target": true, "label": "فارسی", "name": "Shahnameh folio: Rustam drinks wine with Kay Qubad", "dir": "rtl", "credit": "From The New York Public Library", "credit_url": "https://digitalcollections.nypl.org/items/843ef6b0-c6c2-012f-a338-58d385a7bc34", "note": "A Shahnameh manuscript page: Nastaliq calligraphy in four columns around a painting. Today's preview models can't read pages like this yet; they repeat or invent lines. Reading them is what Rune-1 is being trained for."}, {"id": "invoice", "label": "Invoice", "name": "English invoice with a table", "dir": "ltr", "model": "preview-gemma-4", "ms": 5522, "cost": 0.002, "text": "# INVOICE\n\nNo. 2026-0417 · 12 September 2026\n\n**Northfield Paper Works**\n8 Mill Lane\nHarrowgate HG4 2PL\nVAT GB 918 2217 40\n\n**Bill to**\nElm Street Community Library\nAttn. Ms. R. Okafor\n41 Elm Street, Leeds LS6 3AB\n\n| Description | Qty | Unit price | Amount |\n| :--- | :--- | :--- | :--- |\n| Archival storage boxes, A4, acid-free | 40 | £3.20 | £128.00 |\n| Book scanning, bound volumes (per page) | 1,250 | £0.08 | £100.00 |\n| Conservation tissue, 50 sheets | 3 | £14.50 | £43.50 |\n| | | Subtotal | £271.50 |\n| | | VAT 20% | £54.30 |\n| | | **Total due** | **£325.80** |\n\nPayment due within 30 days. Thank you for your order."}, {"id": "chinese", "img": "chinese.jpg", "tall": true, "label": "中文", "name": "Chinese woodblock print, 19th century", "dir": "ltr", "model": "preview-gemma-4", "ms": 2888, "cost": 0.002, "credit": "Wellcome Collection · CC BY 4.0", "credit_url": "https://commons.wikimedia.org/wiki/File:C9_Chinese_obstetrics_text,_C19_re-edition,_Woodblock_print_Wellcome_L0039999.jpg", "text": "經效產寶卷之上\n節度相國白敏家藏善本\n姬妊娠三個月腹痛時下血\n療姬妊娠四個月腹痛時下血\n續斷捌分\n竹茹肆分\n艾葉陸分妙\n陸分妙當歸陸分灸\n千地黃陸分阿膠肆分灸\n右以水壹升煎取陸合去滓空心再服隔日更服\n治姬妊娠六七個月忽胎動下血腸痛不可忍"}, {"id": "arabic", "label": "العربية", "name": "Arabic notice", "dir": "rtl", "model": "preview-gemma-4", "ms": 2786, "cost": 0.002, "text": "# إعلان\n\n## مكتبة المدينة العامة\n\nيسرّ مكتبة المدينة أن تعلن عن افتتاح قاعة المخطوطات بعد ترميمها. تضم القاعة أكثر من ألفي مخطوطة قديمة في الأدب والفلك والطب، جُمعت على مدى قرنين.\n\nتفتح القاعة أبوابها يوميًا من الساعة التاسعة صباحًا حتى الرابعة عصرًا، ما عدا يوم الجمعة. يُرجى من الزوار إبراز بطاقة المكتبة عند الدخول.\n\nللاستفسار يمكنكم الاتصال على الرقم ٤٥٦٧ ١٢٣ أو زيارة مكتب الاستعلامات في الطابق الأول.\n\n— ١٢ —"}, {"id": "hindi", "label": "हिन्दी", "name": "Hindi book page", "dir": "ltr", "model": "preview-gemma-4", "ms": 1915, "cost": 0.002, "text": "# अध्याय दो\n\n## नदी किनारे का पुस्तकालय\n\nहमारे छोटे से शहर में एक पुराना पुस्तकालय था, जिसकी दीवारें लाल ईंटों से बनी थीं। हर सुबह पुस्तकालय के बूढ़े कर्मचारी खिड़कियाँ खोल देते थे, ताकि ताज़ी हवा अंदर आ सके।\n\nवहाँ हज़ारों पुरानी किताबें और हस्तलिखित पांडुलिपियाँ रखी थीं। आज इन पन्नों को एक-एक करके स्कैन किया जा रहा है, ताकि कोई भी उन्हें पढ़ और खोज सके।\n\n— ३१ —"}, {"id": "grimm", "img": "grimm.jpg", "tall": true, "label": "Fraktur", "name": "Grimm's Fairy Tales, first edition 1812: Aschenputtel", "dir": "ltr", "model": "preview-gemma-4", "ms": 6574, "cost": 0.002, "credit": "Brüder Grimm, 1812 · public domain", "credit_url": "https://commons.wikimedia.org/wiki/File:Kinder_und_Hausm%C3%A4rchen_(Grimm)_1812_I_088.jpg", "text": "— 88 —\n\ndas thust du mir nichte nach.“ Der Riese glaubte nun es übertraf niemand auf der Welt das Schneiderlein an Stärke und Klugheit.\n\n(Das weitere siehe.)\n\n*Festung, Juli 10. Oct. 1812.*\n\n21.\n\nAschenputtel.\n\nEs war einmal ein reicher Mann, der lebte lange Zeit vergnügt mit seiner Frau, und sie hatten ein einziges Töchterlein zusammen. Da ward die Frau krank, und als sie todtrank ward, rief sie ihre Tochter und sagte: „liebes Kind, ich muß dich verlassen, aber wenn ich oben im Himmel bin, will ich auf derab sehen, pflanz' ein Bäumlein auf mein Grab, und wenn du etwas wünschest, schütttele daran, so sollst du es haben, und wenn du sonst in Not bist, so will ich dir Hilfe schicken, nur bleibFromm und gut.“ Nachdem sie das gesagt, tat sie die Augen zu und starb; das Kind aber weinte und pflanzte ein Bäumlein auf das Grab und brauchte kein Wasser hin zu tragen, und es zu begießen, denn es war genug mit seinen Thränen.\n\nDer Schnee deckte ein weiß Täuchlein auf der Mutter Grab, und als die Sonne es wieder weggezogen hatte, und das Bäumlein zum zweitenmal grün geworden war, da nahm sich"}, {"id": "urdu", "label": "اردو", "name": "Urdu page in Nastaliq", "dir": "rtl", "model": "preview-gemma-4", "ms": 2000, "cost": 0.002, "text": "# باب دوم\n\n## پرانی کتابوں کی دکان\n\nشہر کے پرانے بازار میں ایک چھوٹی سی دکان تھی جہاں پرانی کتابیں بکتی تھیں۔ دکاندار ہر کتاب کو بڑی احتیاط سے صاف کرتا اور الماری میں رکھتا تھا۔\n\nلوگ دور دور سے آتے اور گھنٹوں کتابیں دیکھتے رہتے۔ کچھ کتابیں اتنی پرانی تھیں کہ ان کے صفحہ ہاتھ لگاتے ہی ٹوٹنے لگتے تھے۔\n\n—۲۳—"}]</script>
 </dialog>
 <div class="wrap">
   <section class="section">

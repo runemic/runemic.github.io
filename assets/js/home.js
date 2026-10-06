@@ -7,7 +7,7 @@
   var dataEl = document.getElementById("reader-data");
   if (!stage || !dlg || !root || !dataEl) return;
   var S = JSON.parse(dataEl.textContent);
-  var credit = document.getElementById("reader-credit"), img = document.getElementById("reader-img"), md = document.getElementById("reader-md"), meta = document.getElementById("reader-meta");
+  var credit = document.getElementById("reader-credit"), creditLink = document.getElementById("reader-credit-link"), img = document.getElementById("reader-img"), md = document.getElementById("reader-md"), meta = document.getElementById("reader-meta");
   var tabs = root.querySelectorAll('.reader__tabs [role="tab"]');
   var floats = stage.querySelectorAll(".float");
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -79,9 +79,18 @@
     var s = S[cur];
     tabs.forEach(function (b, k) { b.setAttribute("aria-selected", String(k === cur)); b.tabIndex = k === cur ? 0 : -1; });
     md.dir = s.dir; md.lang = tabs[cur].lang;
-    meta.textContent = s.model + " · read in " + (s.ms / 1000).toFixed(1) + " s · $" + s.cost.toFixed(3);
+    meta.textContent = s.target ? "Rune-1 · in training" : s.model + " · read in " + (s.ms / 1000).toFixed(1) + " s · $" + s.cost.toFixed(3);
     img.src = "/assets/samples/" + (s.img || s.id + ".png"); img.alt = s.name;
-    credit.textContent = s.credit || ""; credit.hidden = !s.credit;
+    creditLink.textContent = s.credit || ""; creditLink.href = s.credit_url || "#"; credit.hidden = !s.credit;
+    if (s.target) { // a page the preview models can't read yet: say so instead of showing invented text
+      md.textContent = ""; md.dir = "ltr"; md.lang = "en";
+      var n = el("div"); n.className = "reader__note";
+      n.appendChild(el("strong", "Not readable with today's preview models"));
+      n.appendChild(el("p", s.note));
+      var a = el("a", "About Rune-1"); a.href = "/models"; n.appendChild(a);
+      md.appendChild(n);
+      return;
+    }
     if (calm) { render(s.text); return; }
     md.textContent = "";
     void root.offsetWidth; // restart the scan animation
