@@ -160,7 +160,7 @@ Full reference with more examples: https://runemic.com/docs
 
 - [Home](https://runemic.com/): what Runemic does, in brief
 - [Free OCR](https://runemic.com/try): free image-to-text tool, no account needed (5 pages a day)
-- Free OCR pages in other languages, each written in that language: [فارسی](https://runemic.com/fa/persian-ocr), [العربية](https://runemic.com/ar/arabic-ocr), [اردو](https://runemic.com/ur/urdu-ocr) (including Nastaliq), [हिन्दी](https://runemic.com/hi/hindi-ocr)
+- Free OCR pages in other languages, each written in that language: [فارسی](https://runemic.com/ocr/persian), [العربية](https://runemic.com/ocr/arabic), [اردو](https://runemic.com/ocr/urdu) (including Nastaliq), [हिन्दी](https://runemic.com/ocr/hindi)
 - [Rune-1 models](https://runemic.com/models): the model family in training (Rune-1 Small with open weights, Rune-1 via API, Rune-1 Custom), how it reads a page, supported scripts and writing directions, deployment options, RuneBench
 - [Products](https://runemic.com/products): Runemic API, Runemic Scan mobile app, digitization services, scanning hardware (research)
 - [Pricing](https://runemic.com/pricing): business model (open weights, pay-per-page API, enterprise licences, app subscription, per-project digitization) and FAQ
