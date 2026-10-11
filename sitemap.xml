@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://runemic.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://runemic.com/try</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://runemic.com/ocr/persian</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/arabic</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/urdu</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/hindi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/japanese</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/korean</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/chinese</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/german</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/ocr/russian</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/compare/best-ocr-persian</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/models</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/products</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/docs</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/pricing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://runemic.com/early-access</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://runemic.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://runemic.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://runemic.com/about</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>
