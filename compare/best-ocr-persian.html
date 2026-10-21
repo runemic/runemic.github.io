@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best OCR for Persian (Farsi), tested on 8 pages · Runemic</title>
+<meta name="description" content="Persian OCR tested: 6 engines (Tesseract, PaddleOCR, EasyOCR, Runemic) on 8 Persian pages with known text. Lowest character error rate: Runemic preview: Gemma 4 26B, 3.1%.">
+<link rel="canonical" href="https://runemic.com/compare/best-ocr-persian">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/compare/best-ocr-persian">
+<meta property="og:title" content="Best OCR for Persian (Farsi), tested on 8 pages · Runemic">
+<meta property="og:description" content="Persian OCR tested: 6 engines (Tesseract, PaddleOCR, EasyOCR, Runemic) on 8 Persian pages with known text. Lowest character error rate: Runemic preview: Gemma 4 26B, 3.1%.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Best OCR for Persian (Farsi), tested on 8 pages · Runemic">
+<meta name="twitter:description" content="Persian OCR tested: 6 engines (Tesseract, PaddleOCR, EasyOCR, Runemic) on 8 Persian pages with known text. Lowest character error rate: Runemic preview: Gemma 4 26B, 3.1%.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/compare/best-ocr-persian#page","url":"https://runemic.com/compare/best-ocr-persian","name":"Best OCR for Persian (Farsi), tested on 8 pages","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Persian OCR tested: 6 engines (Tesseract, PaddleOCR, EasyOCR, Runemic) on 8 Persian pages with known text. Lowest character error rate: Runemic preview: Gemma 4 26B, 3.1%."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Best OCR for Persian","item":"https://runemic.com/compare/best-ocr-persian"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <header class="page-head">
+    <h1>Best OCR for Persian, tested</h1>
+    <p class="lede"><b>Runemic preview: Gemma 4 26B</b> made the fewest mistakes on 8 Persian test pages: 3.1% of characters wrong. Results for 6 OCR engines, on the versions listed below.</p>
+    <p class="hero__note"><span class="pill">Made by Runemic</span> <span>Runemic's own models are in this test. The pages, the scoring code and every engine's output are public, so you can check it.</span></p>
+  </header>
+
+  <section class="section">
+    <div class="table-wrap"><table class="doc-table cmp-table">
+      <thead><tr><th class="num">#</th><th>OCR engine</th><th>Runs on</th><th class="num">Character errors</th><th class="num">Word errors</th><th class="num">Failed pages</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td><b>Runemic preview: Gemma 4 26B</b><br><span class="muted small-note">Runemic (hosted model) · preview-gemma-4</span></td>
+          <td>API</td><td class="num cmp-good">3.1%</td><td class="num cmp-good">4.9%</td><td class="num">–</td></tr>
+        <tr><td class="num">2</td><td><b>EasyOCR</b><br><span class="muted small-note">Jaided AI · 1.7.2</span></td>
+          <td>CPU or GPU</td><td class="num cmp-ok">7.2%</td><td class="num cmp-bad">42.6%</td><td class="num">–</td></tr>
+        <tr><td class="num">3</td><td><b>Runemic preview: Llama 4 Scout</b><br><span class="muted small-note">Runemic (hosted model) · preview-llama-4-scout</span></td>
+          <td>API</td><td class="num cmp-ok">7.7%</td><td class="num cmp-ok">9.9%</td><td class="num">–</td></tr>
+        <tr><td class="num">4</td><td><b>PaddleOCR</b><br><span class="muted small-note">Baidu PaddlePaddle · 3.7.0</span></td>
+          <td>CPU or GPU</td><td class="num cmp-ok">9.6%</td><td class="num cmp-weak">26.6%</td><td class="num">–</td></tr>
+        <tr><td class="num">5</td><td><b>Tesseract</b><br><span class="muted small-note">open source (originally Google) · 5.3.4</span></td>
+          <td>CPU</td><td class="num cmp-weak">17.9%</td><td class="num cmp-weak">28.6%</td><td class="num">–</td></tr>
+        <tr><td class="num">6</td><td><b>Runemic preview: Mistral Small 3.1</b><br><span class="muted small-note">Runemic (hosted model) · preview-mistral-small</span></td>
+          <td>API</td><td class="num cmp-weak">18.5%</td><td class="num cmp-weak">31.6%</td><td class="num">–</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Lower is better. Character error rate: the share of characters the engine got wrong, left out or added, compared with the correct text. Averaged over the 8 pages.</p>
+  </section>
+
+  <section class="section">
+    <div class="section__head"><h2>Character errors on each Persian test page</h2></div>
+    <div class="table-wrap"><table class="doc-table cmp-table cmp-table--pages">
+      <thead><tr><th>OCR engine</th><th class="num" title="Modern prose, clean, Vazirmatn">1</th><th class="num" title="Modern prose, Noto Naskh (book font)">2</th><th class="num" title="Poetry in Nastaliq (Hafez, ghazal 1)">3</th><th class="num" title="Table with Persian digits">4</th><th class="num" title="Classical prose, photographed (Saadi, Golestan)">5</th><th class="num" title="Persian mixed with English and numbers">6</th><th class="num" title="Small text, screenshot-like (13 px)">7</th><th class="num" title="Form with headings and a list">8</th></tr></thead>
+      <tbody>
+        <tr><td>Runemic preview: Gemma 4 26B</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.0%</td><td class="num cmp-weak">24.7%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.0%</td></tr>
+        <tr><td>EasyOCR</td><td class="num cmp-good">1.3%</td><td class="num cmp-good">1.8%</td><td class="num cmp-ok">9.8%</td><td class="num cmp-weak">16.1%</td><td class="num cmp-good">2.1%</td><td class="num cmp-ok">13.8%</td><td class="num cmp-ok">11.0%</td><td class="num cmp-good">1.9%</td></tr>
+        <tr><td>Runemic preview: Llama 4 Scout</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">1.1%</td><td class="num cmp-bad">58.7%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.5%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">1.2%</td><td class="num cmp-good">0.0%</td></tr>
+        <tr><td>PaddleOCR</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">1.1%</td><td class="num cmp-bad">47.7%</td><td class="num cmp-weak">16.8%</td><td class="num cmp-good">2.7%</td><td class="num cmp-good">2.7%</td><td class="num cmp-ok">5.2%</td><td class="num cmp-good">1.0%</td></tr>
+        <tr><td>Tesseract</td><td class="num cmp-good">3.4%</td><td class="num cmp-good">1.4%</td><td class="num cmp-bad">43.8%</td><td class="num cmp-bad">53.1%</td><td class="num cmp-ok">7.0%</td><td class="num cmp-weak">22.8%</td><td class="num cmp-ok">7.5%</td><td class="num cmp-good">3.9%</td></tr>
+        <tr><td>Runemic preview: Mistral Small 3.1</td><td class="num cmp-good">0.4%</td><td class="num cmp-bad">48.0%</td><td class="num cmp-bad">54.0%</td><td class="num cmp-bad">40.6%</td><td class="num cmp-good">0.0%</td><td class="num cmp-good">0.0%</td><td class="num cmp-ok">5.2%</td><td class="num cmp-good">0.0%</td></tr>
+      </tbody>
+    </table></div>
+    <ol class="cmp-legend"><li><b>1</b> Modern prose, clean, Vazirmatn</li><li><b>2</b> Modern prose, Noto Naskh (book font)</li><li><b>3</b> Poetry in Nastaliq (Hafez, ghazal 1)</li><li><b>4</b> Table with Persian digits</li><li><b>5</b> Classical prose, photographed (Saadi, Golestan)</li><li><b>6</b> Persian mixed with English and numbers</li><li><b>7</b> Small text, screenshot-like (13 px)</li><li><b>8</b> Form with headings and a list</li></ol>
+  </section>
+
+  <section class="section">
+    <div class="section__head"><h2>The 8 Persian test pages</h2>
+      <p>Each page was rendered from text we know, so every mistake can be counted exactly. The classical texts are public domain (Hafez, Saadi); the modern texts were written for this test.</p></div>
+    <div class="cmp-gallery"><figure class="cmp-page"><img src="/assets/bench/fa/01-modern-vazir.png" alt="Test page 1: Modern prose, clean, Vazirmatn" loading="lazy"><figcaption>1. Modern prose, clean, Vazirmatn</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/02-modern-naskh.png" alt="Test page 2: Modern prose, Noto Naskh (book font)" loading="lazy"><figcaption>2. Modern prose, Noto Naskh (book font)</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/03-hafez-nastaliq.png" alt="Test page 3: Poetry in Nastaliq (Hafez, ghazal 1)" loading="lazy"><figcaption>3. Poetry in Nastaliq (Hafez, ghazal 1)</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/04-table-digits.png" alt="Test page 4: Table with Persian digits" loading="lazy"><figcaption>4. Table with Persian digits</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/05-golestan-photo.jpg" alt="Test page 5: Classical prose, photographed (Saadi, Golestan)" loading="lazy"><figcaption>5. Classical prose, photographed (Saadi, Golestan)</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/06-mixed-latin.png" alt="Test page 6: Persian mixed with English and numbers" loading="lazy"><figcaption>6. Persian mixed with English and numbers</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/07-small-screenshot.png" alt="Test page 7: Small text, screenshot-like (13 px)" loading="lazy"><figcaption>7. Small text, screenshot-like (13 px)</figcaption></figure><figure class="cmp-page"><img src="/assets/bench/fa/08-form.png" alt="Test page 8: Form with headings and a list" loading="lazy"><figcaption>8. Form with headings and a list</figcaption></figure></div>
+  </section>
+
+  <section class="section">
+    <div class="section__head"><h2>How the Persian OCR test works</h2></div>
+    <ul class="ticks">
+      <li>Every engine reads the same 8 images with its default settings, as its makers ship it.</li>
+      <li>Before scoring, all output is normalised the same way: Arabic and Persian forms of ی and ک, digits, short vowels and Markdown marks don't count as errors. Character errors leave out spaces and the zero-width non-joiner, which Persian writers use inconsistently; word errors count them.</li>
+      <li>Runemic's preview models are called through the public API, like any customer would.</li>
+      <li>Not tested yet: Google Cloud Vision, ABBYY FineReader, Adobe Acrobat and Mistral OCR (paid services). GLM-OCR and LightOnOCR don't list Persian as a language.</li>
+    </ul>
+    <div class="hero__cta">
+      <a class="btn btn--ghost" href="https://github.com/runemic/runebench/tree/main/fa">Test pages and scoring code <span class="arrow"></span></a>
+      <a class="btn btn--ghost" href="/assets/bench/fa/results.json">All results (JSON)</a>
+      <a class="btn btn--ghost" href="https://huggingface.co/spaces/runemic-ai/ocr-arena">Compare engines yourself in OCR Arena</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="band">
+      <div>
+        <h2>Try Persian OCR on your own page</h2>
+        <p>Free to try, no account.</p>
+        <a class="btn btn--primary" href="/ocr/persian">Persian image to text <span class="arrow"></span></a>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runemic products: OCR API, Scan app and digitization services</title>
+<meta name="description" content="Runemic's three products: the OCR API (page images to Markdown, 2,500 free credits), the Runemic Scan app, and digitization for libraries and archives.">
+<link rel="canonical" href="https://runemic.com/products">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/products">
+<meta property="og:title" content="Runemic products: OCR API, Scan app and digitization services">
+<meta property="og:description" content="Runemic's three products: the OCR API (page images to Markdown, 2,500 free credits), the Runemic Scan app, and digitization for libraries and archives.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Runemic products: OCR API, Scan app and digitization services">
+<meta name="twitter:description" content="Runemic's three products: the OCR API (page images to Markdown, 2,500 free credits), the Runemic Scan app, and digitization for libraries and archives.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/products#page","url":"https://runemic.com/products","name":"Runemic products: OCR API, Scan app and digitization services","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Runemic's three products: the OCR API (page images to Markdown, 2,500 free credits), the Runemic Scan app, and digitization for libraries and archives."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://runemic.com/products"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+<script src="/assets/js/pages.js?v=1a3ed13b" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products" aria-current="page">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="sub sub--short">
+  <div class="sub__copy">
+    <h1>Runemic products: <em>the OCR API, the Scan app and digitization.</em></h1>
+    <p class="lede">The Runemic OCR API is live in preview. The Scan app and digitization services run on the same models.</p>
+  </div>
+</section>
+<div class="wrap">
+
+  <section class="section" id="api">
+    <div class="split">
+      <div>
+        <div class="product-head"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13.5 5-3 14"/></svg></span><span class="pill pill--dev">Preview live</span></div>
+        <h2>Runemic API</h2>
+        <p class="muted">Send a page image and get its text back in reading order, as Markdown or plain text, with tables kept. Use it when you need document text in your product, search index or LLM pipeline and don't want to run models yourself. The preview runs open models; <a href="/models#family">Rune-1</a> replaces them when it's ready.</p>
+        <ul class="ticks">
+          <li>Today: PNG, JPEG, WebP or GIF in; Markdown or plain text out. PDF input and JSON output come with Rune-1</li>
+          <li>A fixed number of credits per page, with a lower rate for batch jobs later</li>
+          <li>We don't use your documents for training</li>
+          <li>Sign in with GitHub or Hugging Face and get <strong>2,500 free credits</strong></li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://console.runemic.com#keys" data-in="Open your API keys">Get an API key <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="/try">Try it in your browser</a>
+        </div>
+      </div>
+      <pre class="code" aria-label="Example API request"><span class="c"># Preview models today; Rune-1 when it launches</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@letter.png"</span> \
+  -F <span class="s">"model=preview-gemma-4"</span>
+
+<span class="c"># → Markdown text, in reading order</span>
+{ <span class="k">"object"</span>: <span class="s">"ocr.result"</span>,
+  <span class="k">"text"</span>: <span class="s">"# Letter\n\nDear …"</span>,
+  <span class="k">"usage"</span>: { <span class="k">"pages"</span>: 1, <span class="k">"credits_used"</span>: 2 },
+  <span class="k">"credits_left"</span>: 2498 }</pre>
+    </div>
+  </section>
+
+  <section class="section" id="scan">
+    <div class="split split--flip">
+      <div>
+        <div class="product-head"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M9.5 6.5h-1v1.5M14.5 6.5h1v1.5M9.5 15.5h-1V14M14.5 15.5h1V14"/><path d="M10.5 18.5h3"/></svg></span><span class="pill pill--dev">In development</span></div>
+        <h2>Runemic Scan</h2>
+        <p class="muted">A scanner app for everyday paper. Take a photo of a receipt, bill, letter or contract, and Runemic Scan straightens it, reads it, picks out amounts and due dates, and files it.</p>
+        <ul class="ticks">
+          <li>Keeps track of bills and receipts</li>
+          <li>Search everything you've scanned</li>
+          <li>Reads Arabic, Persian, Hindi and other scripts, not only Latin</li>
+          <li>Export to PDF, spreadsheets or accounting software</li>
+        </ul>
+        <a class="btn btn--ghost" href="/early-access?interest=scan">Join the waitlist <span class="arrow"></span></a>
+      </div>
+      <figure class="phonefig" role="img" aria-label="The Runemic Scan app reading an 1900 receipt and picking out the seller, the date, the buyer and the amount.">
+        <span class="phonefig__phone">
+          <span class="phonefig__bar">Scan</span>
+          <span class="phonefig__photo"><img src="/assets/samples/invoice-1900.jpg" alt="" width="800" height="476" loading="lazy" decoding="async">
+            <span class="phonefig__box" style="top:5%;left:16%;width:48%;height:13%"><span>Seller</span></span>
+            <span class="phonefig__box" style="top:45%;left:64%;width:28%;height:8%"><span>Date</span></span>
+            <span class="phonefig__box" style="top:54%;left:5%;width:62%;height:7%"><span>Buyer</span></span>
+            <span class="phonefig__box" style="top:70%;left:79%;width:9%;height:7%"><span>Amount</span></span>
+          </span>
+          <span class="phonefig__fields">
+            <span><b>Seller</b>S. Grover Graham Co.</span>
+            <span><b>Date</b>11 April 1900</span>
+            <span><b>Buyer</b>E. K. Thompson &amp; Sons</span>
+            <span><b>Amount</b>90</span>
+          </span>
+        </span>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="digitization">
+    <div class="section__head">
+      <div class="product-head"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3v16H5z"/><path d="M10 4h3v16h-3z"/><path d="m15.2 5.3 2.9-.8 3.4 14.6-2.9.7z"/><path d="M3 20h18"/></svg></span><span class="pill">Taking enquiries</span></div>
+      <h2>Digitization services</h2>
+      <p>For libraries, archives, publishers, universities, companies and families with boxes of paper. We plan the project, scan on-site or in our studio, run OCR, check the results and deliver searchable files and structured data. See <a href="/pricing#apps">how projects are priced</a>.</p>
+    </div>
+    
+  <figure class="archive" data-show="archive" role="img" aria-label="Scanned pages from a manuscript, a book, a newspaper and old records. Searching the archive for Aschenputtel finds page 88 of the 1812 Kinder- und Hausmärchen.">
+    <span class="archive__pages"><span class="pagefig__card" style="--rot:-3deg"><img src="/assets/samples/shahnameh.jpg" alt="" width="600" height="800" loading="lazy" decoding="async"><span class="float__tag">Manuscript</span></span><span class="pagefig__card archive__hitpage" style="--rot:1.5deg"><img src="/assets/samples/grimm.jpg" alt="" width="600" height="800" loading="lazy" decoding="async"><span class="float__tag">Book, 1812</span></span><span class="pagefig__card" style="--rot:-1deg"><img src="/assets/samples/arabic-1897.jpg" alt="" width="600" height="800" loading="lazy" decoding="async"><span class="float__tag">Newspaper, 1897</span></span><span class="pagefig__card" style="--rot:2.5deg"><img src="/assets/samples/hindi-1882.jpg" alt="" width="600" height="800" loading="lazy" decoding="async"><span class="float__tag">Records, 1882</span></span></span>
+    <span class="archive__panel" aria-hidden="true">
+      <span class="archive__label">Search the archive</span>
+      <span class="digi__search"><span class="digi__q" data-q="Aschenputtel"></span></span>
+      <span class="digi__hit"><b>Kinder- und Hausmärchen, 1812</b> p. 88 · “21. <mark>Aschenputtel</mark>. Es war einmal ein reicher Mann…”</span>
+    </span>
+  </figure>
+    <div class="grid grid--3" style="margin-top:32px">
+      <div class="card"><h3>Libraries and archives</h3><p>Books, manuscripts, newspapers and records, with handwritten text recognition for historical hands, delivered in open formats such as PDF/A, ALTO and IIIF.</p></div>
+      <div class="card"><h3>Businesses</h3><p>Contracts, invoices and old files, turned into data your systems can search.</p></div>
+      <div class="card"><h3>Personal archives</h3><p>Family letters, diaries and documents: scanned, transcribed and kept private.</p></div>
+    </div>
+    <p style="margin-top:24px"><a class="btn btn--primary" href="/early-access?interest=digitization">Ask about a project <span class="arrow"></span></a></p>
+  </section>
+
+  <section class="section" id="hardware">
+    <div class="split">
+      <div>
+        <div class="product-head"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></svg></span><span class="pill pill--research">Research</span></div>
+        <h2>Scanning hardware</h2>
+        <p class="muted">Book and document scanners designed around our models, with cradles, lighting and cameras set up to give the OCR clean images. We'll build them for our own digitization work first, then offer them to libraries that want to scan in-house.</p>
+      </div>
+      <div class="grid grid--2">
+        <div class="card"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 19 6v5c0 4.4-2.9 8.2-7 10-4.1-1.8-7-5.6-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>On your own machines</h3><p>Self-hosted and on-device options, so sensitive documents don't have to leave your building.</p></div>
+        <div class="card"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5.5L12 3v18"/><path d="M12 9h7a1 1 0 0 1 1 1v11"/><path d="M3 21h18"/><path d="M7.5 8h1M7.5 12h1M7.5 16h1M15.5 13h1M15.5 17h1"/></svg></span><h3>For institutions</h3><p>Procurement, security reviews and long-term support for public bodies and companies.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four open OCR models, now in the console · Runemic</title>
+<meta name="description" content="GLM-OCR, LightOnOCR-3, dots.mocr and KDL Frontier Parser nano now run on Runemic's own GPUs. What each is good at, what they cost, and why the first page can take a few minutes.">
+<link rel="canonical" href="https://runemic.com/blog/open-ocr-models-in-the-console">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/blog/open-ocr-models-in-the-console">
+<meta property="og:title" content="Four open OCR models, now in the console · Runemic">
+<meta property="og:description" content="GLM-OCR, LightOnOCR-3, dots.mocr and KDL Frontier Parser nano now run on Runemic's own GPUs. What each is good at, what they cost, and why the first page can take a few minutes.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Four open OCR models, now in the console · Runemic">
+<meta name="twitter:description" content="GLM-OCR, LightOnOCR-3, dots.mocr and KDL Frontier Parser nano now run on Runemic's own GPUs. What each is good at, what they cost, and why the first page can take a few minutes.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BlogPosting","@id":"https://runemic.com/blog/open-ocr-models-in-the-console#page","url":"https://runemic.com/blog/open-ocr-models-in-the-console","name":"Four open OCR models, now in the console","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"GLM-OCR, LightOnOCR-3, dots.mocr and KDL Frontier Parser nano now run on Runemic's own GPUs. What each is good at, what they cost, and why the first page can take a few minutes.","headline":"Four open OCR models, now in the console","author":{"@id":"https://runemic.com/#org"},"publisher":{"@id":"https://runemic.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://runemic.com/blog"},{"@type":"ListItem","position":3,"name":"Four open OCR models, now in the console","item":"https://runemic.com/blog/open-ocr-models-in-the-console"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <article class="post prose">
+    <header class="page-head">
+      <p class="post__meta"><a href="/blog">Blog</a> · Product update · 2 min read</p>
+      <h1>Four open OCR models, now in the console</h1>
+    </header>
+    <div class="post__body">
+<p>You can now choose four more OCR models in the console and through the API: <strong>GLM-OCR, LightOnOCR-3, dots.mocr and KDL Frontier Parser nano.</strong> They are open models that we run on our own GPUs. Each costs 2 credits a page, like the other preview models.</p>
+<div class="table-wrap"><table class="doc-table"><thead><tr><th>Model</th><th>Made by</th><th>Size</th><th>Good at</th><th>Licence</th></tr></thead><tbody><tr><td>dots.mocr</td><td>rednote hi lab</td><td>about 3B</td><td>multilingual pages, tables and formulas</td><td>MIT</td></tr><tr><td>LightOnOCR-3</td><td>LightOn</td><td>0.8B</td><td>tables, forms, receipts, charts as tables</td><td>Apache 2.0</td></tr><tr><td>KDL Frontier Parser nano</td><td>KoreaDeep</td><td>1.2B</td><td>Korean and English documents</td><td>AGPL-3.0</td></tr><tr><td>GLM-OCR</td><td>Zhipu AI</td><td>0.9B</td><td>tables, formulas, Chinese, Japanese, Korean</td><td>MIT</td></tr></tbody></table></div>
+<h2 id="first-results-on-persian">First results on Persian</h2>
+<p>We read the first page of our <a href="/blog/persian-ocr-benchmark">Persian benchmark</a> with each model. dots.mocr got 0.8% of characters wrong, LightOnOCR-3 2.1% and KDL nano 3.3%. GLM-OCR is not made for Arabic script and got more than half wrong. This is one clean, typed page, not a full test, so treat it as a first impression. The full benchmark run is next.</p>
+<h2 id="the-first-page-after-a-quiet-spell-is-slow">The first page after a quiet spell is slow</h2>
+<p>To keep costs down, these models switch off when nobody is using them. The first page after a quiet spell waits while the model starts: about 3 to 6 minutes, depending on the model. After that, a page takes 1 to 3 seconds.</p>
+<p>So that nobody waits by surprise:</p>
+<ul><li>these models are only used when you <strong>choose</strong> them; Runemic never falls back to them on its own, and the free tool never uses them</li><li>in the playground, a model starts as soon as you pick it, so it is often ready by the time you have chosen a page</li><li>through the API, the request simply waits until the model has started; it does not fail</li></ul>
+<h2 id="how-to-use-them">How to use them</h2>
+<p>In the <a href="https://console.runemic.com/#playground">console</a>, pick a model in the playground, or tick up to three to compare them on the same page. In the API, pass the model id, for example <code>preview-dots-mocr</code>:</p>
+<pre class="code"><code>curl https://api.runemic.com/v1/ocr \
+  -H &quot;Authorization: Bearer $RUNEMIC_API_KEY&quot; \
+  -F &quot;file=@page.png&quot; \
+  -F &quot;model=preview-dots-mocr&quot;</code></pre>
+<p><code>GET /v1/models</code> lists every model with its credits per page. See the <a href="/docs">API docs</a> for the rest.</p>
+    </div>
+  </article>
+  <section class="section">
+    <div class="section__head"><h2>More from the blog</h2></div>
+    <div class="grid grid--2 post-grid">
+      <a class="card post-card" href="/blog/persian-ocr-benchmark">
+        <span class="post-card__cat">Benchmark</span>
+        <h3>How well does OCR read Persian? We tested six engines</h3>
+        <p>On eight Persian test pages, the best engine got 3.1% of characters wrong and the worst 18.5%. Here is how we tested, what each engine got wrong, and how to rerun it.</p>
+        <span class="card__link">Read <span class="arrow"></span></span>
+      </a><a class="card post-card" href="/blog/why-arabic-script-ocr-is-hard">
+        <span class="post-card__cat">Know-how</span>
+        <h3>Why OCR struggles with Persian, Arabic and Urdu</h3>
+        <p>Connected letters, dots that change the letter, calligraphic styles and mixed directions. What makes Arabic-script text hard for OCR, and how to get better results from any engine.</p>
+        <span class="card__link">Read <span class="arrow"></span></span>
+      </a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="card try-card">
+      <div>
+        <h2>Try Runemic OCR free</h2>
+        <p>Read your own pages in the browser, with no account. When you want more, sign in with GitHub or Hugging Face.</p>
+        <ul class="ticks">
+          <li>Free at <a href="/try">runemic.com/try</a>, no sign-up</li>
+          <li>Sign in for <strong>2,500 free credits</strong>, no card needed</li>
+          <li>Compare up to three models, and get an API key with cURL, Python and JavaScript examples</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/try">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="https://console.runemic.com" data-in="Open console">Get an API key</a>
+        </div>
+      </div>
+      <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span>
+
+<span class="c"># →</span> { <span class="k">"text"</span>: <span class="s">"# Invoice No. 4821 …"</span>,
+    <span class="k">"usage"</span>: { <span class="k">"credits_used"</span>: 2 } }</pre>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

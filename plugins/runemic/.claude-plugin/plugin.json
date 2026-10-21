@@ -1,0 +1,9 @@
+{
+  "name": "runemic",
+  "version": "1.0.0",
+  "description": "OCR for documents other tools get wrong: non-Latin scripts, old scans, handwriting and complex layouts. Adds the Runemic MCP server (sign in with your Runemic account) and a skill for reading page images and local files.",
+  "author": { "name": "Runemic", "email": "hello@runemic.com", "url": "https://runemic.com" },
+  "homepage": "https://runemic.com/docs#mcp",
+  "repository": "https://github.com/runemic/runemic.github.io",
+  "keywords": ["ocr", "documents", "arabic", "persian", "urdu", "hindi", "handwriting", "markdown"]
+}

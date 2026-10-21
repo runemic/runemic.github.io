@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rune-1 OCR models: Arabic, Persian, Hindi, CJK, handwriting · Runemic</title>
+<meta name="description" content="Rune-1, Runemic's OCR model family, reads Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting into Markdown or JSON. Open weights and an API.">
+<link rel="canonical" href="https://runemic.com/models">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/models">
+<meta property="og:title" content="Rune-1 OCR models: Arabic, Persian, Hindi, CJK, handwriting · Runemic">
+<meta property="og:description" content="Rune-1, Runemic's OCR model family, reads Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting into Markdown or JSON. Open weights and an API.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rune-1 OCR models: Arabic, Persian, Hindi, CJK, handwriting · Runemic">
+<meta name="twitter:description" content="Rune-1, Runemic's OCR model family, reads Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting into Markdown or JSON. Open weights and an API.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/models#page","url":"https://runemic.com/models","name":"Rune-1 OCR models: Arabic, Persian, Hindi, CJK, handwriting","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Rune-1, Runemic's OCR model family, reads Arabic, Persian, Urdu, Devanagari, Ge'ez, Tibetan, CJK and handwriting into Markdown or JSON. Open weights and an API."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Models","item":"https://runemic.com/models"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+<script src="/assets/js/pages.js?v=1a3ed13b" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models" aria-current="page">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="sub">
+  <div class="sub__copy">
+    <h1>Rune-1 OCR models <em>for Arabic, Indic, CJK and historical scripts.</em></h1>
+    <p class="lede">Rune-1 is Runemic's OCR model family. It finds the layout, works out the reading order, then reads each line into Markdown or JSON.</p><p class="hero__note"><span class="pill pill--dev">In training</span> <span>Meanwhile, <a href="/try">try the preview models free</a>.</span></p>
+  </div>
+  <div class="show show--pipe" data-show="pipeline" aria-label="Animation: Rune-1's four steps on a sample letter">
+    <ol class="pipe__steps"><li data-step="0"><span>1</span>Layout</li><li data-step="1"><span>2</span>Reading order</li><li data-step="2"><span>3</span>Recognition</li><li data-step="3"><span>4</span>Structure</li></ol>
+    <div class="pipe__grid">
+      <figure class="pipe__page">
+        <img src="/assets/samples/letter.png" alt="A typed German letter about digitizing church registers" width="900" height="768" fetchpriority="high">
+        <svg class="pipe__svg" viewBox="0 0 900 768" aria-hidden="true">
+          <g class="pipe__lines"><rect class="pipe__line" data-l="0" x="78" y="67" width="381" height="18" rx="3"/><rect class="pipe__line" data-l="1" x="78" y="129" width="36" height="17" rx="3"/><rect class="pipe__line" data-l="2" x="78" y="153" width="125" height="18" rx="3"/><rect class="pipe__line" data-l="3" x="78" y="178" width="160" height="18" rx="3"/><rect class="pipe__line" data-l="4" x="78" y="202" width="118" height="18" rx="3"/><rect class="pipe__line" data-l="5" x="78" y="227" width="120" height="18" rx="3"/><rect class="pipe__line" data-l="6" x="566" y="282" width="257" height="22" rx="3"/><rect class="pipe__line" data-l="7" x="78" y="338" width="335" height="22" rx="3"/><rect class="pipe__line" data-l="8" x="78" y="384" width="194" height="22" rx="3"/><rect class="pipe__line" data-l="9" x="78" y="426" width="744" height="22" rx="3"/><rect class="pipe__line" data-l="10" x="78" y="454" width="745" height="22" rx="3"/><rect class="pipe__line" data-l="11" x="78" y="482" width="392" height="22" rx="3"/><rect class="pipe__line" data-l="12" x="78" y="524" width="745" height="18" rx="3"/><rect class="pipe__line" data-l="13" x="78" y="552" width="403" height="18" rx="3"/><rect class="pipe__line" data-l="14" x="78" y="594" width="174" height="18" rx="3"/><rect class="pipe__line" data-l="15" x="78" y="652" width="115" height="18" rx="3"/><rect class="pipe__line" data-l="16" x="78" y="682" width="80" height="16" rx="3"/></g>
+          <g class="pipe__blks"><rect class="pipe__blk" style="--i:0" x="74" y="63" width="389" height="26" rx="6"/><rect class="pipe__blk" style="--i:1" x="74" y="125" width="168" height="124" rx="6"/><rect class="pipe__blk" style="--i:2" x="562" y="278" width="265" height="30" rx="6"/><rect class="pipe__blk" style="--i:3" x="74" y="334" width="343" height="30" rx="6"/><rect class="pipe__blk" style="--i:4" x="74" y="380" width="202" height="30" rx="6"/><rect class="pipe__blk" style="--i:5" x="74" y="422" width="753" height="86" rx="6"/><rect class="pipe__blk" style="--i:6" x="74" y="520" width="753" height="54" rx="6"/><rect class="pipe__blk" style="--i:7" x="74" y="590" width="182" height="26" rx="6"/><rect class="pipe__blk" style="--i:8" x="74" y="648" width="123" height="54" rx="6"/></g>
+          <path class="pipe__path" d="M70 65 L70 127 L831 280 L70 336 L70 382 L70 424 L70 522 L70 592 L70 650" pathLength="1"/>
+          <g class="pipe__badges"><g class="pipe__badge" style="--i:0"><circle cx="70" cy="65" r="14"/><text x="70" y="70">1</text></g><g class="pipe__badge" style="--i:1"><circle cx="70" cy="127" r="14"/><text x="70" y="132">2</text></g><g class="pipe__badge" style="--i:2"><circle cx="831" cy="280" r="14"/><text x="831" y="285">3</text></g><g class="pipe__badge" style="--i:3"><circle cx="70" cy="336" r="14"/><text x="70" y="341">4</text></g><g class="pipe__badge" style="--i:4"><circle cx="70" cy="382" r="14"/><text x="70" y="387">5</text></g><g class="pipe__badge" style="--i:5"><circle cx="70" cy="424" r="14"/><text x="70" y="429">6</text></g><g class="pipe__badge" style="--i:6"><circle cx="70" cy="522" r="14"/><text x="70" y="527">7</text></g><g class="pipe__badge" style="--i:7"><circle cx="70" cy="592" r="14"/><text x="70" y="597">8</text></g><g class="pipe__badge" style="--i:8"><circle cx="70" cy="650" r="14"/><text x="70" y="655">9</text></g></g>
+        </svg>
+        <span class="pipe__scan" aria-hidden="true"></span>
+      </figure>
+      <div class="pipe__out">
+        <div class="pipe__bar"><span class="pipe__file">page.md</span><span class="pipe__meta"></span></div>
+        <pre class="pipe__text" dir="auto"></pre>
+      </div>
+    </div>
+    <script type="application/json" class="show__data">{"lines":["Heimatverein Lindenbrück e.V. · Am Marktplatz 3 · 37581 Lindenbrück", "Frau", "Dr. Johanna Weiß", "Kreisarchiv Nordheide", "Schlossstraße 12", "37574 Nordheim", "Lindenbrück, den 3. September 2026", "**Digitalisierung der Kirchenbücher 1754–1899**", "Sehr geehrte Frau Dr. Weiß,", "wir bedanken uns herzlich für Ihre Unterstützung bei der Sichtung unserer Bestände. Wie besprochen", "möchten wir die Tauf-, Trau- und Sterbebücher der Gemeinde vollständig digitalisieren lassen, damit", "Familienforscher sie künftig online durchsuchen können.", "Die Bücher umfassen etwa 2.300 Seiten in deutscher Kurrentschrift. Könnten Sie uns bis Ende Oktober", "mitteilen, ob das Kreisarchiv die Scans übernehmen kann?", "Mit freundlichen Grüßen", "Friedrich Albers", "Vorsitzender"],"blocks":[["header", [0]], ["address", [1, 2, 3, 4, 5]], ["date", [6]], ["title", [7]], ["salutation", [8]], ["paragraph", [9, 10, 11]], ["paragraph", [12, 13]], ["closing", [14]], ["signature", [15, 16]]]}</script>
+    <p class="show__note">A sample letter, shown step by step. Rune-1 is in training; the <a href="/try">preview models</a> read pages like this today.</p>
+  </div>
+</section>
+<div class="wrap">
+
+  <section class="section" id="family">
+    <div class="section__head">
+      <h2>Rune-1 comes in three versions: Small, Rune-1 and Custom.</h2>
+      <p>Rune-1 Small is open and runs on your own hardware. Rune-1 is the larger model behind the API. Rune-1 Custom is trained for a particular script or collection.</p>
+    </div>
+    <div class="grid grid--3">
+      <article class="card">
+        <div class="card__top"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg></span><span class="pill pill--open">Open weights</span></div>
+        <h3>Rune-1 Small</h3>
+        <p>A compact model for local and on-device use, published on Hugging Face under an open licence.</p>
+        <ul class="ticks">
+          <li>Multilingual and multi-script</li>
+          <li>Runs on a single GPU, or a laptop</li>
+          <li>Text lines with layout blocks</li>
+          <li>Fine-tune on your own pages</li>
+        </ul>
+        <a class="card__link" href="https://huggingface.co/runemic">Hugging Face <span class="arrow"></span></a>
+      </article>
+      <article class="card card--featured">
+        <div class="card__top"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13.5 5-3 14"/></svg></span><span class="pill">API</span></div>
+        <h3>Rune-1</h3>
+        <p>Our largest model, available through the API and for self-hosted deployments.</p>
+        <ul class="ticks">
+          <li>Multilingual, with mixed-script pages</li>
+          <li>Tables, forms, figures and footnotes</li>
+          <li>Reading order across columns and scripts</li>
+          <li>A confidence score for each line</li>
+          <li>Markdown, JSON and searchable PDF</li>
+        </ul>
+        <a class="card__link" href="/products#api">Runemic API <span class="arrow"></span></a>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9"/><path d="M17 7h3"/><circle cx="15" cy="7" r="2"/><path d="M4 17h3"/><path d="M11 17h9"/><circle cx="9" cy="17" r="2"/></svg></span><span class="pill pill--dev">Enterprise</span></div>
+        <h3>Rune-1 Custom</h3>
+        <p>Rune-1 adapted to a script, historical hand or document type that existing OCR handles badly, trained on your material.</p>
+        <ul class="ticks">
+          <li>Rare and historical scripts</li>
+          <li>Domain forms and ledgers</li>
+          <li>Private weights, your servers</li>
+        </ul>
+        <a class="card__link" href="mailto:hello@runemic.com?subject=Rune-1%20Custom">Talk to us <span class="arrow"></span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="scripts">
+    <div class="section__head">
+      <h2>Arabic, Devanagari, CJK and more: scripts that most OCR handles badly.</h2>
+      <p>Most OCR is tuned for Latin text in neat columns. We train Rune-1 on right-to-left, vertical and mixed-script pages from the start: Arabic, Persian (Farsi) and Urdu, including nastaliq; Hindi, Marathi and Nepali in Devanagari; Amharic and Tigrinya in Ge'ez; Tibetan; Chinese and Japanese; and historical manuscripts through handwritten text recognition (HTR).</p>
+      <p>We'll publish coverage for each script, marked production, beta or research, so you know what to expect before you send a page.</p>
+    </div>
+    <figure class="pagefig" role="img" aria-label="Four page layouts: left to right, right to left, top to bottom, and mixed scripts on one page."><span class="pagefig__row"><span class="pagefig__card" style="--rot:-2.5deg"><img src="/assets/samples/letter.png" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Left to right</span></span><span class="pagefig__card" style="--rot:1.5deg"><img src="/assets/samples/persian.png" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Right to left</span></span><span class="pagefig__card" style="--rot:-1.5deg"><img src="/assets/samples/manga.jpg" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Top to bottom</span></span><span class="pagefig__card" style="--rot:2deg"><img src="/assets/bench/fa/06-mixed-latin.png" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Mixed scripts</span></span></span></figure>
+  </section>
+
+  <section class="section" id="deploy">
+    <div class="section__head">
+      <h2>Run Rune-1 in the cloud, on your servers or on a device.</h2>
+      <p>Use the API, run the model inside your own network, or ship it in an app. The output format is the same in all three.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 1 1 1.3-8.8A6 6 0 0 1 19.6 11 3.5 3.5 0 0 1 18.5 18z"/></svg></span><h3>Cloud API</h3><p>Send pages to api.runemic.com and get the text back. Nothing to install.</p></div>
+      <div class="card"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="7" rx="1.5"/><rect x="3.5" y="13" width="17" height="7" rx="1.5"/><path d="M7.5 7.5h.01M7.5 16.5h.01"/></svg></span><h3>Your servers</h3><p>Run Rune-1 inside your own network, so documents never leave it.</p></div>
+      <div class="card"><span class="card__icon card__icon--line" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M9.5 6.5h-1v1.5M14.5 6.5h1v1.5M9.5 15.5h-1V14M14.5 15.5h1V14"/><path d="M10.5 18.5h3"/></svg></span><h3>On a device</h3><p>Rune-1 Small runs on a laptop or in an app, even offline.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="runebench">
+    <div class="split split--flip">
+      <div>
+        <h2>RuneBench: an open OCR benchmark for low-resource scripts</h2>
+        <p class="muted">An open benchmark for OCR on low-resource scripts. We report character error rate for each script separately instead of one average. The dataset, the scoring code and every engine's output are public, including the pages where we do badly. We'll also report results on established public benchmarks, so Rune can be compared with other systems.</p>
+        <p><span class="pill pill--open">Public: Persian</span></p>
+        <a class="btn btn--ghost" href="https://github.com/runemic/runebench">RuneBench on GitHub <span class="arrow"></span></a>
+      </div>
+      <figure class="pagefig" role="img" aria-label="Three RuneBench test pages: Hafez in Nastaliq, a phone photo of Golestan and a table with Persian digits."><span class="pagefig__row"><span class="pagefig__card" style="--rot:-2deg"><img src="/assets/bench/fa/03-hafez-nastaliq.png" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Nastaliq</span></span><span class="pagefig__card" style="--rot:2deg"><img src="/assets/bench/fa/05-golestan-photo.jpg" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Phone photo</span></span><span class="pagefig__card" style="--rot:-1deg"><img src="/assets/bench/fa/04-table-digits.png" alt="" width="900" height="700" loading="lazy" decoding="async"><span class="float__tag">Table</span></span></span><span class="pagefig__chip">Best character error rate: 3.1%</span></figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="card try-card">
+      <div>
+        <h2>Test the API while Rune-1 trains</h2>
+        <p>The endpoint Rune-1 will use is live now, with three preview models. Build against it today; moving to Rune-1 later means changing the model name.</p>
+        <ul class="ticks">
+          <li>Free at <a href="/try">runemic.com/try</a>, no sign-up</li>
+          <li>Sign in for <strong>2,500 free credits</strong>, no card needed</li>
+          <li>Compare up to three models, and get an API key with cURL, Python and JavaScript examples</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/try">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="https://console.runemic.com" data-in="Open console">Get an API key</a>
+        </div>
+      </div>
+      <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span>
+
+<span class="c"># →</span> { <span class="k">"text"</span>: <span class="s">"# Invoice No. 4821 …"</span>,
+    <span class="k">"usage"</span>: { <span class="k">"credits_used"</span>: 2 } }</pre>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

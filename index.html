@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runemic: OCR for Arabic, Persian, Urdu, Hindi, CJK and old scans</title>
+<meta name="description" content="Runemic OCR reads Arabic, Persian, Urdu, Hindi, Chinese and Japanese script, old scans, handwriting and complex layouts. Free to try; 2,500 free API credits.">
+<link rel="canonical" href="https://runemic.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/">
+<meta property="og:title" content="Runemic: OCR for Arabic, Persian, Urdu, Hindi, CJK and old scans">
+<meta property="og:description" content="Runemic OCR reads Arabic, Persian, Urdu, Hindi, Chinese and Japanese script, old scans, handwriting and complex layouts. Free to try; 2,500 free API credits.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Runemic: OCR for Arabic, Persian, Urdu, Hindi, CJK and old scans">
+<meta name="twitter:description" content="Runemic OCR reads Arabic, Persian, Urdu, Hindi, Chinese and Japanese script, old scans, handwriting and complex layouts. Free to try; 2,500 free API credits.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/#page","url":"https://runemic.com/","name":"Runemic: OCR for Arabic, Persian, Urdu, Hindi, CJK and old scans","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Runemic OCR reads Arabic, Persian, Urdu, Hindi, Chinese and Japanese script, old scans, handwriting and complex layouts. Free to try; 2,500 free API credits."}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+<script src="/assets/js/home.js?v=e512d14f" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="stage" aria-labelledby="stage-h" id="stage">
+  <div class="stage__floats">
+    <button class="float float--tall" type="button" data-i="0" data-depth="1.1" style="top:5%;left:3%;--w:14vw;--rot:-3deg;--delay:-0.0s" aria-label="Read the Japanese manga page (Give My Regards to Black Jack) with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/manga.jpg" alt="" width="900" height="700" fetchpriority="high">
+        <span class="float__tag" lang="ja">日本語</span><span class="float__credit">ブラックジャックによろしく 佐藤秀峰</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float float--tall" type="button" data-i="1" data-depth="1.2" style="top:4%;right:3%;--w:14vw;--rot:2.5deg;--delay:-1.7s" aria-label="Read the Shahnameh folio: Rustam drinks wine with Kay Qubad with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/shahnameh.jpg" alt="" width="900" height="700" fetchpriority="high">
+        <span class="float__tag" lang="fa">فارسی</span><span class="float__credit">From The New York Public Library</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float" type="button" data-i="2" data-depth="0.8" style="bottom:3%;right:14%;--w:16vw;--rot:3deg;--delay:-3.4s" aria-label="Read the Invoice filled in by hand, Newburgh N.Y., 1900 with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/invoice-1900.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="en">Invoice</span><span class="float__credit">S. Grover Graham Co. receipt, 1900 · public domain</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float float--tall" type="button" data-i="3" data-depth="0.5" style="top:47%;left:2%;--w:11vw;--rot:2deg;--delay:-5.1s" aria-label="Read the Chinese woodblock print, 19th century with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/chinese.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="zh-Hant">中文</span><span class="float__credit">Wellcome Collection · CC BY 4.0</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float float--tall" type="button" data-i="4" data-depth="0.9" style="bottom:3%;left:13%;--w:15vw;--rot:-2deg;--delay:-6.8s" aria-label="Read the Arabic book page, 1897 (Iktifāʾ al-qanūʿ) with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/arabic-1897.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="ar">العربية</span><span class="float__credit">Library of Congress, World Digital Library · no known restrictions</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float" type="button" data-i="5" data-depth="0.6" style="top:50%;right:2.5%;--w:12vw;--rot:-3deg;--delay:-8.5s" aria-label="Read the Book of Hindi Psalmody, 1882 with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/hindi-1882.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="hi">हिन्दी</span><span class="float__credit">Library of Congress · public domain</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+    <button class="float float--tall" type="button" data-i="6" data-depth="0.7" style="bottom:2%;right:2.5%;--w:10vw;--rot:2deg;--delay:-10.2s" aria-label="Read the Grimm's Fairy Tales, first edition 1812: Aschenputtel with Runemic">
+      <span class="float__card">
+        <img src="/assets/samples/grimm.jpg" alt="" width="900" height="700" loading="lazy">
+        <span class="float__tag" lang="de">Fraktur</span><span class="float__credit">Brüder Grimm, 1812 · public domain</span>
+        <span class="float__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+      </span>
+    </button>
+  </div>
+  <div class="stage__copy">
+    <h1 id="stage-h">OCR for the documents that are <em>hard to read.</em></h1>
+    <p class="lede">Runemic OCR reads Arabic, Persian, Urdu, Hindi, Chinese and Japanese pages, old scans and handwriting, in reading order. Free to try, no account.</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="/try">Try it free <span class="arrow"></span></a>
+      <button class="btn btn--ghost" type="button" id="stage-own">Read your own page</button>
+    </div>
+    <p class="stage__hint">Click a page to watch Runemic read it.</p>
+  </div>
+</section>
+<dialog class="reader-dlg" id="reader-dlg" aria-label="Runemic reading a sample page">
+  <div class="reader" id="reader">
+    <div class="reader__tabs" role="tablist" aria-label="Sample pages">
+        <button type="button" role="tab" data-i="0" aria-selected="true" lang="ja">日本語</button>
+        <button type="button" role="tab" data-i="1" aria-selected="false" lang="fa">فارسی</button>
+        <button type="button" role="tab" data-i="2" aria-selected="false" lang="en">Invoice</button>
+        <button type="button" role="tab" data-i="3" aria-selected="false" lang="zh-Hant">中文</button>
+        <button type="button" role="tab" data-i="4" aria-selected="false" lang="ar">العربية</button>
+        <button type="button" role="tab" data-i="5" aria-selected="false" lang="hi">हिन्दी</button>
+        <button type="button" role="tab" data-i="6" aria-selected="false" lang="de">Fraktur</button>
+        <button type="button" role="tab" data-i="7" aria-selected="false" lang="ur">اردو</button>
+      <button class="reader__close" type="button" id="reader-close" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="reader__body">
+      <figure class="reader__page">
+        <img id="reader-img" src="/assets/samples/manga.jpg" alt="Japanese manga page (Give My Regards to Black Jack)" width="900" height="700">
+        <figcaption class="reader__credit" id="reader-credit"><a id="reader-credit-link" href="https://densho810.com/free/" target="_blank" rel="noopener">ブラックジャックによろしく 佐藤秀峰</a></figcaption>
+        <span class="reader__scan" aria-hidden="true"></span>
+      </figure>
+      <div class="reader__out">
+        <div class="reader__bar"><span class="reader__file">page.md</span><span class="reader__meta" id="reader-meta"></span></div>
+        <p class="reader__caveat" id="reader-caveat" hidden></p>
+        <div class="reader__md md" id="reader-md" dir="ltr"></div>
+      </div>
+    </div>
+    <label class="reader__drop" id="reader-drop">
+      <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" class="visually-hidden" id="reader-file">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M4 14v4.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V14"/></svg>
+      <span><strong>Read your own page.</strong> Drop an image here or choose a file; it's free, no account needed.</span>
+    </label>
+  </div>
+  <script type="application/json" id="reader-data">[{"id": "manga", "img": "manga.jpg", "tall": true, "label": "日本語", "name": "Japanese manga page (Give My Regards to Black Jack)", "dir": "ltr", "model": "preview-gemma-4", "ms": 1998, "cost": 0.002, "credit": "ブラックジャックによろしく 佐藤秀峰", "text": "第5話\n外科と内科と医局と斉藤、\n\nそれでは\n皆さん!!\n\n我らが最愛の\n恩師春日部教授の\nご挨拶です!!", "credit_url": "https://densho810.com/free/"}, {"id": "shahnameh", "img": "shahnameh.jpg", "tall": true, "target": true, "label": "فارسی", "name": "Shahnameh folio: Rustam drinks wine with Kay Qubad", "dir": "rtl", "credit": "From The New York Public Library", "credit_url": "https://digitalcollections.nypl.org/items/843ef6b0-c6c2-012f-a338-58d385a7bc34", "note": "A Shahnameh manuscript page: Nastaliq calligraphy in four columns around a painting. Today's preview models can't read pages like this yet; they repeat or invent lines. Reading them is what Rune-1 is being trained for."}, {"id": "invoice", "img": "invoice-1900.jpg", "label": "Invoice", "name": "Invoice filled in by hand, Newburgh N.Y., 1900", "dir": "ltr", "model": "preview-gemma-4", "ms": 3173, "cost": 0.002, "credit": "S. Grover Graham Co. receipt, 1900 · public domain", "credit_url": "https://commons.wikimedia.org/wiki/File:ReceiptSGroverGrahamCoPatentMedicine1900.jpg", "text": "WILLETT J. MARSHALL, PRESIDENT.\nHENRY WILSON, VICE PRESIDENT AND SECRETARY.\nJOHN J. E. HARRISON, TREASURER.\n\nS. Grover Graham Co (Incorp. ed.)\nManufacturers of the\nThe\nGREAT FOOD\nDIGESTER\nS. GROVER GRAHAM Positive Cure for DYSPEPSIA,\nHEARTBURN, GASTRITIS, THREATENED\nRelief in five minutes. CANCER AND ALL STOMACH TROUBLES.\nNewburgh, N.Y. April 11th 190. 18\n\nSold to Messrs E. K. Thompson & Sons. Druggists.\nTerms Titusville, Pa.\n\n| | 1/2 Do'z Butternut Pills. Stamped. | 1/80 | 90 |\n| :--- | :--- | :--- | :--- |\n| | | MAY 12 1900 | |\n\nOKPA\n4/14/1900\nMail.\nTITUSVILLE\n62"}, {"id": "chinese", "img": "chinese.jpg", "tall": true, "label": "中文", "name": "Chinese woodblock print, 19th century", "dir": "ltr", "model": "preview-gemma-4", "ms": 2888, "cost": 0.002, "credit": "Wellcome Collection · CC BY 4.0", "credit_url": "https://commons.wikimedia.org/wiki/File:C9_Chinese_obstetrics_text,_C19_re-edition,_Woodblock_print_Wellcome_L0039999.jpg", "text": "經效產寶卷之上\n節度相國白敏家藏善本\n姬妊娠三個月腹痛時下血\n療姬妊娠四個月腹痛時下血\n續斷捌分\n竹茹肆分\n艾葉陸分妙\n陸分妙當歸陸分灸\n千地黃陸分阿膠肆分灸\n右以水壹升煎取陸合去滓空心再服隔日更服\n治姬妊娠六七個月忽胎動下血腸痛不可忍"}, {"id": "arabic", "img": "arabic-1897.jpg", "tall": true, "label": "العربية", "name": "Arabic book page, 1897 (Iktifāʾ al-qanūʿ)", "dir": "rtl", "model": "preview-llama-4-scout", "ms": 21164, "cost": 0.002, "credit": "Library of Congress, World Digital Library · no known restrictions", "credit_url": "https://www.loc.gov/item/2021666270/", "caveat": "Unedited output of a preview model. Most of the page is right, but some words and dates are misread (Taghri Birdi's birth and death years are swapped).", "text": "# تاريخ\n\nعقد فرائد فوائد غالية الثمن لا سما عن افريقيا وبلاد العرب والشام وبشمل كتابه هذا على خريطة عامة لسائر الارض ولا تزال مخطوطة نسخها في المكتبة الملكية في باريس في مكتبة مائلة للخرائط الاولى التي برزت عند مسيحي المغرب في بدء نهضتهم وقد ترجم كتابه هذا الى اللغة الفرنساوية وقد سيف ذكر في فقر كتب الجغرافيا كتاب خريطة العجائب فصل في احوال الدنيا وقد طيع هذا النصل على حدته في مدينة برسلاو سنة ١٨٠٣م باعتناء العلامة سفريد فرويد وقد شك اهل الجرف في ان ابن الوردي صاحب الخنصر في التاريخ هي نفس ابن الوردي صاحب المخطوطة في الجغرافيا فاتبه\n\n(١٦) ابوالمحسن المشهور باسم تغري بردي \n\nولد سنة ٨٧٤ هـ وتوفي سنة ٨١٢ هـ ١٤٦٩ م اعني بضع تاريخ العلامة جيوبول والعلامة منثيس في اج في لابدين من ١٨٥١ - ١٨٧١ واسنة النجوم الزاهرة في اخبار ملوك مصر والقاهرة انغام ايضا بين كتب التاريخ الخاص\n\n(١٧) جلال الدين السيوطي \n\nالمتوفي سنة ٩١١ هـ ١٥٠٥ م له كتب عدية جدا منها تاريخ الخلفاء وهو كتاب موجز مفيد وملذ طع في كلنته سنة ٨٥٧ م وفي مصر  التاهرة سنة ١٤٥٥ هـ ١٨٥٥ م علي الخصوص في تاريخ المناقب الخيرين من الخلفاء العباسيين ومن الذين تولوا الخلافة الدينية في القطر المصري دون نولي السلطة السياسية وذلك بعد سقنوط بغداد وعلي هامش طبعة مصر من كتاب آثار الاول في ترتيب الدول للحسن ابن عبد الله العباسي وللسيوطي هذا كتاب لب اللباب في تحرير الانساب طبع في لايدن من ١٨٤٠ - ١٨٤٤ م انظر ما قبل فيه في كلامنا عن ابن الاثير الجزري"}, {"id": "hindi", "img": "hindi-1882.jpg", "label": "हिन्दी", "name": "Book of Hindi Psalmody, 1882", "dir": "ltr", "model": "preview-mistral-small", "ms": 8069, "cost": 0.003, "credit": "Library of Congress · public domain", "credit_url": "https://www.loc.gov/item/61023338/", "caveat": "Unedited output of a preview model. It reads most of this 1882 type but still slips: the old अ glyph becomes ब्र, and the verse lines run together.", "text": "उस का क्रोध तुरत भंगेगा। ता पै श्रास रखाइए। सोई नर धन्य सदाइए।।\n\nभजन ३। राग कल्याण। गीत १।\n\nईश्वर से नहीं मुक्ति मिलेगी। मेरे प्राण को कहत घनरे। वहीं ब्रर हैं ढाल प्रतिष्ठा। जनचा करनेहार तु मेरे। निज पहाड़ से उत्तर देता। ईश्वर को जब मैं कुक टेरे। लेता सोय गया मैं जागा। रद्दा करत प्रभु सब वेरे। ब्रगजित जातिगयों से नाहिं। मैं डरिहैं प्रभु के बल से रे। मेरे चारों ब्रर उन्हें ने। राखी बैर में जिनाही निबेरे। है परमेश्वर मेरे ईश्वर। उतके हमेन बचाव सवेरे। गालन पै तु थपेडा मारा। मेरे सारे बैरिन कोरे।।"}, {"id": "grimm", "img": "grimm.jpg", "tall": true, "label": "Fraktur", "name": "Grimm's Fairy Tales, first edition 1812: Aschenputtel", "dir": "ltr", "model": "preview-gemma-4", "ms": 6574, "cost": 0.002, "credit": "Brüder Grimm, 1812 · public domain", "credit_url": "https://commons.wikimedia.org/wiki/File:Kinder_und_Hausm%C3%A4rchen_(Grimm)_1812_I_088.jpg", "text": "— 88 —\n\ndas thust du mir nichte nach.“ Der Riese glaubte nun es übertraf niemand auf der Welt das Schneiderlein an Stärke und Klugheit.\n\n(Das weitere siehe.)\n\n*Festung, Juli 10. Oct. 1812.*\n\n21.\n\nAschenputtel.\n\nEs war einmal ein reicher Mann, der lebte lange Zeit vergnügt mit seiner Frau, und sie hatten ein einziges Töchterlein zusammen. Da ward die Frau krank, und als sie todtrank ward, rief sie ihre Tochter und sagte: „liebes Kind, ich muß dich verlassen, aber wenn ich oben im Himmel bin, will ich auf derab sehen, pflanz' ein Bäumlein auf mein Grab, und wenn du etwas wünschest, schütttele daran, so sollst du es haben, und wenn du sonst in Not bist, so will ich dir Hilfe schicken, nur bleibFromm und gut.“ Nachdem sie das gesagt, tat sie die Augen zu und starb; das Kind aber weinte und pflanzte ein Bäumlein auf das Grab und brauchte kein Wasser hin zu tragen, und es zu begießen, denn es war genug mit seinen Thränen.\n\nDer Schnee deckte ein weiß Täuchlein auf der Mutter Grab, und als die Sonne es wieder weggezogen hatte, und das Bäumlein zum zweitenmal grün geworden war, da nahm sich"}, {"id": "urdu", "label": "اردو", "name": "Urdu page in Nastaliq", "dir": "rtl", "model": "preview-gemma-4", "ms": 2000, "cost": 0.002, "text": "# باب دوم\n\n## پرانی کتابوں کی دکان\n\nشہر کے پرانے بازار میں ایک چھوٹی سی دکان تھی جہاں پرانی کتابیں بکتی تھیں۔ دکاندار ہر کتاب کو بڑی احتیاط سے صاف کرتا اور الماری میں رکھتا تھا۔\n\nلوگ دور دور سے آتے اور گھنٹوں کتابیں دیکھتے رہتے۔ کچھ کتابیں اتنی پرانی تھیں کہ ان کے صفحہ ہاتھ لگاتے ہی ٹوٹنے لگتے تھے۔\n\n—۲۳—"}]</script>
+</dialog>
+<div class="wrap">
+  <section class="section">
+    <div class="section__head">
+      <h2>Receipts, letters, books, forms and archives.</h2>
+    </div>
+    <div class="grid grid--3">
+      <a class="card card--page" href="/models">
+        <span class="card__page" style="--rot:-2.5deg"><img src="/assets/samples/arabic-1897.jpg" alt="" width="900" height="700" loading="lazy"></span>
+        <h3>Rune-1 models</h3>
+        <p>Multilingual OCR for difficult documents. Reads the text, the layout and the basic structure of a page, across many scripts and languages.</p>
+        <span class="card__link">Model card <span class="arrow"></span></span>
+      </a>
+      <a class="card card--page" href="/products#scan">
+        <span class="card__page" style="--rot:2deg"><img src="/assets/samples/invoice-1900.jpg" alt="" width="900" height="700" loading="lazy"></span>
+        <h3>Runemic Scan</h3>
+        <p>Scan a bill, receipt or letter with your phone. Runemic reads it and pulls out the useful information.</p>
+        <span class="card__link">Products <span class="arrow"></span></span>
+      </a>
+      <a class="card card--page" href="/products#digitization">
+        <span class="card__page" style="--rot:-1.5deg"><img src="/assets/samples/shahnameh.jpg" alt="" width="900" height="700" loading="lazy"></span>
+        <h3>Digitization</h3>
+        <p>We digitize collections of books, letters and other documents: we scan them, run OCR and return searchable files and structured data.</p>
+        <span class="card__link">Services <span class="arrow"></span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card try-card">
+      <div>
+        <h2>Try Runemic OCR free</h2>
+        <p>Read your own pages in the browser, with no account. When you want more, sign in with GitHub or Hugging Face.</p>
+        <ul class="ticks">
+          <li>Free at <a href="/try">runemic.com/try</a>, no sign-up</li>
+          <li>Sign in for <strong>2,500 free credits</strong>, no card needed</li>
+          <li>Compare up to three models, and get an API key with cURL, Python and JavaScript examples</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/try">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="https://console.runemic.com" data-in="Open console">Get an API key</a>
+        </div>
+      </div>
+      <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span>
+
+<span class="c"># →</span> { <span class="k">"text"</span>: <span class="s">"# Invoice No. 4821 …"</span>,
+    <span class="k">"usage"</span>: { <span class="k">"credits_used"</span>: 2 } }</pre>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

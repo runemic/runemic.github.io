@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rune-1 early access: OCR API, Scan app and open models · Runemic</title>
+<meta name="description" content="Join the Runemic early-access list for the Rune-1 OCR API, the Runemic Scan app, open models or a digitization project.">
+<link rel="canonical" href="https://runemic.com/early-access">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/early-access">
+<meta property="og:title" content="Rune-1 early access: OCR API, Scan app and open models · Runemic">
+<meta property="og:description" content="Join the Runemic early-access list for the Rune-1 OCR API, the Runemic Scan app, open models or a digitization project.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rune-1 early access: OCR API, Scan app and open models · Runemic">
+<meta name="twitter:description" content="Join the Runemic early-access list for the Rune-1 OCR API, the Runemic Scan app, open models or a digitization project.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/early-access#page","url":"https://runemic.com/early-access","name":"Rune-1 early access: OCR API, Scan app and open models","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Join the Runemic early-access list for the Rune-1 OCR API, the Runemic Scan app, open models or a digitization project."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Early access","item":"https://runemic.com/early-access"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+<script src="/assets/js/early-access.js?v=61fd6339" defer></script>
+<script src="/assets/js/pages.js?v=1a3ed13b" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="sub sub--mq">
+  <div class="sub__copy">
+    <h1>Early access <em>to Rune-1.</em></h1>
+    <p class="lede">Rune-1, Runemic's own OCR model, is in training. Join the list and Runemic will invite you when Rune-1 is ready.</p><div class="hero__cta"><a class="btn btn--primary" href="#early-access">Join the list <span class="arrow"></span></a></div>
+  </div>
+  <div class="show show--mq" aria-hidden="true">
+    <div class="mq"><div class="mq__track"><span class="mq__card"><img src="/assets/samples/manga.jpg" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/shahnameh.jpg" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/invoice-1900.jpg" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/chinese.jpg" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/arabic-1897.jpg" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/hindi-1882.jpg" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span><span class="mq__card"><img src="/assets/samples/grimm.jpg" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/urdu.png" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/japanese.png" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/korean.png" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/russian.png" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/table.png" alt="" width="600" height="760" loading="lazy"><b>Table</b></span><span class="mq__card"><img src="/assets/samples/manga.jpg" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/shahnameh.jpg" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/invoice-1900.jpg" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/chinese.jpg" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/arabic-1897.jpg" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/hindi-1882.jpg" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span><span class="mq__card"><img src="/assets/samples/grimm.jpg" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/urdu.png" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/japanese.png" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/korean.png" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/russian.png" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/table.png" alt="" width="600" height="760" loading="lazy"><b>Table</b></span></div></div>
+    <div class="mq mq--rev"><div class="mq__track"><span class="mq__card"><img src="/assets/samples/grimm.jpg" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/urdu.png" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/japanese.png" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/korean.png" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/russian.png" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/table.png" alt="" width="600" height="760" loading="lazy"><b>Table</b></span><span class="mq__card"><img src="/assets/samples/manga.jpg" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/shahnameh.jpg" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/invoice-1900.jpg" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/chinese.jpg" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/arabic-1897.jpg" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/hindi-1882.jpg" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span><span class="mq__card"><img src="/assets/samples/grimm.jpg" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/urdu.png" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/japanese.png" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/korean.png" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/russian.png" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/table.png" alt="" width="600" height="760" loading="lazy"><b>Table</b></span><span class="mq__card"><img src="/assets/samples/manga.jpg" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/shahnameh.jpg" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/invoice-1900.jpg" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/chinese.jpg" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/arabic-1897.jpg" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/hindi-1882.jpg" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span></div></div>
+  </div>
+</section>
+<div class="wrap">
+
+  <section class="section">
+    <div class="split split--form">
+      <form class="card form" id="early-access" method="post" novalidate>
+        <div class="field">
+          <label for="ea-email">Email <span aria-hidden="true">*</span></label>
+          <input id="ea-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="ea-name">Name</label>
+          <input id="ea-name" name="name" type="text" autocomplete="name" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="ea-interest">I'm interested in</label>
+          <select id="ea-interest" name="interest">
+            <option value="api">Runemic API</option>
+            <option value="models">Open models (Rune-1 Small)</option>
+            <option value="scan">Runemic Scan app</option>
+            <option value="digitization">A digitization project</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ea-scripts">Languages or scripts</label>
+          <input id="ea-scripts" name="scripts" type="text" maxlength="300" placeholder="e.g. Persian, Urdu, Amharic, handwriting">
+        </div>
+        <div class="field">
+          <label for="ea-use">What do you want to read?</label>
+          <textarea id="ea-use" name="use_case" rows="4" maxlength="2000" placeholder="Invoices, a manuscript collection, receipts, newspapers…"></textarea>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="ea-website">Website</label><input id="ea-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <button class="btn btn--primary" type="submit">Join the list <span class="arrow"></span></button>
+        <p class="form__status" role="status" aria-live="polite"></p>
+        <p class="form__note">We only use your details to contact you about Runemic. No spam, and you can ask us to delete them at any time. See our <a href="/privacy">privacy notice</a>.</p>
+      </form>
+      <div>
+        <ol class="steps">
+          <li><div><h3>We read the list</h3><p>Your languages and use case decide who we invite first.</p></div></li>
+          <li><div><h3>You get an invite</h3><p>API keys, the app beta or a call about your project, depending on what you chose.</p></div></li>
+          <li><div><h3>You tell us what to work on</h3><p>Early users tell us which scripts and document types to improve next.</p></div></li>
+        </ol>
+        <p class="note">Prefer email? Write to <a href="mailto:hello@runemic.com">hello@runemic.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

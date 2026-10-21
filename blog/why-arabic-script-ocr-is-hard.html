@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why OCR struggles with Persian, Arabic and Urdu · Runemic</title>
+<meta name="description" content="Connected letters, dots that change the letter, calligraphic styles and mixed directions. What makes Arabic-script text hard for OCR, and how to get better results from any engine.">
+<link rel="canonical" href="https://runemic.com/blog/why-arabic-script-ocr-is-hard">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/blog/why-arabic-script-ocr-is-hard">
+<meta property="og:title" content="Why OCR struggles with Persian, Arabic and Urdu · Runemic">
+<meta property="og:description" content="Connected letters, dots that change the letter, calligraphic styles and mixed directions. What makes Arabic-script text hard for OCR, and how to get better results from any engine.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why OCR struggles with Persian, Arabic and Urdu · Runemic">
+<meta name="twitter:description" content="Connected letters, dots that change the letter, calligraphic styles and mixed directions. What makes Arabic-script text hard for OCR, and how to get better results from any engine.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BlogPosting","@id":"https://runemic.com/blog/why-arabic-script-ocr-is-hard#page","url":"https://runemic.com/blog/why-arabic-script-ocr-is-hard","name":"Why OCR struggles with Persian, Arabic and Urdu","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Connected letters, dots that change the letter, calligraphic styles and mixed directions. What makes Arabic-script text hard for OCR, and how to get better results from any engine.","headline":"Why OCR struggles with Persian, Arabic and Urdu","author":{"@id":"https://runemic.com/#org"},"publisher":{"@id":"https://runemic.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://runemic.com/blog"},{"@type":"ListItem","position":3,"name":"Why OCR struggles with Persian, Arabic and Urdu","item":"https://runemic.com/blog/why-arabic-script-ocr-is-hard"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <article class="post prose">
+    <header class="page-head">
+      <p class="post__meta"><a href="/blog">Blog</a> · Know-how · 2 min read</p>
+      <h1>Why OCR struggles with Persian, Arabic and Urdu</h1>
+    </header>
+    <div class="post__body">
+<p>OCR struggles with Persian, Arabic and Urdu because the letters join, change shape, and are told apart by tiny dots, and because many documents use calligraphic styles that most models never saw in training. A clear, straight, well-lit photo fixes more errors than switching engines.</p>
+<h2 id="what-makes-these-scripts-hard">What makes these scripts hard</h2>
+<ul><li><strong>Letters connect and change shape.</strong> Most letters have up to four forms, depending on whether they stand alone or sit at the start, middle or end of a word. An engine has to find where one letter ends and the next begins inside one flowing line.</li><li><strong>Dots decide the letter.</strong> ب, پ, ت and ث share one shape and differ only in the number and place of their dots. A speck of dust, a fold in the paper or a blurry photo can turn one letter into another.</li><li><strong>Nastaliq slants and stacks.</strong> Urdu and much Persian poetry use Nastaliq, where each word slopes down to the left and letters sit on top of each other. Engines trained on straight, Naskh-style print often fail on it.</li><li><strong>Spaces are not always spaces.</strong> Persian uses a zero-width non-joiner (نیم‌فاصله) inside words like می‌خواهم. Writers use it inconsistently, so even the "right" answer is not always clear.</li><li><strong>The same letter has two codes.</strong> Persian and Arabic write ی and ک with different Unicode characters that look almost the same. Search and copy-paste break if the engine picks the wrong one.</li><li><strong>Directions mix.</strong> Text runs right to left, but numbers, dates and English words run left to right. The engine has to keep the reading order straight when both appear in one line.</li><li><strong>Digits come in two sets.</strong> Persian ۰۱۲۳۴۵۶۷۸۹ and Arabic ٠١٢٣٤٥٦٧٨٩ differ in a few digits, and both appear next to Western 0–9.</li></ul>
+<h2 id="how-to-get-better-results">How to get better results</h2>
+<ol><li><strong>Photograph the page straight on,</strong> in daylight or bright, even light. Avoid shadows across the text.</li><li><strong>Fill the frame with the page.</strong> Crop away the table, the hand and the background.</li><li><strong>Use a sharp image, not a big one.</strong> A focused 1–2 megapixel photo reads better than a blurry 12-megapixel one.</li><li><strong>Split two-column pages</strong> if the engine mixes up the reading order.</li><li><strong>Check names, numbers and dates by hand.</strong> These are where a single wrong dot matters most.</li></ol>
+<h2 id="which-engine-to-use">Which engine to use</h2>
+<p>It depends on the page. On our <a href="/blog/persian-ocr-benchmark">Persian benchmark</a>, large vision-language models did much better than classic OCR engines on photos and mixed text, but every engine still made mistakes on Nastaliq. You can <a href="/try">try the preview models free</a> on your own pages and compare them side by side in the console.</p>
+    </div>
+  </article>
+  <section class="section">
+    <div class="section__head"><h2>More from the blog</h2></div>
+    <div class="grid grid--2 post-grid">
+      <a class="card post-card" href="/blog/persian-ocr-benchmark">
+        <span class="post-card__cat">Benchmark</span>
+        <h3>How well does OCR read Persian? We tested six engines</h3>
+        <p>On eight Persian test pages, the best engine got 3.1% of characters wrong and the worst 18.5%. Here is how we tested, what each engine got wrong, and how to rerun it.</p>
+        <span class="card__link">Read <span class="arrow"></span></span>
+      </a><a class="card post-card" href="/blog/open-ocr-models-in-the-console">
+        <span class="post-card__cat">Product update</span>
+        <h3>Four open OCR models, now in the console</h3>
+        <p>GLM-OCR, LightOnOCR-3, dots.mocr and KDL Frontier Parser nano now run on Runemic's own GPUs. What each is good at, what they cost, and why the first page can take a few minutes.</p>
+        <span class="card__link">Read <span class="arrow"></span></span>
+      </a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="card try-card">
+      <div>
+        <h2>Try Runemic OCR free</h2>
+        <p>Read your own pages in the browser, with no account. When you want more, sign in with GitHub or Hugging Face.</p>
+        <ul class="ticks">
+          <li>Free at <a href="/try">runemic.com/try</a>, no sign-up</li>
+          <li>Sign in for <strong>2,500 free credits</strong>, no card needed</li>
+          <li>Compare up to three models, and get an API key with cURL, Python and JavaScript examples</li>
+        </ul>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/try">Try it free <span class="arrow"></span></a>
+          <a class="btn btn--ghost" href="https://console.runemic.com" data-in="Open console">Get an API key</a>
+        </div>
+      </div>
+      <pre class="code try-card__code" aria-label="Example API request"><span class="c"># one page in, Markdown out</span>
+curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span>
+
+<span class="c"># →</span> { <span class="k">"text"</span>: <span class="s">"# Invoice No. 4821 …"</span>,
+    <span class="k">"usage"</span>: { <span class="k">"credits_used"</span>: 2 } }</pre>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

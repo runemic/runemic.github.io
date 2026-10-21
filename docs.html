@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runemic OCR API docs: POST /v1/ocr reference</title>
+<meta name="description" content="Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.">
+<link rel="canonical" href="https://runemic.com/docs">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/docs">
+<meta property="og:title" content="Runemic OCR API docs: POST /v1/ocr reference">
+<meta property="og:description" content="Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Runemic OCR API docs: POST /v1/ocr reference">
+<meta name="twitter:description" content="Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=7f66869b">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, a scanner app and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"TechArticle","@id":"https://runemic.com/docs#page","url":"https://runemic.com/docs","name":"Runemic OCR API docs: POST /v1/ocr reference","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Runemic OCR API reference: read any page image in any script with one request. Authentication, POST /v1/ocr, models, errors, rate limits and code in cURL, Python and JavaScript.","headline":"Runemic OCR API docs: POST /v1/ocr reference"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://runemic.com/docs"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+<script src="/assets/js/docs.js?v=7bfedbdf" defer></script>
+<script src="/assets/js/pages.js?v=1a3ed13b" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs" aria-current="page">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="sub sub--docs">
+  <div class="sub__copy">
+    <h1>Runemic API <em>documentation.</em></h1>
+    <p class="lede">Send a page image to POST /v1/ocr and get its text back in reading order, as Markdown or plain text.</p><p class="hero__note"><span class="pill pill--open">Preview</span> 2,500 free credits for new accounts.</p><div class="hero__cta"><a class="btn btn--primary" href="https://console.runemic.com#keys" data-in="Open your API keys">Get an API key <span class="arrow"></span></a><a class="btn btn--ghost" href="/try">Try it without an account</a></div>
+  </div>
+  <div class="show show--term" data-show="terminal">
+    <pre class="term term--wide" aria-label="Example: a curl request to the API and the Markdown it returns"><span class="term__cmd"></span><span class="term__out"></span></pre>
+  </div>
+</section>
+<div class="wrap">
+
+  <div class="docs-layout">
+    <nav class="docs-toc" aria-label="Documentation">
+      <a class="btn btn--primary btn--sm docs-toc__console" href="https://console.runemic.com" data-in="Open console">Open console <span class="arrow"></span></a>
+      <span class="docs-toc__h">Getting started</span>
+      <a href="#quick-start">Quick start</a>
+      <a href="#authentication">Authentication</a>
+      <span class="docs-toc__h">API</span>
+      <a href="#ocr">POST /v1/ocr</a>
+      <a href="#models">GET /v1/models</a>
+      <a href="#openai">OpenAI-compatible</a>
+      <a href="#mcp">AI assistants (MCP)</a>
+      <a href="#mcp-local">Files on your computer</a>
+      <a href="#mcp-pages">Sending pages, help</a>
+      <span class="docs-toc__h">Reference</span>
+      <a href="#errors">Errors</a>
+      <a href="#limits">Rate limits</a>
+      <a href="#privacy">Data and privacy</a>
+      <a href="#changelog">Changelog</a>
+    </nav>
+
+    <div class="docs-body">
+      <section id="quick-start">
+        <h2>Quick start</h2>
+        <ol class="steps">
+          <li><div><h3>Create a key</h3><p>Sign in to the <a href="https://console.runemic.com">Runemic Console</a> with GitHub or Hugging Face and create a key under <strong>API keys</strong>. It is shown once.</p></div></li>
+          <li><div><h3>Store it</h3><p>Keep it out of your code: <code>export RUNEMIC_API_KEY="rk_live_…"</code></p></div></li>
+          <li><div><h3>Send a page</h3><p>PNG, JPEG, WebP or GIF, up to 4 MB.</p></div></li>
+        </ol>
+        <h3>cURL</h3>
+        <pre class="code">curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span> \
+  -F <span class="s">"model=preview-gemma-4"</span></pre>
+        <h3>Python</h3>
+        <pre class="code"><span class="k">import</span> os, requests
+
+resp = requests.post(
+    <span class="s">"https://api.runemic.com/v1/ocr"</span>,
+    headers={<span class="s">"Authorization"</span>: f<span class="s">"Bearer {os.environ['RUNEMIC_API_KEY']}"</span>},
+    files={<span class="s">"file"</span>: open(<span class="s">"page.png"</span>, <span class="s">"rb"</span>)},
+    data={<span class="s">"model"</span>: <span class="s">"preview-gemma-4"</span>},
+)
+resp.raise_for_status()
+print(resp.json()[<span class="s">"text"</span>])</pre>
+        <h3>JavaScript (Node 18+)</h3>
+        <pre class="code"><span class="k">import</span> { readFile } <span class="k">from</span> <span class="s">"node:fs/promises"</span>;
+
+<span class="k">const</span> form = <span class="k">new</span> FormData();
+form.append(<span class="s">"file"</span>, <span class="k">new</span> Blob([<span class="k">await</span> readFile(<span class="s">"page.png"</span>)], { type: <span class="s">"image/png"</span> }), <span class="s">"page.png"</span>);
+form.append(<span class="s">"model"</span>, <span class="s">"preview-gemma-4"</span>);
+
+<span class="k">const</span> res = <span class="k">await</span> fetch(<span class="s">"https://api.runemic.com/v1/ocr"</span>, {
+  method: <span class="s">"POST"</span>,
+  headers: { Authorization: `Bearer ${process.env.RUNEMIC_API_KEY}` },
+  body: form,
+});
+console.log((<span class="k">await</span> res.json()).text);</pre>
+      </section>
+
+      <section id="authentication">
+        <h2>Authentication</h2>
+        <p>Every request to <code>/v1/ocr</code> needs your key in the <code>Authorization</code> header: <code>Authorization: Bearer rk_live_…</code>. Keys can be renamed and revoked in the console; a revoked key stops working immediately. Never put a key in a website or app that other people can inspect; call the API from your server.</p>
+      </section>
+
+      <section id="ocr">
+        <h2><span class="method">POST</span> /v1/ocr</h2>
+        <p>Reads one page. Send <code>multipart/form-data</code> with a <code>file</code>, or JSON with an <code>image</code>.</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>file</code></td><td>file</td><td>The page image (multipart). PNG, JPEG, WebP or GIF, max 4 MB.</td></tr>
+            <tr><td><code>image</code></td><td>string</td><td>JSON alternative: a base64 data URI (<code>data:image/png;base64,…</code>) or a public <code>https://</code> URL.</td></tr>
+            <tr><td><code>model</code></td><td>string</td><td>Optional. A model ID from <a href="#models"><code>GET /v1/models</code></a>. Default <code>preview-gemma-4</code>.</td></tr>
+            <tr><td><code>format</code></td><td>string</td><td>Optional. <code>markdown</code> (default: headings, lists and tables) or <code>text</code> (plain text).</td></tr>
+            <tr><td><code>instructions</code></td><td>string</td><td>Optional, up to 300 characters of extra guidance, for example <em>"Only return the table"</em>.</td></tr>
+            <tr><td><code>stream</code></td><td>boolean</td><td>Optional. <code>true</code> sends the text while the model writes it, as server-sent events (see below).</td></tr>
+          </tbody>
+        </table></div>
+        <h3>Streaming</h3>
+        <p>A full page takes several seconds to write out. With <code>stream</code> set, the response is <code>text/event-stream</code>: <code>delta</code> events carry pieces of text as they are written, then one <code>done</code> event carries the full result, with the same fields as a normal response. If the model fails, you get an <code>error</code> event instead, and you are not charged.</p>
+        <pre class="code">curl -N https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
+  -F <span class="s">"file=@page.png"</span> \
+  -F <span class="s">"stream=true"</span>
+
+<span class="c">event: delta</span>
+<span class="c">data: {"text": "# Invoice No. 4821\n\nCity"}</span>
+
+<span class="c">event: done</span>
+<span class="c">data: {"id": "req_c28e0b7d9a4f13e65b02", "object": "ocr.result", "text": "# Invoice No. 4821 …", "usage": {…}}</span></pre>
+        <h3>JSON request</h3>
+        <pre class="code">curl https://api.runemic.com/v1/ocr \
+  -H <span class="s">"Authorization: Bearer $RUNEMIC_API_KEY"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"image": "https://example.com/page.jpg", "format": "text"}'</span></pre>
+        <h3>Response</h3>
+        <pre class="code">{
+  <span class="k">"id"</span>: <span class="s">"req_7f3a9c2e41b8d05e6a17"</span>,
+  <span class="k">"object"</span>: <span class="s">"ocr.result"</span>,
+  <span class="k">"model"</span>: <span class="s">"preview-gemma-4"</span>,
+  <span class="k">"text"</span>: <span class="s">"# INVOICE No. 4821\n\nCity Library …"</span>,
+  <span class="k">"format"</span>: <span class="s">"markdown"</span>,
+  <span class="k">"usage"</span>: { <span class="k">"pages"</span>: 1, <span class="k">"credits_used"</span>: 2, <span class="k">"ms"</span>: 2210 },
+  <span class="k">"credits_left"</span>: 2498
+}</pre>
+        <p>Every response also has an <code>X-Request-Id</code> header that matches the request in the console's <strong>Logs</strong>.</p>
+      </section>
+
+      <section id="models">
+        <h2><span class="method method--get">GET</span> /v1/models</h2>
+        <p>Lists the available models and how many credits each uses per page (<code>credits_per_page</code>). No key needed: <code>curl https://api.runemic.com/v1/models</code></p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Model ID</th><th>Based on</th><th>Speed</th><th>Best for</th><th class="num">Credits per page</th></tr></thead>
+          <tbody>
+            <tr><td><code>preview-gemma-4</code><br><span class="muted small-note">default</span></td><td>Google Gemma 4 26B</td><td>Balanced</td><td>Multilingual pages, right-to-left scripts</td><td class="num">2</td></tr>
+            <tr><td><code>preview-mistral-small</code></td><td>Mistral Small 3.1 24B</td><td>Fast</td><td>Tables, forms, invoices</td><td class="num">3</td></tr>
+            <tr><td><code>preview-llama-4-scout</code></td><td>Meta Llama 4 Scout</td><td>Fastest</td><td>Clean printed pages, high volume</td><td class="num">2</td></tr>
+          </tbody>
+        </table></div>
+        <p>Preview models run on Cloudflare Workers AI. When <a href="/models">Rune-1</a> launches it becomes a new model ID; your key and code stay the same.</p>
+      </section>
+
+      <section id="openai">
+        <h2>OpenAI-compatible API</h2>
+        <p>Already using an OpenAI SDK, or a tool built on one? Point it at <code>https://api.runemic.com/v1</code> with your Runemic key and send the page as an image in a chat message. <code>POST /v1/chat/completions</code>, <code>GET /v1/models</code> and <code>GET /v1/models/{id}</code> follow OpenAI's format, including streaming and error types.</p>
+        <pre class="code"><span class="k">from</span> openai <span class="k">import</span> OpenAI
+<span class="k">import</span> base64, os
+
+client = OpenAI(base_url=<span class="s">"https://api.runemic.com/v1"</span>, api_key=os.environ[<span class="s">"RUNEMIC_API_KEY"</span>])
+image = <span class="s">"data:image/png;base64,"</span> + base64.b64encode(open(<span class="s">"page.png"</span>, <span class="s">"rb"</span>).read()).decode()
+
+reply = client.chat.completions.create(
+    model=<span class="s">"preview-gemma-4"</span>,
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: [
+        {<span class="s">"type"</span>: <span class="s">"text"</span>, <span class="s">"text"</span>: <span class="s">"Only return the table."</span>},  <span class="c"># optional: how to transcribe</span>
+        {<span class="s">"type"</span>: <span class="s">"image_url"</span>, <span class="s">"image_url"</span>: {<span class="s">"url"</span>: image}},
+    ]}],
+)
+print(reply.choices[0].message.content)</pre>
+        <pre class="code"><span class="k">import</span> OpenAI <span class="k">from</span> <span class="s">"openai"</span>;
+
+<span class="k">const</span> client = <span class="k">new</span> OpenAI({ baseURL: <span class="s">"https://api.runemic.com/v1"</span>, apiKey: process.env.RUNEMIC_API_KEY });
+<span class="k">const</span> stream = <span class="k">await</span> client.chat.completions.create({
+  model: <span class="s">"preview-gemma-4"</span>,
+  stream: <span class="k">true</span>,
+  messages: [{ role: <span class="s">"user"</span>, content: [{ type: <span class="s">"image_url"</span>, image_url: { url: <span class="s">"https://example.com/page.jpg"</span> } }] }],
+});
+<span class="k">for await</span> (<span class="k">const</span> chunk <span class="k">of</span> stream) process.stdout.write(chunk.choices[0]?.delta?.content ?? <span class="s">""</span>);</pre>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>In the request</th><th>What Runemic does with it</th></tr></thead>
+          <tbody>
+            <tr><td><code>messages</code></td><td>Exactly one image, as an <code>image_url</code> part in a user message: a <code>data:</code> URI or a public <code>https</code> URL (PNG, JPEG, WebP or GIF, up to 4 MB). Text in user messages becomes transcription instructions (up to 300 characters). System and assistant messages are ignored.</td></tr>
+            <tr><td><code>model</code></td><td>A model ID from <a href="#models"><code>GET /v1/models</code></a>. Leave it out to use the default with automatic fallback.</td></tr>
+            <tr><td><code>stream</code>, <code>stream_options.include_usage</code></td><td>Streams <code>chat.completion.chunk</code> events and ends with <code>data: [DONE]</code>, like OpenAI.</td></tr>
+            <tr><td><code>format</code> (Runemic extension)</td><td><code>markdown</code> (default) or <code>text</code>. With the OpenAI SDKs, pass it as <code>extra_body={"format": "text"}</code> (Python) or add it to the request object (JavaScript).</td></tr>
+            <tr><td><code>temperature</code>, <code>max_tokens</code>, <code>tools</code> and other chat options</td><td>Accepted and ignored: the models only transcribe.</td></tr>
+          </tbody>
+        </table></div>
+        <p>The answer is the page's text as the assistant message. <code>usage</code> counts tokens; credits are counted per page, as with <code>/v1/ocr</code>, and shown in the extra <code>runemic</code> field as <code>credits_used</code> and <code>credits_left</code>. Same key, limits and billing as <code>/v1/ocr</code>.</p>
+      </section>
+
+      <section id="mcp">
+        <h2>Use with AI assistants (MCP)</h2>
+        <p>Runemic is an <a href="https://modelcontextprotocol.io">MCP</a> server, so Claude, ChatGPT, Codex, Cursor, VS Code and other assistants can read pages for you. The server address is <code>https://mcp.runemic.com/mcp</code>.</p>
+        <p>Add it to your assistant and it sends you to Runemic to sign in (GitHub or Hugging Face) and allow access. There is no key to copy. Pages use your Runemic credits, with the same credits per page and limits as the API.</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Assistant</th><th>How to add it</th></tr></thead>
+          <tbody>
+            <tr><td>Claude (web, desktop, mobile)</td><td>Settings → Connectors → Add custom connector. Name it Runemic, paste the address, then Connect.</td></tr>
+            <tr><td>Claude Code</td><td>Run the commands below, then <code>/mcp</code> and choose Authenticate.</td></tr>
+            <tr><td>Codex (CLI, app, IDE)</td><td>Add the lines below; <code>codex mcp login runemic</code> opens the sign-in page.</td></tr>
+            <tr><td>ChatGPT</td><td>With developer mode on: Settings → Apps → Create app, paste the address and choose OAuth.</td></tr>
+            <tr><td>Cursor</td><td><a href="cursor://anysphere.cursor-deeplink/mcp/install?name=runemic&amp;config=eyJ1cmwiOiJodHRwczovL21jcC5ydW5lbWljLmNvbS9tY3AifQ==">Add to Cursor</a>, or put the JSON below in <code>~/.cursor/mcp.json</code>.</td></tr>
+            <tr><td>VS Code</td><td><a href="vscode:mcp/install?%7B%22name%22%3A%22runemic%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//mcp.runemic.com/mcp%22%7D">Add to VS Code</a>, or MCP: Add Server → HTTP and paste the address.</td></tr>
+            <tr><td>Anything else</td><td>Use the address with the Streamable HTTP transport. Clients that can't sign in can send <code>Authorization: Bearer &lt;your API key&gt;</code> instead.</td></tr>
+          </tbody>
+        </table></div>
+        <pre class="code"><span class="c"># Claude Code: add the server, then run /mcp in Claude Code to sign in</span>
+claude mcp add --transport http runemic https://mcp.runemic.com/mcp
+
+<span class="c"># or install the plugin (the server plus a skill for local files)</span>
+/plugin marketplace add runemic/runemic.github.io
+/plugin install runemic@runemic</pre>
+        <pre class="code"><span class="c"># Codex: ~/.codex/config.toml</span>
+[mcp_servers.runemic]
+url = <span class="s">"https://mcp.runemic.com/mcp"</span>
+
+<span class="c"># then sign in once</span>
+codex mcp login runemic</pre>
+        <pre class="code">{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"runemic"</span>: { <span class="s">"type"</span>: <span class="s">"http"</span>, <span class="s">"url"</span>: <span class="s">"https://mcp.runemic.com/mcp"</span> }
+  }
+}</pre>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>read_page</code></td><td>Reads one page image, given as a public <code>https</code> URL or a <code>data:</code> URI (PNG, JPEG, WebP or GIF, up to 4 MB). In ChatGPT, a file you attach to the chat is passed to it directly. Optional <code>format</code>, <code>model</code> and <code>instructions</code>, as in <a href="#ocr"><code>POST /v1/ocr</code></a>; without a <code>model</code>, the fastest model right now reads the page and another takes over if it fails. Returns the text, the model, the credits used and your credits left.</td></tr>
+            <tr><td><code>upload_page</code></td><td>Shows a Runemic file picker in the chat (in assistants that support MCP Apps, such as Claude and ChatGPT). You choose page images from your device, even several at once, and their text is sent to the conversation. Images are read and not stored.</td></tr>
+            <tr><td><code>create_upload_link</code></td><td>A one-time link for sending saved files with one command (see <a href="#mcp-local">upload links</a>).</td></tr>
+            <tr><td><code>list_models</code></td><td>The models available now, with credits per page.</td></tr>
+            <tr><td><code>get_account</code></td><td>Your credits left, today's pages and limit, and this month's usage.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Which way to send a page depends on where it is: see <a href="#mcp-pages">getting a page to Runemic</a>. To see or disconnect connected apps, open the console and go to Settings → Connected apps.</p>
+      </section>
+
+      <section id="mcp-local">
+        <h2>Files on your computer (local MCP server)</h2>
+        <p>The hosted server can't see your files. For Claude Desktop, Claude Code, Codex, Cursor and other apps that run MCP servers on your computer, there is a local Runemic server: give it a path to an image, a PDF or a folder of pages and it sends them to Runemic with your <a href="#authentication">API key</a>. Large scans, HEIC and TIFF are converted first; PDFs need <a href="https://poppler.freedesktop.org/">Poppler</a> (<code>brew install poppler</code>, <code>apt install poppler-utils</code>).</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>App</th><th>How to add it</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Desktop</td><td>Download <a href="/mcp/runemic.mcpb">runemic.mcpb</a> and open it (or Settings → Extensions → Install extension). Paste your API key when asked; it is kept in your system's keychain.</td></tr>
+            <tr><td>Claude Code, Codex</td><td>See below (for Claude Code, set <code>RUNEMIC_API_KEY</code> in your shell first).</td></tr>
+            <tr><td>Cursor, VS Code, others</td><td>Add the JSON below to the app's MCP settings, with your key. Needs Node 18 or newer.</td></tr>
+          </tbody>
+        </table></div>
+        <pre class="code">{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"runemic-files"</span>: {
+      <span class="s">"command"</span>: <span class="s">"npx"</span>,
+      <span class="s">"args"</span>: [<span class="s">"-y"</span>, <span class="s">"--package=https://runemic.com/mcp/runemic-mcp.tgz"</span>, <span class="s">"runemic-mcp"</span>],
+      <span class="s">"env"</span>: { <span class="s">"RUNEMIC_API_KEY"</span>: <span class="s">"rk_live_…"</span> }
+    }
+  }
+}</pre>
+        <pre class="code"><span class="c"># Claude Code</span>
+claude mcp add runemic-files -e RUNEMIC_API_KEY=$RUNEMIC_API_KEY -- npx -y --package=https://runemic.com/mcp/runemic-mcp.tgz runemic-mcp
+
+<span class="c"># Codex: ~/.codex/config.toml</span>
+[mcp_servers.runemic-files]
+command = <span class="s">"npx"</span>
+args = [<span class="s">"-y"</span>, <span class="s">"--package=https://runemic.com/mcp/runemic-mcp.tgz"</span>, <span class="s">"runemic-mcp"</span>]
+env = { RUNEMIC_API_KEY = <span class="s">"rk_live_…"</span> }</pre>
+        <p>Tools: <code>read_file</code> (an image, or a PDF with optional <code>pages</code> like <code>1-3,7</code>), <code>read_folder</code> (every page in a folder in name order, page2 before page10, up to 50), <code>list_models</code> and <code>get_account</code>. Then ask, for example, “read the PDF in my Downloads called letter.pdf”.</p>
+        <h3>Upload links</h3>
+        <p>Assistants that can run commands but can't show the Runemic panel (for example Claude with code execution) can ask <code>create_upload_link</code> on the hosted server for a one-time link: 15 minutes, up to 20 pages, on your account. The saved file is sent with one command and the text comes back in the response. You can also open the link in a browser and choose the file. Images are read and not stored.</p>
+        <pre class="code"><span class="c"># the assistant asks create_upload_link for a link, then sends each saved page:</span>
+curl -s -F <span class="s">"file=@page.png"</span> https://mcp.runemic.com/u/<span class="c">&lt;token&gt;</span></pre>
+      </section>
+
+      <section id="mcp-pages">
+        <h2>Getting a page to Runemic from an assistant</h2>
+        <p>An assistant can only send a tool what it writes into the tool call. It sees an image you attach as a picture, not as the file, so it can't pass the attachment on. Copying the file in as text would mean writing out hundreds of thousands of characters for one page: slow, costly and easy to get wrong. So Runemic offers a way for each situation:</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Where the page is</th><th>What to do</th><th>Works in</th></tr></thead>
+          <tbody>
+            <tr><td>On the web (public <code>https</code> link)</td><td>Give the assistant the link; it calls <code>read_page</code>.</td><td>Every assistant</td></tr>
+            <tr><td>Attached to the chat, or on your phone or computer</td><td>Ask the assistant to read it with Runemic. A Runemic panel opens in the chat; choose the same file there (several pages at once are fine). The text is sent back to the chat.</td><td>Claude, ChatGPT, VS Code and other apps with MCP Apps</td></tr>
+            <tr><td>Attached to the chat in ChatGPT</td><td>Nothing extra: ChatGPT passes the attached file to <code>read_page</code>.</td><td>ChatGPT</td></tr>
+            <tr><td>A file on your computer, a PDF or a folder of pages</td><td>Add the <a href="#mcp-local">local server</a> and give the path, e.g. “read ~/Downloads/letter.pdf”.</td><td>Claude Desktop, Claude Code, Codex, Cursor</td></tr>
+            <tr><td>A file the assistant has saved in its sandbox or terminal</td><td>The assistant asks for an <a href="#mcp-local">upload link</a> and sends the file with <code>curl</code>; the text comes back in the response.</td><td>Assistants that can run commands</td></tr>
+          </tbody>
+        </table></div>
+        <p>This is how MCP servers handle files in general: servers that run on your computer read file paths, hosted servers take links or offer an upload step. Runemic does both.</p>
+        <h3>Privacy and billing</h3>
+        <ul class="ticks">
+          <li>Images are read and discarded, whichever way they arrive. They are never stored or used for training.</li>
+          <li>Each page costs the same credits as through the API and is charged to the Runemic account you signed in with (or whose key you use). Failed pages are free.</li>
+          <li>Without a chosen model, the model that is fastest right now reads the page; if it fails or doesn't start within 15 seconds, another model takes over.</li>
+          <li>Pages read through an assistant appear in the console's Usage and Logs as “AI assistant” (or under the key's name).</li>
+          <li>Connected apps are listed in the console under Settings → Connected apps, where you can disconnect them. Deleting your account disconnects all of them.</li>
+        </ul>
+        <h3>If something doesn't work</h3>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>What you see</th><th>What to do</th></tr></thead>
+          <tbody>
+            <tr><td>The assistant asks for a link instead of opening the Runemic panel</td><td>The app may still have an older list of Runemic's tools. Disconnect Runemic and connect it again (in Claude: Settings → Connectors), then start a new chat. Apps without MCP Apps support can't show the panel; use a link, an upload link or the local server.</td></tr>
+            <tr><td>“Sign in” keeps coming back</td><td>Allow the connection on the Runemic page that opens, in the same browser where you are signed in to the console. If you cancelled, connect again.</td></tr>
+            <tr><td>The upload link request is blocked</td><td>The assistant's sandbox may not be allowed to reach <code>mcp.runemic.com</code>. Use the Runemic panel or the local server instead.</td></tr>
+            <tr><td>The local server says the key is missing or wrong</td><td>Set <code>RUNEMIC_API_KEY</code> in the server's settings (in Claude Desktop: Settings → Extensions → Runemic OCR). Never paste the key into a chat.</td></tr>
+            <tr><td>A PDF can't be read by the local server</td><td>Install Poppler (<code>brew install poppler</code> on macOS, <code>sudo apt install poppler-utils</code> on Ubuntu), or export the pages as images.</td></tr>
+            <tr><td>The connector shows an old Runemic logo</td><td>Some apps show an icon they saved earlier and refresh it later. Removing and adding the connector again usually updates it.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="errors">
+        <h2>Errors</h2>
+        <p>Errors return JSON like <code>{"error": {"code": "…", "message": "…"}}</code>. Failed requests are never charged.</p>
+        <div class="table-wrap"><table class="doc-table">
+          <thead><tr><th>Status</th><th>Code</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>400</td><td><code>invalid_image</code> · <code>unknown_model</code> · <code>invalid_format</code></td><td>Check the request body.</td></tr>
+            <tr><td>401</td><td><code>invalid_api_key</code></td><td>Missing, wrong or revoked key.</td></tr>
+            <tr><td>402</td><td><code>insufficient_credits</code></td><td>Not enough credits left for this page. The message says how many credits the model needs and how many you have.</td></tr>
+            <tr><td>413 · 415</td><td><code>too_large</code> · <code>unsupported_type</code></td><td>PNG, JPEG, WebP or GIF up to 4 MB. PDFs are coming soon.</td></tr>
+            <tr><td>429</td><td><code>rate_limited</code> · <code>daily_limit</code></td><td>Too many requests per minute, or today's page limit reached.</td></tr>
+            <tr><td>502</td><td><code>model_error</code></td><td>The model failed. You are not charged; retry or pick another model.</td></tr>
+            <tr><td>503</td><td><code>capacity</code></td><td>Today's shared preview capacity is used up. Try again after 00:00 UTC.</td></tr>
+            <tr><td>504</td><td><code>model_timeout</code></td><td>The model you chose didn't answer in time. You are not charged; retry or pick another model.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="limits">
+        <h2>Rate limits</h2>
+        <div class="table-wrap"><table class="doc-table">
+          <tbody>
+            <tr><td>Requests per minute, per account (all keys together)</td><td class="num">20</td></tr>
+            <tr><td>Pages per day, per account (preview)</td><td class="num">500</td></tr>
+            <tr><td>Pages per day on an account's first day, or for GitHub accounts less than 14 days old</td><td class="num">50</td></tr>
+            <tr><td>Image size</td><td class="num">4 MB</td></tr>
+            <tr><td>Active keys per account</td><td class="num">10</td></tr>
+          </tbody>
+        </table></div>
+        <p>Need more? Email <a href="mailto:hello@runemic.com">hello@runemic.com</a>.</p>
+      </section>
+
+      <section id="privacy">
+        <h2>Data and privacy</h2>
+        <p>Images are processed by the selected model and returned to you. We never store your images or their text, and never use them for training. We keep request metadata (time, model, pages, credits used, latency, status) for your usage and billing. Read the <a href="/privacy">privacy notice</a>.</p>
+      </section>
+
+      <section id="changelog">
+        <h2>Changelog</h2>
+        <ul class="ticks">
+          <li><strong>Preview 0.5</strong> (latest): local MCP server for files, PDFs and folders on your computer (and a Claude Desktop extension); upload links; the fastest model reads MCP pages, with quick fallback. Credits instead of dollars: 2,500 free credits, 2–3 credits a page.</li>
+          <li><strong>Preview 0.4</strong>: MCP server at <code>https://mcp.runemic.com/mcp</code> for Claude, ChatGPT, Codex, Cursor and VS Code, with sign-in, plus plugins for Claude Code and Codex.</li>
+          <li><strong>Preview 0.3</strong>: OpenAI-compatible <code>POST /v1/chat/completions</code>. Without a <code>model</code>, another model takes over automatically if the default fails or doesn't answer; a chosen model that doesn't answer returns <code>504 model_timeout</code>. Request IDs are now random (<code>req_</code> + 20 characters).</li>
+          <li><strong>Preview 0.2</strong>: <code>stream</code> parameter: get the text while it is being written. Removed <code>preview-qwen-3.8</code>.</li>
+          <li><strong>Preview 0.1</strong>: public preview. Four preview models, <code>format</code> and <code>instructions</code> parameters, request IDs, console with playground and usage analytics.</li>
+        </ul>
+      </section>
+
+      <div class="card try-card try-card--slim">
+        <div><h2>Try the API</h2><p>New accounts get 2,500 free credits. No card needed.</p></div>
+        <div class="hero__cta"><a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Try it free <span class="arrow"></span></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="/products#scan">Runemic Scan</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/compare/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>
