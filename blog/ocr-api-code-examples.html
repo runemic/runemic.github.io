@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCR API code examples: Python, JavaScript, C#, Java, Go and more · Runemic</title>
+<meta name="description" content="Copy-paste code to read the text from an image with one HTTP request, in eight programming languages and cURL. The text comes back in reading order, as Markdown or plain text.">
+<link rel="canonical" href="https://runemic.com/blog/ocr-api-code-examples">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/blog/ocr-api-code-examples">
+<meta property="og:title" content="OCR API code examples: Python, JavaScript, C#, Java, Go and more · Runemic">
+<meta property="og:description" content="Copy-paste code to read the text from an image with one HTTP request, in eight programming languages and cURL. The text comes back in reading order, as Markdown or plain text.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OCR API code examples: Python, JavaScript, C#, Java, Go and more · Runemic">
+<meta name="twitter:description" content="Copy-paste code to read the text from an image with one HTTP request, in eight programming languages and cURL. The text comes back in reading order, as Markdown or plain text.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg?v=cfd2832d" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png?v=48d1a450" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png?v=17379994">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9dc91aeb">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, the Scan and Split apps and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"BlogPosting","@id":"https://runemic.com/blog/ocr-api-code-examples#page","url":"https://runemic.com/blog/ocr-api-code-examples","name":"OCR API code examples: Python, JavaScript, C#, Java, Go and more","isPartOf":{"@id":"https://runemic.com/#site"},"inLanguage":"en","description":"Copy-paste code to read the text from an image with one HTTP request, in eight programming languages and cURL. The text comes back in reading order, as Markdown or plain text.","headline":"OCR API code examples: Python, JavaScript, C#, Java, Go and more","author":{"@id":"https://runemic.com/#org"},"publisher":{"@id":"https://runemic.com/#org"},"image":"https://runemic.com/assets/brand/og.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://runemic.com/blog"},{"@type":"ListItem","position":3,"name":"OCR API code examples: Python, JavaScript, C#, Java, Go and more","item":"https://runemic.com/blog/ocr-api-code-examples"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg?v=12a4c221" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg?v=14bb68a0" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog" aria-current="page">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <article class="post prose">
+    <header class="page-head">
+      <p class="post__meta"><a href="/blog">Blog</a> · Know-how · 3 min read</p>
+      <h1>OCR API code examples: Python, JavaScript, C#, Java, Go and more</h1>
+    </header>
+    <div class="post__body">
+<p>To read the text from an image in code, send the image to <code>POST https://api.runemic.com/v1/ocr</code> with your API key and read the <code>text</code> field of the JSON answer. You don't need an SDK. Any language that can make an HTTPS request works, and the examples below each fit on one screen.</p>
+<h2 id="before-you-start">Before you start</h2>
+<p>Sign in to the <a href="https://console.runemic.com">console</a> and create an API key. New accounts get 2,500 free credits (see <a href="/pricing">pricing</a>). Each example reads the key from the <code>RUNEMIC_API_KEY</code> environment variable and the page from <code>page.png</code>. Keep the key on your server, never in a web page or an app you ship.</p>
+<p>You can send the image in either of two ways:</p>
+<ul><li><strong>multipart/form-data</strong>, with the image in a <code>file</code> field (as cURL, Python, C#, PHP and Ruby do below)</li><li><strong>JSON</strong>, with the image as a base64 <code>data:</code> URI or a public <code>https://</code> URL in an <code>image</code> field (as JavaScript, Java, Go and Rust do below)</li></ul>
+<p>Each example asks for plain text with <code>"format": "text"</code>. Leave it out and you get Markdown, with headings, lists and tables.</p>
+<h2 id="curl">cURL</h2>
+<pre class="code"><code>curl https://api.runemic.com/v1/ocr \
+  -H &quot;Authorization: Bearer $RUNEMIC_API_KEY&quot; \
+  -F &quot;file=@page.png&quot; \
+  -F &quot;format=text&quot;</code></pre>
+<h2 id="python">Python</h2>
+<pre class="code"><code>import os
+import requests
+
+res = requests.post(
+    &quot;https://api.runemic.com/v1/ocr&quot;,
+    headers={&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;RUNEMIC_API_KEY&#x27;]}&quot;},
+    files={&quot;file&quot;: open(&quot;page.png&quot;, &quot;rb&quot;)},
+    data={&quot;format&quot;: &quot;text&quot;},
+)
+res.raise_for_status()
+print(res.json()[&quot;text&quot;])</code></pre>
+<h2 id="javascript-node-js-18-or-later">JavaScript (Node.js 18 or later)</h2>
+<pre class="code"><code>import { readFile } from &quot;node:fs/promises&quot;;
+
+const image = &quot;data:image/png;base64,&quot; + (await readFile(&quot;page.png&quot;)).toString(&quot;base64&quot;);
+const res = await fetch(&quot;https://api.runemic.com/v1/ocr&quot;, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${process.env.RUNEMIC_API_KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({ image, format: &quot;text&quot; }),
+});
+if (!res.ok) throw new Error(await res.text());
+console.log((await res.json()).text);</code></pre>
+<h2 id="c-net-6-or-later">C# (.NET 6 or later)</h2>
+<pre class="code"><code>using System.Net.Http.Headers;
+using System.Text.Json;
+
+using var http = new HttpClient();
+http.DefaultRequestHeaders.Authorization =
+    new AuthenticationHeaderValue(&quot;Bearer&quot;, Environment.GetEnvironmentVariable(&quot;RUNEMIC_API_KEY&quot;));
+
+using var form = new MultipartFormDataContent();
+var image = new ByteArrayContent(await File.ReadAllBytesAsync(&quot;page.png&quot;));
+image.Headers.ContentType = new MediaTypeHeaderValue(&quot;image/png&quot;);
+form.Add(image, &quot;file&quot;, &quot;page.png&quot;);
+form.Add(new StringContent(&quot;text&quot;), &quot;format&quot;);
+
+var res = await http.PostAsync(&quot;https://api.runemic.com/v1/ocr&quot;, form);
+res.EnsureSuccessStatusCode();
+using var json = JsonDocument.Parse(await res.Content.ReadAsStringAsync());
+Console.WriteLine(json.RootElement.GetProperty(&quot;text&quot;).GetString());</code></pre>
+<h2 id="java-11-or-later">Java (11 or later)</h2>
+<pre class="code"><code>import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
+
+public class Ocr {
+    public static void main(String[] args) throws Exception {
+        String image = Base64.getEncoder().encodeToString(Files.readAllBytes(Path.of(&quot;page.png&quot;)));
+        String body = &quot;{\&quot;image\&quot;: \&quot;data:image/png;base64,&quot; + image + &quot;\&quot;, \&quot;format\&quot;: \&quot;text\&quot;}&quot;;
+        HttpRequest req = HttpRequest.newBuilder(URI.create(&quot;https://api.runemic.com/v1/ocr&quot;))
+            .header(&quot;Authorization&quot;, &quot;Bearer &quot; + System.getenv(&quot;RUNEMIC_API_KEY&quot;))
+            .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+            .POST(HttpRequest.BodyPublishers.ofString(body))
+            .build();
+        HttpResponse&lt;String&gt; res = HttpClient.newHttpClient().send(req, HttpResponse.BodyHandlers.ofString());
+        System.out.println(res.body()); // JSON: the page&#x27;s text is in &quot;text&quot; (read it with Jackson or Gson)
+    }
+}</code></pre>
+<h2 id="go">Go</h2>
+<pre class="code"><code>package main
+
+import (
+	&quot;bytes&quot;
+	&quot;encoding/base64&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+)
+
+func main() {
+	img, err := os.ReadFile(&quot;page.png&quot;)
+	if err != nil {
+		panic(err)
+	}
+	body, _ := json.Marshal(map[string]string{
+		&quot;image&quot;:  &quot;data:image/png;base64,&quot; + base64.StdEncoding.EncodeToString(img),
+		&quot;format&quot;: &quot;text&quot;,
+	})
+	req, _ := http.NewRequest(&quot;POST&quot;, &quot;https://api.runemic.com/v1/ocr&quot;, bytes.NewReader(body))
+	req.Header.Set(&quot;Authorization&quot;, &quot;Bearer &quot;+os.Getenv(&quot;RUNEMIC_API_KEY&quot;))
+	req.Header.Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer res.Body.Close()
+	var out struct {
+		Text string `json:&quot;text&quot;`
+	}
+	json.NewDecoder(res.Body).Decode(&amp;out)
+	fmt.Println(out.Text)
+}</code></pre>
+<h2 id="php">PHP</h2>
+<pre class="code"><code>&lt;?php
+$ch = curl_init(&quot;https://api.runemic.com/v1/ocr&quot;);
+curl_setopt_array($ch, [
+    CURLOPT_HTTPHEADER =&gt; [&quot;Authorization: Bearer &quot; . getenv(&quot;RUNEMIC_API_KEY&quot;)],
+    CURLOPT_POSTFIELDS =&gt; [&quot;file&quot; =&gt; new CURLFile(&quot;page.png&quot;, &quot;image/png&quot;), &quot;format&quot; =&gt; &quot;text&quot;],
+    CURLOPT_RETURNTRANSFER =&gt; true,
+]);
+$res = json_decode(curl_exec($ch), true);
+echo $res[&quot;text&quot;];</code></pre>
+<h2 id="ruby">Ruby</h2>
+<pre class="code"><code>require &quot;net/http&quot;
+require &quot;json&quot;
+
+uri = URI(&quot;https://api.runemic.com/v1/ocr&quot;)
+req = Net::HTTP::Post.new(uri)
+req[&quot;Authorization&quot;] = &quot;Bearer #{ENV[&quot;RUNEMIC_API_KEY&quot;]}&quot;
+req.set_form([[&quot;file&quot;, File.open(&quot;page.png&quot;)], [&quot;format&quot;, &quot;text&quot;]], &quot;multipart/form-data&quot;)
+res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(req) }
+puts JSON.parse(res.body)[&quot;text&quot;]</code></pre>
+<h2 id="rust">Rust</h2>
+<pre class="code"><code>// Cargo.toml: reqwest = { version = &quot;0.12&quot;, features = [&quot;blocking&quot;, &quot;json&quot;] }, serde_json = &quot;1&quot;, base64 = &quot;0.22&quot;
+use base64::Engine;
+
+fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+    let image = base64::engine::general_purpose::STANDARD.encode(std::fs::read(&quot;page.png&quot;)?);
+    let res: serde_json::Value = reqwest::blocking::Client::new()
+        .post(&quot;https://api.runemic.com/v1/ocr&quot;)
+        .bearer_auth(std::env::var(&quot;RUNEMIC_API_KEY&quot;)?)
+        .json(&amp;serde_json::json!({ &quot;image&quot;: format!(&quot;data:image/png;base64,{image}&quot;), &quot;format&quot;: &quot;text&quot; }))
+        .send()?
+        .error_for_status()?
+        .json()?;
+    println!(&quot;{}&quot;, res[&quot;text&quot;].as_str().unwrap_or(&quot;&quot;));
+    Ok(())
+}</code></pre>
+<h2 id="what-comes-back">What comes back</h2>
+<p>The answer is JSON. <code>text</code> holds the page's text in reading order; the rest says which model read it and how many credits it used. The text keeps the page's own script and direction. A Persian page, for example, comes back right to left, with its Persian digits as printed.</p>
+<p>A few options work the same in every language:</p>
+<ul><li><code>model</code>: a model id from <code>GET /v1/models</code>; leave it out for the default</li><li><code>instructions</code>: up to 300 characters of guidance, such as "Only return the table"</li><li><code>stream</code>: <code>true</code> sends the text while it is being written, as server-sent events</li></ul>
+<p>Already using an OpenAI SDK? Point it at <code>https://api.runemic.com/v1</code> with your Runemic key. Every field, error code and limit is in the <a href="/docs">API docs</a>.</p>
+<h2 id="without-code">Without code</h2>
+<p>To read a single page, use <a href="/try">the free OCR tool</a> in your browser, with no account.</p>
+    </div>
+  </article>
+  <section class="section">
+    <div class="section__head"><h2>More from the blog</h2></div>
+    <div class="grid grid--2 post-grid">
+      
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg?v=12a4c221" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg?v=14bb68a0" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="https://tools.runemic.com">Free tools</a>
+      <a href="https://tools.runemic.com/image-to-text">Image to text</a>
+      <a href="https://tools.runemic.com/scan-to-pdf">Scan to PDF</a>
+      <a href="https://tools.runemic.com/split-receipt">Split a receipt</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/blog/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

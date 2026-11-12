@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rune-1 early access: OCR API, Scan app and open models · Runemic</title>
+<meta name="description" content="Join the Runemic early-access list for the Rune-1 OCR API, open models or a digitization project.">
+<link rel="canonical" href="https://runemic.com/early-access">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Runemic">
+<meta property="og:url" content="https://runemic.com/early-access">
+<meta property="og:title" content="Rune-1 early access: OCR API, Scan app and open models · Runemic">
+<meta property="og:description" content="Join the Runemic early-access list for the Rune-1 OCR API, open models or a digitization project.">
+<meta property="og:image" content="https://runemic.com/assets/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Runemic: image to text, free">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rune-1 early access: OCR API, Scan app and open models · Runemic">
+<meta name="twitter:description" content="Join the Runemic early-access list for the Rune-1 OCR API, open models or a digitization project.">
+<meta name="twitter:image" content="https://runemic.com/assets/brand/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/brand/favicon.svg?v=cfd2832d" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/icon-192.png?v=48d1a450" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png?v=17379994">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-h7dXy5DlHR4aPqS7C9HciTJG9soSh6dhML953t+RhkU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.runemic.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+<script>try{var m=document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);if((m?m[1]:localStorage.getItem("theme"))==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=9dc91aeb">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://runemic.com/#org","name":"Runemic Labs","alternateName":"Runemic","url":"https://runemic.com/","logo":"https://runemic.com/assets/brand/icon-512.png","email":"hello@runemic.com","description":"Runemic builds OCR for documents that are hard to read: multilingual models, an API, the Scan and Split apps and digitization services.","sameAs":["https://github.com/runemic","https://huggingface.co/runemic"]},{"@type":"WebSite","@id":"https://runemic.com/#site","url":"https://runemic.com/","name":"Runemic","publisher":{"@id":"https://runemic.com/#org"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://runemic.com/early-access#page","url":"https://runemic.com/early-access","name":"Rune-1 early access: OCR API, Scan app and open models","isPartOf":{"@id":"https://runemic.com/#site"},"about":{"@id":"https://runemic.com/#org"},"inLanguage":"en","description":"Join the Runemic early-access list for the Rune-1 OCR API, open models or a digitization project."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://runemic.com/"},{"@type":"ListItem","position":2,"name":"Early access","item":"https://runemic.com/early-access"}]}]}</script>
+<script src="/assets/js/theme.js?v=dddaef34" defer></script>
+<script src="/assets/js/early-access.js?v=61fd6339" defer></script>
+<script src="/assets/js/pages.js?v=1a3ed13b" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" lang="en" dir="ltr">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Runemic home">
+      <img class="ill--light" src="/assets/brand/logo.svg?v=12a4c221" alt="" width="30" height="30">
+      <img class="ill--dark" src="/assets/brand/logo-dark.svg?v=14bb68a0" alt="" width="30" height="30">
+      <span>Runemic</span>
+    </a>
+    <nav class="tabs" id="site-nav" aria-label="Main">
+        <a href="/try">Try for free</a>
+        <a href="/models">Models</a>
+        <a href="/products">Products</a>
+        <a href="/docs">Docs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      <div class="tabs__actions">
+        <a class="btn btn--ghost header-signin" href="https://console.runemic.com">Sign in</a>
+        <a class="btn btn--primary" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="icon-btn" href="https://github.com/runemic" aria-label="Runemic on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></a>
+      <a class="btn btn--ghost btn--sm header-signin" href="https://console.runemic.com">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="https://console.runemic.com" data-in="Open console">Get API key</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="sub sub--mq">
+  <div class="sub__copy">
+    <h1>Early access <em>to Rune-1.</em></h1>
+    <p class="lede">Rune-1, Runemic's own OCR model, is in training. Join the list and Runemic will invite you when Rune-1 is ready.</p><div class="hero__cta"><a class="btn btn--primary" href="#early-access">Join the list <span class="arrow"></span></a></div>
+  </div>
+  <div class="show show--mq" aria-hidden="true">
+    <div class="mq"><div class="mq__track"><span class="mq__card"><img src="/assets/samples/w/manga-480.webp?v=5cc338e2" srcset="/assets/samples/w/manga-240.webp?v=49d0e63c 240w, /assets/samples/w/manga-360.webp?v=c84715f6 360w, /assets/samples/w/manga-480.webp?v=5cc338e2 480w, /assets/samples/w/manga-720.webp?v=a0a77c0d 720w, /assets/samples/w/manga-full.webp?v=dc8ad3a9 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/shahnameh-480.webp?v=db40cf2c" srcset="/assets/samples/w/shahnameh-240.webp?v=52979ef2 240w, /assets/samples/w/shahnameh-360.webp?v=87e7051e 360w, /assets/samples/w/shahnameh-480.webp?v=db40cf2c 480w, /assets/samples/w/shahnameh-720.webp?v=d80f8478 720w, /assets/samples/w/shahnameh-full.webp?v=d365680e 1000w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/w/invoice-1900-480.webp?v=4f8686bd" srcset="/assets/samples/w/invoice-1900-240.webp?v=8aa2cebd 240w, /assets/samples/w/invoice-1900-360.webp?v=4bfb43e1 360w, /assets/samples/w/invoice-1900-480.webp?v=4f8686bd 480w, /assets/samples/w/invoice-1900-720.webp?v=c96fb2b0 720w, /assets/samples/w/invoice-1900-full.webp?v=8802d196 800w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/w/chinese-480.webp?v=802d289e" srcset="/assets/samples/w/chinese-240.webp?v=098291cc 240w, /assets/samples/w/chinese-360.webp?v=7834d784 360w, /assets/samples/w/chinese-480.webp?v=802d289e 480w, /assets/samples/w/chinese-720.webp?v=459ae2c0 720w, /assets/samples/w/chinese-full.webp?v=b2610d00 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/w/arabic-1897-480.webp?v=e7357316" srcset="/assets/samples/w/arabic-1897-240.webp?v=18e165a4 240w, /assets/samples/w/arabic-1897-360.webp?v=25105e62 360w, /assets/samples/w/arabic-1897-480.webp?v=e7357316 480w, /assets/samples/w/arabic-1897-720.webp?v=07806b1a 720w, /assets/samples/w/arabic-1897-full.webp?v=e288dc08 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/w/hindi-1882-480.webp?v=941520ed" srcset="/assets/samples/w/hindi-1882-240.webp?v=7de280e3 240w, /assets/samples/w/hindi-1882-360.webp?v=240d024b 360w, /assets/samples/w/hindi-1882-480.webp?v=941520ed 480w, /assets/samples/w/hindi-1882-720.webp?v=f9bfbd6c 720w, /assets/samples/w/hindi-1882-full.webp?v=dd795d61 1200w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>हिन्दी</b></span><span class="mq__card"><img src="/assets/samples/w/grimm-480.webp?v=b4ef583d" srcset="/assets/samples/w/grimm-240.webp?v=713bdb83 240w, /assets/samples/w/grimm-360.webp?v=923650db 360w, /assets/samples/w/grimm-480.webp?v=b4ef583d 480w, /assets/samples/w/grimm-720.webp?v=d755ac2b 720w, /assets/samples/w/grimm-full.webp?v=20381fbd 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/w/urdu-480.webp?v=e8670434" srcset="/assets/samples/w/urdu-240.webp?v=153c72b5 240w, /assets/samples/w/urdu-360.webp?v=9b21e05d 360w, /assets/samples/w/urdu-480.webp?v=e8670434 480w, /assets/samples/w/urdu-720.webp?v=74180582 720w, /assets/samples/w/urdu-full.webp?v=b5360b89 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/w/japanese-480.webp?v=523ea63a" srcset="/assets/samples/w/japanese-240.webp?v=ee4a7f8e 240w, /assets/samples/w/japanese-360.webp?v=cf472389 360w, /assets/samples/w/japanese-480.webp?v=523ea63a 480w, /assets/samples/w/japanese-720.webp?v=9bf38449 720w, /assets/samples/w/japanese-full.webp?v=1127a9fe 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/korean-480.webp?v=0624e538" srcset="/assets/samples/w/korean-240.webp?v=7336e71b 240w, /assets/samples/w/korean-360.webp?v=131fb8ab 360w, /assets/samples/w/korean-480.webp?v=0624e538 480w, /assets/samples/w/korean-720.webp?v=86de0e7f 720w, /assets/samples/w/korean-full.webp?v=57adbb7d 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/w/russian-480.webp?v=84d09754" srcset="/assets/samples/w/russian-240.webp?v=dccc27f7 240w, /assets/samples/w/russian-360.webp?v=004e1fae 360w, /assets/samples/w/russian-480.webp?v=84d09754 480w, /assets/samples/w/russian-720.webp?v=268b76d0 720w, /assets/samples/w/russian-full.webp?v=62818041 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/w/table-480.webp?v=74f58416" srcset="/assets/samples/w/table-240.webp?v=12c523c0 240w, /assets/samples/w/table-360.webp?v=d796f155 360w, /assets/samples/w/table-480.webp?v=74f58416 480w, /assets/samples/w/table-720.webp?v=71f51d7b 720w, /assets/samples/w/table-full.webp?v=dc5c28e7 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Table</b></span><span class="mq__card"><img src="/assets/samples/w/manga-480.webp?v=5cc338e2" srcset="/assets/samples/w/manga-240.webp?v=49d0e63c 240w, /assets/samples/w/manga-360.webp?v=c84715f6 360w, /assets/samples/w/manga-480.webp?v=5cc338e2 480w, /assets/samples/w/manga-720.webp?v=a0a77c0d 720w, /assets/samples/w/manga-full.webp?v=dc8ad3a9 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/shahnameh-480.webp?v=db40cf2c" srcset="/assets/samples/w/shahnameh-240.webp?v=52979ef2 240w, /assets/samples/w/shahnameh-360.webp?v=87e7051e 360w, /assets/samples/w/shahnameh-480.webp?v=db40cf2c 480w, /assets/samples/w/shahnameh-720.webp?v=d80f8478 720w, /assets/samples/w/shahnameh-full.webp?v=d365680e 1000w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/w/invoice-1900-480.webp?v=4f8686bd" srcset="/assets/samples/w/invoice-1900-240.webp?v=8aa2cebd 240w, /assets/samples/w/invoice-1900-360.webp?v=4bfb43e1 360w, /assets/samples/w/invoice-1900-480.webp?v=4f8686bd 480w, /assets/samples/w/invoice-1900-720.webp?v=c96fb2b0 720w, /assets/samples/w/invoice-1900-full.webp?v=8802d196 800w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/w/chinese-480.webp?v=802d289e" srcset="/assets/samples/w/chinese-240.webp?v=098291cc 240w, /assets/samples/w/chinese-360.webp?v=7834d784 360w, /assets/samples/w/chinese-480.webp?v=802d289e 480w, /assets/samples/w/chinese-720.webp?v=459ae2c0 720w, /assets/samples/w/chinese-full.webp?v=b2610d00 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/w/arabic-1897-480.webp?v=e7357316" srcset="/assets/samples/w/arabic-1897-240.webp?v=18e165a4 240w, /assets/samples/w/arabic-1897-360.webp?v=25105e62 360w, /assets/samples/w/arabic-1897-480.webp?v=e7357316 480w, /assets/samples/w/arabic-1897-720.webp?v=07806b1a 720w, /assets/samples/w/arabic-1897-full.webp?v=e288dc08 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/w/hindi-1882-480.webp?v=941520ed" srcset="/assets/samples/w/hindi-1882-240.webp?v=7de280e3 240w, /assets/samples/w/hindi-1882-360.webp?v=240d024b 360w, /assets/samples/w/hindi-1882-480.webp?v=941520ed 480w, /assets/samples/w/hindi-1882-720.webp?v=f9bfbd6c 720w, /assets/samples/w/hindi-1882-full.webp?v=dd795d61 1200w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span><span class="mq__card"><img src="/assets/samples/w/grimm-480.webp?v=b4ef583d" srcset="/assets/samples/w/grimm-240.webp?v=713bdb83 240w, /assets/samples/w/grimm-360.webp?v=923650db 360w, /assets/samples/w/grimm-480.webp?v=b4ef583d 480w, /assets/samples/w/grimm-720.webp?v=d755ac2b 720w, /assets/samples/w/grimm-full.webp?v=20381fbd 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/w/urdu-480.webp?v=e8670434" srcset="/assets/samples/w/urdu-240.webp?v=153c72b5 240w, /assets/samples/w/urdu-360.webp?v=9b21e05d 360w, /assets/samples/w/urdu-480.webp?v=e8670434 480w, /assets/samples/w/urdu-720.webp?v=74180582 720w, /assets/samples/w/urdu-full.webp?v=b5360b89 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/w/japanese-480.webp?v=523ea63a" srcset="/assets/samples/w/japanese-240.webp?v=ee4a7f8e 240w, /assets/samples/w/japanese-360.webp?v=cf472389 360w, /assets/samples/w/japanese-480.webp?v=523ea63a 480w, /assets/samples/w/japanese-720.webp?v=9bf38449 720w, /assets/samples/w/japanese-full.webp?v=1127a9fe 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/korean-480.webp?v=0624e538" srcset="/assets/samples/w/korean-240.webp?v=7336e71b 240w, /assets/samples/w/korean-360.webp?v=131fb8ab 360w, /assets/samples/w/korean-480.webp?v=0624e538 480w, /assets/samples/w/korean-720.webp?v=86de0e7f 720w, /assets/samples/w/korean-full.webp?v=57adbb7d 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/w/russian-480.webp?v=84d09754" srcset="/assets/samples/w/russian-240.webp?v=dccc27f7 240w, /assets/samples/w/russian-360.webp?v=004e1fae 360w, /assets/samples/w/russian-480.webp?v=84d09754 480w, /assets/samples/w/russian-720.webp?v=268b76d0 720w, /assets/samples/w/russian-full.webp?v=62818041 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/w/table-480.webp?v=74f58416" srcset="/assets/samples/w/table-240.webp?v=12c523c0 240w, /assets/samples/w/table-360.webp?v=d796f155 360w, /assets/samples/w/table-480.webp?v=74f58416 480w, /assets/samples/w/table-720.webp?v=71f51d7b 720w, /assets/samples/w/table-full.webp?v=dc5c28e7 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Table</b></span></div></div>
+    <div class="mq mq--rev"><div class="mq__track"><span class="mq__card"><img src="/assets/samples/w/grimm-480.webp?v=b4ef583d" srcset="/assets/samples/w/grimm-240.webp?v=713bdb83 240w, /assets/samples/w/grimm-360.webp?v=923650db 360w, /assets/samples/w/grimm-480.webp?v=b4ef583d 480w, /assets/samples/w/grimm-720.webp?v=d755ac2b 720w, /assets/samples/w/grimm-full.webp?v=20381fbd 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/w/urdu-480.webp?v=e8670434" srcset="/assets/samples/w/urdu-240.webp?v=153c72b5 240w, /assets/samples/w/urdu-360.webp?v=9b21e05d 360w, /assets/samples/w/urdu-480.webp?v=e8670434 480w, /assets/samples/w/urdu-720.webp?v=74180582 720w, /assets/samples/w/urdu-full.webp?v=b5360b89 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/w/japanese-480.webp?v=523ea63a" srcset="/assets/samples/w/japanese-240.webp?v=ee4a7f8e 240w, /assets/samples/w/japanese-360.webp?v=cf472389 360w, /assets/samples/w/japanese-480.webp?v=523ea63a 480w, /assets/samples/w/japanese-720.webp?v=9bf38449 720w, /assets/samples/w/japanese-full.webp?v=1127a9fe 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/korean-480.webp?v=0624e538" srcset="/assets/samples/w/korean-240.webp?v=7336e71b 240w, /assets/samples/w/korean-360.webp?v=131fb8ab 360w, /assets/samples/w/korean-480.webp?v=0624e538 480w, /assets/samples/w/korean-720.webp?v=86de0e7f 720w, /assets/samples/w/korean-full.webp?v=57adbb7d 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/w/russian-480.webp?v=84d09754" srcset="/assets/samples/w/russian-240.webp?v=dccc27f7 240w, /assets/samples/w/russian-360.webp?v=004e1fae 360w, /assets/samples/w/russian-480.webp?v=84d09754 480w, /assets/samples/w/russian-720.webp?v=268b76d0 720w, /assets/samples/w/russian-full.webp?v=62818041 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/w/table-480.webp?v=74f58416" srcset="/assets/samples/w/table-240.webp?v=12c523c0 240w, /assets/samples/w/table-360.webp?v=d796f155 360w, /assets/samples/w/table-480.webp?v=74f58416 480w, /assets/samples/w/table-720.webp?v=71f51d7b 720w, /assets/samples/w/table-full.webp?v=dc5c28e7 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760"><b>Table</b></span><span class="mq__card"><img src="/assets/samples/w/manga-480.webp?v=5cc338e2" srcset="/assets/samples/w/manga-240.webp?v=49d0e63c 240w, /assets/samples/w/manga-360.webp?v=c84715f6 360w, /assets/samples/w/manga-480.webp?v=5cc338e2 480w, /assets/samples/w/manga-720.webp?v=a0a77c0d 720w, /assets/samples/w/manga-full.webp?v=dc8ad3a9 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/shahnameh-480.webp?v=db40cf2c" srcset="/assets/samples/w/shahnameh-240.webp?v=52979ef2 240w, /assets/samples/w/shahnameh-360.webp?v=87e7051e 360w, /assets/samples/w/shahnameh-480.webp?v=db40cf2c 480w, /assets/samples/w/shahnameh-720.webp?v=d80f8478 720w, /assets/samples/w/shahnameh-full.webp?v=d365680e 1000w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/w/invoice-1900-480.webp?v=4f8686bd" srcset="/assets/samples/w/invoice-1900-240.webp?v=8aa2cebd 240w, /assets/samples/w/invoice-1900-360.webp?v=4bfb43e1 360w, /assets/samples/w/invoice-1900-480.webp?v=4f8686bd 480w, /assets/samples/w/invoice-1900-720.webp?v=c96fb2b0 720w, /assets/samples/w/invoice-1900-full.webp?v=8802d196 800w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/w/chinese-480.webp?v=802d289e" srcset="/assets/samples/w/chinese-240.webp?v=098291cc 240w, /assets/samples/w/chinese-360.webp?v=7834d784 360w, /assets/samples/w/chinese-480.webp?v=802d289e 480w, /assets/samples/w/chinese-720.webp?v=459ae2c0 720w, /assets/samples/w/chinese-full.webp?v=b2610d00 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/w/arabic-1897-480.webp?v=e7357316" srcset="/assets/samples/w/arabic-1897-240.webp?v=18e165a4 240w, /assets/samples/w/arabic-1897-360.webp?v=25105e62 360w, /assets/samples/w/arabic-1897-480.webp?v=e7357316 480w, /assets/samples/w/arabic-1897-720.webp?v=07806b1a 720w, /assets/samples/w/arabic-1897-full.webp?v=e288dc08 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/w/hindi-1882-480.webp?v=941520ed" srcset="/assets/samples/w/hindi-1882-240.webp?v=7de280e3 240w, /assets/samples/w/hindi-1882-360.webp?v=240d024b 360w, /assets/samples/w/hindi-1882-480.webp?v=941520ed 480w, /assets/samples/w/hindi-1882-720.webp?v=f9bfbd6c 720w, /assets/samples/w/hindi-1882-full.webp?v=dd795d61 1200w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span><span class="mq__card"><img src="/assets/samples/w/grimm-480.webp?v=b4ef583d" srcset="/assets/samples/w/grimm-240.webp?v=713bdb83 240w, /assets/samples/w/grimm-360.webp?v=923650db 360w, /assets/samples/w/grimm-480.webp?v=b4ef583d 480w, /assets/samples/w/grimm-720.webp?v=d755ac2b 720w, /assets/samples/w/grimm-full.webp?v=20381fbd 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Fraktur</b></span><span class="mq__card"><img src="/assets/samples/w/urdu-480.webp?v=e8670434" srcset="/assets/samples/w/urdu-240.webp?v=153c72b5 240w, /assets/samples/w/urdu-360.webp?v=9b21e05d 360w, /assets/samples/w/urdu-480.webp?v=e8670434 480w, /assets/samples/w/urdu-720.webp?v=74180582 720w, /assets/samples/w/urdu-full.webp?v=b5360b89 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>اردو</b></span><span class="mq__card"><img src="/assets/samples/w/japanese-480.webp?v=523ea63a" srcset="/assets/samples/w/japanese-240.webp?v=ee4a7f8e 240w, /assets/samples/w/japanese-360.webp?v=cf472389 360w, /assets/samples/w/japanese-480.webp?v=523ea63a 480w, /assets/samples/w/japanese-720.webp?v=9bf38449 720w, /assets/samples/w/japanese-full.webp?v=1127a9fe 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/korean-480.webp?v=0624e538" srcset="/assets/samples/w/korean-240.webp?v=7336e71b 240w, /assets/samples/w/korean-360.webp?v=131fb8ab 360w, /assets/samples/w/korean-480.webp?v=0624e538 480w, /assets/samples/w/korean-720.webp?v=86de0e7f 720w, /assets/samples/w/korean-full.webp?v=57adbb7d 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>한국어</b></span><span class="mq__card"><img src="/assets/samples/w/russian-480.webp?v=84d09754" srcset="/assets/samples/w/russian-240.webp?v=dccc27f7 240w, /assets/samples/w/russian-360.webp?v=004e1fae 360w, /assets/samples/w/russian-480.webp?v=84d09754 480w, /assets/samples/w/russian-720.webp?v=268b76d0 720w, /assets/samples/w/russian-full.webp?v=62818041 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Русский</b></span><span class="mq__card"><img src="/assets/samples/w/table-480.webp?v=74f58416" srcset="/assets/samples/w/table-240.webp?v=12c523c0 240w, /assets/samples/w/table-360.webp?v=d796f155 360w, /assets/samples/w/table-480.webp?v=74f58416 480w, /assets/samples/w/table-720.webp?v=71f51d7b 720w, /assets/samples/w/table-full.webp?v=dc5c28e7 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Table</b></span><span class="mq__card"><img src="/assets/samples/w/manga-480.webp?v=5cc338e2" srcset="/assets/samples/w/manga-240.webp?v=49d0e63c 240w, /assets/samples/w/manga-360.webp?v=c84715f6 360w, /assets/samples/w/manga-480.webp?v=5cc338e2 480w, /assets/samples/w/manga-720.webp?v=a0a77c0d 720w, /assets/samples/w/manga-full.webp?v=dc8ad3a9 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>日本語</b></span><span class="mq__card"><img src="/assets/samples/w/shahnameh-480.webp?v=db40cf2c" srcset="/assets/samples/w/shahnameh-240.webp?v=52979ef2 240w, /assets/samples/w/shahnameh-360.webp?v=87e7051e 360w, /assets/samples/w/shahnameh-480.webp?v=db40cf2c 480w, /assets/samples/w/shahnameh-720.webp?v=d80f8478 720w, /assets/samples/w/shahnameh-full.webp?v=d365680e 1000w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>فارسی</b></span><span class="mq__card"><img src="/assets/samples/w/invoice-1900-480.webp?v=4f8686bd" srcset="/assets/samples/w/invoice-1900-240.webp?v=8aa2cebd 240w, /assets/samples/w/invoice-1900-360.webp?v=4bfb43e1 360w, /assets/samples/w/invoice-1900-480.webp?v=4f8686bd 480w, /assets/samples/w/invoice-1900-720.webp?v=c96fb2b0 720w, /assets/samples/w/invoice-1900-full.webp?v=8802d196 800w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>Invoice</b></span><span class="mq__card"><img src="/assets/samples/w/chinese-480.webp?v=802d289e" srcset="/assets/samples/w/chinese-240.webp?v=098291cc 240w, /assets/samples/w/chinese-360.webp?v=7834d784 360w, /assets/samples/w/chinese-480.webp?v=802d289e 480w, /assets/samples/w/chinese-720.webp?v=459ae2c0 720w, /assets/samples/w/chinese-full.webp?v=b2610d00 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>中文</b></span><span class="mq__card"><img src="/assets/samples/w/arabic-1897-480.webp?v=e7357316" srcset="/assets/samples/w/arabic-1897-240.webp?v=18e165a4 240w, /assets/samples/w/arabic-1897-360.webp?v=25105e62 360w, /assets/samples/w/arabic-1897-480.webp?v=e7357316 480w, /assets/samples/w/arabic-1897-720.webp?v=07806b1a 720w, /assets/samples/w/arabic-1897-full.webp?v=e288dc08 900w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>العربية</b></span><span class="mq__card"><img src="/assets/samples/w/hindi-1882-480.webp?v=941520ed" srcset="/assets/samples/w/hindi-1882-240.webp?v=7de280e3 240w, /assets/samples/w/hindi-1882-360.webp?v=240d024b 360w, /assets/samples/w/hindi-1882-480.webp?v=941520ed 480w, /assets/samples/w/hindi-1882-720.webp?v=f9bfbd6c 720w, /assets/samples/w/hindi-1882-full.webp?v=dd795d61 1200w" sizes="(max-width: 700px) 56vw, 270px" alt="" width="600" height="760" loading="lazy"><b>हिन्दी</b></span></div></div>
+  </div>
+</section>
+<div class="wrap">
+
+  <section class="section">
+    <div class="split split--form">
+      <form class="card form" id="early-access" method="post" novalidate>
+        <div class="field">
+          <label for="ea-email">Email <span aria-hidden="true">*</span></label>
+          <input id="ea-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="ea-name">Name</label>
+          <input id="ea-name" name="name" type="text" autocomplete="name" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="ea-interest">I'm interested in</label>
+          <select id="ea-interest" name="interest">
+            <option value="api">Runemic API</option>
+            <option value="models">Open models (Rune-1 Small)</option>
+            <option value="scan">Scan to PDF</option>
+            <option value="digitization">A digitization project</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ea-scripts">Languages or scripts</label>
+          <input id="ea-scripts" name="scripts" type="text" maxlength="300" placeholder="e.g. Persian, Urdu, Amharic, handwriting">
+        </div>
+        <div class="field">
+          <label for="ea-use">What do you want to read?</label>
+          <textarea id="ea-use" name="use_case" rows="4" maxlength="2000" placeholder="Invoices, a manuscript collection, receipts, newspapers…"></textarea>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="ea-website">Website</label><input id="ea-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <button class="btn btn--primary" type="submit">Join the list <span class="arrow"></span></button>
+        <p class="form__status" role="status" aria-live="polite"></p>
+        <p class="form__note">We only use your details to contact you about Runemic. No spam, and you can ask us to delete them at any time. See our <a href="/privacy">privacy notice</a>.</p>
+      </form>
+      <div>
+        <ol class="steps">
+          <li><div><h3>We read the list</h3><p>Your languages and use case decide who we invite first.</p></div></li>
+          <li><div><h3>You get an invite</h3><p>API keys, the app beta or a call about your project, depending on what you chose.</p></div></li>
+          <li><div><h3>You tell us what to work on</h3><p>Early users tell us which scripts and document types to improve next.</p></div></li>
+        </ol>
+        <p class="note">Prefer email? Write to <a href="mailto:hello@runemic.com">hello@runemic.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" lang="en" dir="ltr">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <img class="ill--light" src="/assets/brand/logo.svg?v=12a4c221" alt="" width="30" height="30">
+        <img class="ill--dark" src="/assets/brand/logo-dark.svg?v=14bb68a0" alt="" width="30" height="30">
+        <span>Runemic</span>
+      </a>
+      <p>OCR for documents that are hard to read.</p>
+    </div>
+    <nav aria-labelledby="f-products">
+      <p class="site-footer__h" id="f-products">Products</p>
+      <a href="/try">Try for free</a>
+      <a href="/models">Rune-1 models</a>
+      <a href="/products#api">Runemic API</a>
+      <a href="https://tools.runemic.com">Free tools</a>
+      <a href="https://tools.runemic.com/image-to-text">Image to text</a>
+      <a href="https://tools.runemic.com/scan-to-pdf">Scan to PDF</a>
+      <a href="https://tools.runemic.com/split-receipt">Split a receipt</a>
+      <a href="/products#digitization">Digitization</a>
+    </nav>
+    <nav aria-labelledby="f-open">
+      <p class="site-footer__h" id="f-open">Open source</p>
+      <a href="https://huggingface.co/runemic">Hugging Face</a>
+      <a href="https://github.com/runemic">GitHub</a>
+      <a href="/models#runebench">RuneBench</a>
+      <a href="/blog/best-ocr-persian">Best OCR for Persian</a>
+    </nav>
+    <nav aria-labelledby="f-company">
+      <p class="site-footer__h" id="f-company">Company</p>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:hello@runemic.com">hello@runemic.com</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
+      <a href="/terms">Terms</a>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© 2026 Runemic Labs. All rights reserved.</span>
+  </div>
+</footer>
+</body>
+</html>

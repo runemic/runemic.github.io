@@ -1,0 +1,14 @@
+{
+  "name": "runemic",
+  "owner": { "name": "Runemic", "email": "hello@runemic.com" },
+  "metadata": { "description": "Runemic plugins for Claude Code" },
+  "plugins": [
+    {
+      "name": "runemic",
+      "source": "./plugins/runemic",
+      "description": "OCR for documents in any script: the Runemic MCP server plus a skill for page images and local files.",
+      "category": "productivity",
+      "homepage": "https://runemic.com/docs#mcp"
+    }
+  ]
+}

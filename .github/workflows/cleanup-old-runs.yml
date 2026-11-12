@@ -1,0 +1,71 @@
+name: Clean up old workflow runs
+
+# Keeps the Actions tab tidy: deletes old runs, keeping the newest few per workflow.
+#  - every Monday at 03:17 UTC (quiet hour, off the busy :00 mark)
+#  - once when this file changes
+#  - by hand: Actions → "Clean up old workflow runs" → Run workflow (choose how many to keep)
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  push:
+    branches: [main]
+    paths: [".github/workflows/cleanup-old-runs.yml"]
+  workflow_dispatch:
+    inputs:
+      keep:
+        description: "Newest runs to keep per workflow (0 = delete all)"
+        default: "5"
+        required: true
+      max_age_days:
+        description: "Also delete kept runs older than this many days (0 = no age limit)"
+        default: "30"
+        required: true
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency: cleanup-old-runs
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          KEEP: ${{ github.event.inputs.keep || '5' }}
+          MAX_AGE_DAYS: ${{ github.event.inputs.max_age_days || '30' }}
+        with:
+          script: |
+            const keep = Math.max(0, parseInt(process.env.KEEP, 10) || 0);
+            const maxAge = Math.max(0, parseInt(process.env.MAX_AGE_DAYS, 10) || 0);
+            const cutoff = maxAge ? Date.now() - maxAge * 864e5 : 0;
+            const MAX_DELETES = 400; // stays well inside the API rate limit; the rest goes next week
+            const { owner, repo } = context.repo;
+
+            const runs = await github.paginate(github.rest.actions.listWorkflowRunsForRepo, { owner, repo, per_page: 100 });
+
+            // group by workflow (runs of deleted workflow files are grouped too, and cleaned the same way)
+            const groups = {};
+            for (const r of runs) (groups[r.workflow_id] ||= []).push(r);
+
+            let deleted = 0, skipped = 0, kept = 0;
+            for (const list of Object.values(groups)) {
+              list.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+              for (const [i, run] of list.entries()) {
+                const tooOld = cutoff && new Date(run.created_at).getTime() < cutoff;
+                if (i < keep && !tooOld) { kept++; continue; }
+                if (run.id === context.runId || run.status !== "completed") { skipped++; continue; }
+                if (deleted >= MAX_DELETES) { skipped++; continue; }
+                try {
+                  await github.rest.actions.deleteWorkflowRun({ owner, repo, run_id: run.id });
+                  deleted++;
+                } catch (e) {
+                  core.warning(`Could not delete run ${run.id} (${run.name}): ${e.message}`);
+                  skipped++;
+                }
+              }
+            }
+            core.summary.addRaw(`Deleted ${deleted} runs, kept ${kept}, skipped ${skipped} (running or over the per-run cap). Keep=${keep}, max age=${maxAge || "none"} days.`).write();
+            core.info(`Deleted ${deleted}, kept ${kept}, skipped ${skipped}`);

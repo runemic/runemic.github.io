@@ -1,0 +1,27 @@
+# runemic.com: everyone is welcome to crawl, including search engines and AI agents.
+User-agent: *
+Allow: /
+
+# Named explicitly so there is no doubt they are welcome.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: CCBot
+User-agent: Meta-ExternalAgent
+User-agent: MistralAI-User
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://runemic.com/sitemap.xml
